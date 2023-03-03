@@ -1,0 +1,40 @@
+configuration {
+	modi: "window,run,ssh";
+	width: 25;
+	lines: 15;
+	columns: 2;
+	font: "tewi 9";
+	bw: 1;
+	location: 0;
+	monitor: "-1";
+	padding: 0;
+	yoffset: 0;
+	xoffset: 0;
+	fixed-num-lines: true;
+	show-icons: false;
+	terminal: "alacritty";
+	ssh-client: "ssh";
+	ssh-command: "{terminal} --command {ssh-client} -t {host}";
+	parse-known-hosts: false;
+	run-command: "{cmd}";
+	run-shell-command: "{terminal} -e {cmd}";
+	window-command: "xkill -id {window}";
+	disable-history: false;
+	sort: true;
+	case-sensitive: false;
+	cycle: true;
+	sidebar-mode: false;
+	auto-select: false;
+	matching: "normal";
+	line-margin: 1;
+	line-padding: 1;
+	hide-scrollbar: true;
+	fullscreen: true;
+	click-to-exit: true;
+	dpi: 1;
+	threads: 0;
+	show-match: true;
+}
+@theme "gruvbox-dark-soft.rasi"
+
+/* vim:ft=css

@@ -1,0 +1,36 @@
+[global]
+background = "#32302f"
+foreground = "#ebdbb2"
+
+follow = keyboard
+
+width = 200
+height = 500
+
+offset = 6x36
+separator_height = 2
+frame_width = 2
+alignment = "center"
+font = "tewi 8"
+line_height = 8
+padding = 12
+sort="yes"
+word_wrap="yes"
+icon_position="off"
+
+[urgency_critical]
+background="#32302f"
+foreground="#ebdbb2"
+timeout=0
+
+[urgency_low]
+background="#32302f"
+foreground="#ebdbb2"
+timeout=5
+
+[urgency_normal]
+background="#32302f"
+foreground="#ebdbb2"
+timeout=5
+
+# vim: ft=cfg

@@ -1,0 +1,43 @@
+ncmpcpp_directory = ~/.ncmpcpp
+#mpd_music_dir = /run/mount/bastion/music
+lyrics_directory = ~/.lyrics
+mpd_host = localhost
+mpd_port = 6600
+mpd_connection_timeout = 5
+mpd_crossfade_time = 5
+
+enable_window_title = yes
+follow_now_playing_lyrics = yes
+
+statusbar_color = white
+
+centered_cursor = yes
+mouse_support = no
+user_interface = classic
+
+playlist_shorten_total_times = "yes"
+browser_display_mode = "columns"
+search_engine_display_mode = "columns"
+playlist_editor_display_mode = "columns"
+lyrics_fetchers = azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
+locked_screen_width_part = "60"
+display_bitrate = "no"
+external_editor = "nvim"
+header_visibility = "no"
+statusbar_visibility = "yes"
+visualizer_color = "white"
+song_window_title_format = " {%a} - {%t}"
+progressbar_look = "▀▀ "
+progressbar_color = "black"
+progressbar_elapsed_color = "white"
+song_list_format = " $8%a $8%t"
+song_status_format = " $8%a $8%t $8%b "
+now_playing_prefix = "$b"
+now_playing_suffix = "$8$/b"
+song_columns_list_format = "(22)[white]{a} (25)[white]{t|f} (29)[white]{b} (15)[white]{g} (4)[white]{lr}"
+color1 = "white"
+color2 = "black"
+playlist_display_mode = "columns" (classic/columns)
+autocenter_mode = "yes"
+titles_visibility = "no"
+

@@ -1,0 +1,4 @@
+gtk-icon-theme-name = "Paper"
+gtk-theme-name = "Arc-Dark"
+gtk-cursor-theme-name = "Vanilla-DMZ";
+gtk-cursor-theme-size = 11;

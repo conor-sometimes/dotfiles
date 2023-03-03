@@ -1,0 +1,16 @@
+[Desktop Entry]
+
+# The type as listed above
+Type=Application
+
+# The name of the application
+Name=%HERE%
+
+# A comment which can/will be used as a tooltip
+Comment=
+
+# The executable of the application, possibly with arguments.
+Exec=termite -e "echo %F"
+
+# Describes whether this application needs to be run in a terminal or not
+Terminal=true

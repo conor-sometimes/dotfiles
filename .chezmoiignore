@@ -1,0 +1,6 @@
+{{ if ne .chezmoi.os "darwin" }}
+Library/Application Support/espanso
+{{ end }}
+{{ if ne .chezmoi.os "linux" }}
+.config/espanso/
+{{ end }}

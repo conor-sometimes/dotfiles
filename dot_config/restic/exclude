@@ -1,0 +1,59 @@
+# home
+$HOME/.steam
+$HOME/.thumbnails
+$HOME/.nv
+$HOME/.lyrics
+$HOME/.ccache
+$HOME/.cache
+$HOME/remote
+$HOME/.go
+$HOME/go
+$HOME/.mono
+$HOME/.cargo
+$HOME/.rustup
+$HOME/.gimp*
+$HOME/mnt
+$HOME/gpucache
+$HOME/.texlive
+$HOME/.xournalpp
+$HOME/.minecraft
+$HOME/mount
+$HOME/sshfs
+
+# local
+$HOME/.local/bin
+$HOME/.local/lib
+$HOME/.local/share/Steam/*
+$HOME/.local/share/mpv/watch_later
+$HOME/.local/share/Trash/
+$HOME/.local/share/nvim/swap
+$HOME/.local/share/multimc
+
+# config
+$HOME/.config/.mono
+$HOME/.config/chromium
+$HOME/.config/discord
+$HOME/.config/GIMP
+$HOME/.config/unity3d
+
+# flatpak
+$HOME/.var
+
+# wildcards
+## precompiled header
+*.gch
+*.pch
+
+## object files
+*.o
+
+# useless dirs
+## rust related
+target
+## gocryptfs
+plain
+
+# individual files
+$HOME/link_handle.log
+
+undodir

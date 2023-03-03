@@ -1,0 +1,13 @@
+priority -50
+
+snippet debug
+echo "DEBUG"
+endsnippet
+
+snippet checkwrite "Check if mount is writable"
+if [ -w ${1} ]; then
+  echo "Writable"
+else
+  echo "Read only"
+fi
+endsnippet

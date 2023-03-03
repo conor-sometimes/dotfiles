@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+#
+# binds.zsh
+#
+# Copyright (C) 2021 dindybutts <lewdavatar at gmail dot com>
+#
+# Distributed under terms of the GPLv3 license.
+
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
+bindkey "^R" history-incremental-search-backward
+
+bindkey '\e[3~' delete-char
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+bindkey '^[[Z' reverse-menu-complete

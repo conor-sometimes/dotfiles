@@ -1,0 +1,54 @@
+[user]
+{{ if eq .chezmoi.os "darwin" }}
+	name = Conor (Work)
+	email = conor.mcshane@yahooinc.com
+	# $HOME/wiki/programs/gpg.wiki
+	# signingkey = 26521FB9AEA047007F6D49489B8AC2D618B9D0E1
+{{ else if eq .chezmoi.hostname "honshu" }}
+	name = server
+	# $HOME/wiki/programs/gpg.wiki
+	# signingkey = 26521FB9AEA047007F6D49489B8AC2D618B9D0E1
+{{ else if eq .chezmoi.hostname "hokkaido" }}
+	name = Conor (home)
+	email = conor.d.mcshane@gmail.com
+	# $HOME/wiki/programs/gpg.wiki
+	# signingkey = 26521FB9AEA047007F6D49489B8AC2D618B9D0E1
+{{ end }}
+[core]
+	editor = nvim
+	excludesfile = ~/config/git/gitignore
+[commit]
+	template = ~/.config/git/commit-template
+	gpgsign = true
+[alias]
+	com = "checkout master"
+	co = "checkout"
+	cob = "checkout -b"
+	amend = "commit --amend"
+	logs = "log --show-signature"
+[color]
+	ui = true
+
+[pull]
+	rebase = false
+
+[mergetool "nvim"]
+	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+
+[merge]
+	tool = nvim
+
+[mergetool]
+	prompt = false
+
+[core]
+	pager = delta
+
+[delta]
+	plus-style = "syntax #012800"
+	minus-style = "syntax #340001"
+	syntax-theme = Monokai Extended
+	navigate = true
+
+[interactive]
+	diffFilter = delta --color-only

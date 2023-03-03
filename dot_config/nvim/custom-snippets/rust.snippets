@@ -1,0 +1,59 @@
+priority 1
+
+# I always forget how to create an empty vector
+snippet letmv "let mut vector declaration"
+let mut ${1} = Vec::new();
+endsnippet
+
+snippet lettmv "let mut vector declaration with sepecified type"
+let mut ${1}: Vec<${2}> = Vec::new();
+endsnippet
+
+snippet pfn "pub fn"
+// Ctrl+Left & Ctrl+Right to move sections
+pub fn ${1:function_name}($2) -> Result<$3, anyhow::Error> {
+	${VISUAL}$0
+}
+endsnippet
+
+# Allows me to use ? in main
+snippet main "Main function"
+fn main() -> anyhow::Result<()> {
+	${0}
+
+	Ok(())
+}
+endsnippet
+
+snippet test "Unit test function"
+	#[test]
+	fn ${1:function_name}_test() -> anyhow::Result<()> {
+		${2}
+
+		Ok(())
+	}
+endsnippet
+
+# Add match for option
+# Add match for result
+# for with enumerate
+
+snippet todo "TODO comment" bw
+// TODO: ${1}
+endsnippet
+
+snippet fixme "FIXME comment" bw
+// FIXME: ${1}
+endsnippet
+
+snippet warn "WARN comment" bw
+// WARN: ${1}
+endsnippet
+
+snippet info "INFO comment" bw
+// INFO: ${1}
+endsnippet
+
+snippet hack "HACK comment" bw
+// HACK: ${1}
+endsnippet

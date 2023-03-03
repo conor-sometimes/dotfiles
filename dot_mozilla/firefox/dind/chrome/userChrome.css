@@ -1,0 +1,19 @@
+/*
+ * userChrome.css
+ * Copyright (C) 2020 dindybutts <lewdavatar at gmail dot com>
+ *
+ * Distributed under terms of the GPLv3 license.
+ */
+
+/* hides the native tabs */
+#TabsToolbar {
+	visibility: collapse;
+}
+
+#titlebar {
+	visibility: collapse;
+}
+
+#sidebar-header {
+	visibility: collapse !important;
+}

@@ -1,0 +1,47 @@
+#zmodload zsh/zprof
+
+# non host specific settings
+for CONFIG ($HOME/.config/zsh/*.zsh); do
+  source "$CONFIG"
+done
+
+# application specific zsh files
+for APPLICATION ($HOME/.config/zsh/applications/*.zsh); do
+  source "$APPLICATION"
+done
+
+# source host specific configs
+for CONFIG ($HOME/.config/zsh/hosts/$HOST/*.zsh); do
+  source "$CONFIG"
+done
+
+if [ -n "$DISPLAY" ]; then # checks if we're not in a tty
+  if [ "$HOST" = "honshu" ]; then
+    eval "$(keychain --quiet --eval --agents gpg $GPG_KEY)"
+  fi
+
+  source "$HOME/.keychain/$HOST-sh-gpg"
+fi
+
+# mounts drives
+if [ "$HOST" = "honshu" ]; then
+  if [ -n "$DISPLAY" ]; then
+    # checks if the drives are not mounted, if not then we mount them
+    if [ ! -b /dev/disk/by-label/bastion ] || [ ! -b /dev/disk/by-label/citadel ]; then
+      manage-drives.sh "m" "bastion" "fd9d1ac2-8531-4f73-9e3a-548b7d800394" "$(pass drives/bastion)"
+      manage-drives.sh "m" "citadel" "a3d66160-665d-4c0f-829b-7c4234f8d345" "$(pass drives/citadel)"
+    fi
+
+    if ! mountpoint --quiet /mnt; then
+      echo "Mounting windows"
+      sudo mount /dev/disk/by-uuid/2E7C9B247C9AE63D /mnt
+    fi
+  fi
+fi
+
+source ~/repos/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source "/home/dind/.local/share/cargo/env"
+
+#zprof
