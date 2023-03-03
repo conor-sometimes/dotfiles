@@ -6,13 +6,11 @@
 #
 # Distributed under terms of the GPLv3 license.
 
-export PROMPT_COLOR="green"
+export PROMPT_COLOR="blue"
 
 # $HOME/wiki/programs/gpg.wiki
-export GPG_KEY="26521FB9AEA047007F6D49489B8AC2D618B9D0E1"
-export GPG_TTY="$(tty)"
+#export GPG_KEY="26521FB9AEA047007F6D49489B8AC2D618B9D0E1"
+# export GPG_TTY="$(tty)"
 
 # $HOME/wiki/programs/ssh.wiki
-export SSH_KEY="$HOME/.ssh/yubikey-nfc.pub"
-
-export HOKKAIDO="192.168.0.124"
+export SSH_KEY="$HOME/.ssh/macbook.pub"
