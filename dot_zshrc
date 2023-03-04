@@ -43,4 +43,6 @@ fi
 source "$HOME/repos/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
+# test
+
 #zprof
