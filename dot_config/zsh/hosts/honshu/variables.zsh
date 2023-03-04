@@ -16,3 +16,5 @@ export GPG_TTY="$(tty)"
 export SSH_KEY="$HOME/.ssh/yubikey-nfc.pub"
 
 export HOKKAIDO="192.168.0.124"
+
+source "/home/dind/.local/share/cargo/env"

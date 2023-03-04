@@ -4,3 +4,5 @@ Library/Application Support/espanso
 {{ if ne .chezmoi.os "linux" }}
 .config/espanso/
 {{ end }}
+
+README.md

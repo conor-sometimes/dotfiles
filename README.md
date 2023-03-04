@@ -1,4 +1,6 @@
-# Pulling and using my dotfiles
+# Dotfiles
+
+### Managed with [chezmoi](https://github.com/twpayne/chezmoi)
 
 ## Init repo
 ```
@@ -30,6 +32,6 @@ chezmoi -v apply
 ```
 chezmoi cd
 git add -A
-git commit -s -m "skjdhakjsdh"
+git commit -s -m "Witty and hilarious commit message"
 git push -u origin master
 ```
