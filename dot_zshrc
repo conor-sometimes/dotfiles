@@ -39,7 +39,8 @@ if [ "$HOST" = "honshu" ]; then
   fi
 fi
 
-source ~/repos/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Add a check if the repo exist, if not, git clone it maybe?
+source "$HOME/repos/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOME/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 #zprof

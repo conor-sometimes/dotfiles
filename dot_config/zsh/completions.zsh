@@ -48,3 +48,5 @@ zstyle ':completion:*:*:task:*' group-name ''
 
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+zstyle ':vcs_info:git:*' formats '%b'
