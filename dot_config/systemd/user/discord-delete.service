@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodically deletes Discord messages
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/%h/discord-delete/discord-delete partial --max-age-days 7
+
+[Install]
+RequiredBy=multi-user.target

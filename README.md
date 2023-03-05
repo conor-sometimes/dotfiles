@@ -9,18 +9,13 @@ chezmoi init https://github.com/conor-sometimes/dotfiles.git
 
 ## Pull the latest changes from your repo and apply them
 ```
-chezmoi update
-```
-
-## Deploy configs
-```
-chezmoi -v apply
+chezmoi update && chezmoi -v apply
 ```
 
 # Editing files
 ```
 chezmoi cd
-* edit files *
+# edit files here, don't edit configs at their destination
 ```
 
 ## Apply changes

@@ -9,13 +9,15 @@
 # it gets replaced by the "replace" string.
 matches:
   # Simple text replacement
-  - trigger: ":espanso"
-    replace: "Hi there!"
-
   - trigger: ":email"
     replace: "conor.mcshane@yahooinc.com"
 
-  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+  # No swearing allowed
+  - trigger: "fuck"
+    replace: ""
+
+  - trigger: "shit"
+    replace: ""
 
   # But matches can also be dynamic:
 

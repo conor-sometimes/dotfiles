@@ -1,0 +1,8 @@
+[Unit]
+Description=Backup my homedir 15 minutes after logging in
+
+[Timer]
+OnBootSec=15min
+
+[Install]
+WantedBy=timers.target

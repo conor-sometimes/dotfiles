@@ -1,0 +1,11 @@
+[Unit]
+Description=Checks epic games store weekly for free game
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=docker start fgc
+
+[Install]
+RequiredBy=multi-user.target

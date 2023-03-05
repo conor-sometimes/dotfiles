@@ -1,0 +1,8 @@
+[Unit]
+Description=Timer for discord-delete.service
+
+[Timer]
+OnCalendar=weekly
+
+[Install]
+WantedBy=timers.target

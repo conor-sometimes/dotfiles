@@ -1,0 +1,13 @@
+[Unit]
+Description="Grinds steam trading cards"
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/%h/ASF/ArchiSteamFarm
+Restart=always
+RestartSec=15s
+
+[Install]
+WantedBy=default.target
+Alias=asf.service

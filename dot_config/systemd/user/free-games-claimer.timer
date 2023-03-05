@@ -1,0 +1,8 @@
+[Unit]
+Description=Timer for free-games-claimer.service
+
+[Timer]
+OnCalendar=weekly
+
+[Install]
+WantedBy=timers.target
