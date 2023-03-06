@@ -15,6 +15,9 @@ matches:
   - trigger: ":dcoprint"
     replace: "https://dcoprint.ops.yahoo.com/?site=IR"
 
+  - trigger: ":cyclecount"
+    replace: "Hi Michael, Sorry for the delay, Cycle count is uploaded for today."
+
   # No swearing allowed
   - trigger: "fuck"
     replace: ""
