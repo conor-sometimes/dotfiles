@@ -44,7 +44,7 @@ source "$HOME/repos/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 if [ "$HOST" = "K9J507N7L0" ]; then
-  source "$HOME/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  source "$HOME/.iterm2_shell_integration.zsh"
 fi
 
 #zprof
