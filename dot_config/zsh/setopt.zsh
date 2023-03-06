@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 #
-# config.zsh
+# setopt.zsh
 #
-# Copyright (C) 2021 dindybutts <lewdavatar at gmail dot com>
+# Copyright (C) 2023 conor-sometimes <conor dot d dot mcshane at gmail dot com>
 #
 # Distributed under terms of the GPLv3 license.
 
@@ -20,13 +20,3 @@ setopt COMPLETE_ALIASES     # autocompletion of command line switches for aliase
 setopt INTERACTIVECOMMENTS  # allows me to comment in the typical bash way (pound sign then text)
 
 # setopt MENU_COMPLETE
-
-
-
-
-
-
-
-
-
-

@@ -12,6 +12,9 @@ matches:
   - trigger: ":email"
     replace: "conor.mcshane@yahooinc.com"
 
+  - trigger: ":dcoprint"
+    replace: "https://dcoprint.ops.yahoo.com/?site=IR"
+
   # No swearing allowed
   - trigger: "fuck"
     replace: ""

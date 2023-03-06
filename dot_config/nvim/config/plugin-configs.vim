@@ -128,8 +128,8 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
 " templates {{{
 let g:templates_directory = '$HOME/.config/nvim/templates'
 let g:license = 'GPLv3'
-let g:email = 'dind#7958'
-let g:user = 'dindybutts'
+let g:email = 'conor-sometimes <conor dot d dot mcshane at gmail dot com>'
+let g:user = 'Conor McShane'
 " }}}
 
 " vimwiki {{{

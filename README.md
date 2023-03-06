@@ -12,7 +12,7 @@ chezmoi init https://github.com/conor-sometimes/dotfiles.git
 chezmoi update && chezmoi -v apply
 ```
 
-# Editing files
+## Editing files
 ```
 chezmoi cd
 # edit files here, don't edit configs at their destination
@@ -23,7 +23,7 @@ chezmoi cd
 chezmoi -v apply
 ```
 
-# Push changes
+## Push changes
 ```
 chezmoi cd
 git add -A

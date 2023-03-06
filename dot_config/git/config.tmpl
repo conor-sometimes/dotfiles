@@ -15,18 +15,22 @@
 	# $HOME/wiki/programs/gpg.wiki
 	signingkey = 7032F7F9BC73C52B99956EB1F79E4AE90F072A31
 {{ end }}
+
 [core]
 	editor = nvim
 	excludesfile = ~/config/git/gitignore
+
 [commit]
 	template = ~/.config/git/commit-template
 	gpgsign = true
+
 [alias]
 	com = "checkout master"
 	co = "checkout"
 	cob = "checkout -b"
 	amend = "commit --amend"
 	logs = "log --show-signature"
+
 [color]
 	ui = true
 

@@ -2,7 +2,7 @@
 #
 # clean-android.sh
 #
-# Copyright (C) 2022 dindybutts <dind#7958>
+# Copyright (C) 2023 conor-sometimes <conor dot d dot mcshane at gmail dot com>
 #
 # Distributed under terms of the GPLv3 license.
 

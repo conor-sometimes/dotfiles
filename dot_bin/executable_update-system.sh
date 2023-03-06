@@ -2,7 +2,7 @@
 #
 # update-system.sh
 #
-# Copyright (C) 2021 dindybutts
+# Copyright (C) 2023 conor-sometimes <conor dot d dot mcshane at gmail dot com>
 #
 # Distributed under terms of the GPLv3 license.
 
@@ -12,11 +12,13 @@ source "$HOME"/.bin/functions.sh
 
 sudo pacman -Qtdq | sudo pacman -Rns -
 
-if check_dependency paru; then
-  paru -Syu
-  paru -Sccd
-else
-  sudo pacman -Syyu
+if check_hostname "honshu" || check_hostname "hokkaido"; then
+  if check_dependency paru; then
+    paru -Syu
+    paru -Sccd
+  else
+    sudo pacman -Syyu
+  fi
 fi
 
 # diff any .pacnew's
@@ -44,6 +46,11 @@ fi
 for FOLDER in "$HOME"/repos/* ; do
   cd "$FOLDER" && git pull
 done
+
+if check_hostname "K9J507N7L0"; then
+  brew update
+  brew upgrade
+fi
 
 #clean.sh
 
