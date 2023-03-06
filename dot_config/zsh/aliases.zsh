@@ -7,8 +7,10 @@
 # Distributed under terms of the GPLv3 license.
 
 # Host agnostic aliases
-alias ls='ls -lAGh1vX --group-directories-first --color'
 alias reload='RELOAD=1 source $HOME/.zshrc'
 alias attach='tmux attach'
 alias burndown='task burndown.daily'
 alias ccd='chezmoi cd'
+# Doesn't work on macos
+# ls: invalid option -- X
+# alias ls='ls -lAGh1vX --group-directories-first --color'
