@@ -9,4 +9,7 @@
 if [ "$HOST" = "honshu" ] || [ "$HOST" = "hokkaido" ]; then
   source "/usr/share/skim/key-bindings.zsh"
   source "/usr/share/skim/completion.zsh"
+elif [ "$HOST" = "K9J507N7L0" ]; then
+  source "/opt/homebrew/Cellar/sk/0.10.4/share/zsh/site-functions/key-bindings.zsh"
+  source "/opt/homebrew/Cellar/sk/0.10.4/share/zsh/site-functions/completion.zsh"
 fi
