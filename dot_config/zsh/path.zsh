@@ -14,3 +14,4 @@ export PATH="$PATH:/bin"             # root bin
 export PATH="$PATH:/usr/bin"         # usr bin
 export PATH="$PATH:/usr/local/bin"
 export PATH="$PATH:/opt/homebrew/bin"
+export PATH="$PATH:/opt/homebrew/lib/python3.11/site-packages/"
