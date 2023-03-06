@@ -10,7 +10,9 @@ source "$HOME"/.bin/functions.sh
 # functions.sh provides:
 # check_dependency
 
-sudo pacman -Qtdq | sudo pacman -Rns -
+if check_hostname "honshu" || check_hostname "hokkaido"; then
+  sudo pacman -Qtdq | sudo pacman -Rns -
+fi
 
 if check_hostname "honshu" || check_hostname "hokkaido"; then
   if check_dependency paru; then
@@ -19,10 +21,11 @@ if check_hostname "honshu" || check_hostname "hokkaido"; then
   else
     sudo pacman -Syyu
   fi
+
+  # diff any .pacnew's
+  sudo DIFFPROG="nvim -d" pacdiff
 fi
 
-# diff any .pacnew's
-sudo DIFFPROG="nvim -d" pacdiff
 
 if check_dependency nvim; then
   nvim -c 'PlugUpdate'
@@ -30,7 +33,7 @@ fi
 
 if check_dependency git; then
   if [ -d "${HOME}"/dotfiles ]; then
-    echo "Updating $HOME/dotfiles/home submodules"
+    echo "Updating $HOME/dotfiles submodules"
     git -C "$HOME"/dotfiles/home/ submodule update --recursive --remote
   fi
 fi
