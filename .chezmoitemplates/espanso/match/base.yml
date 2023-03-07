@@ -7,16 +7,19 @@
 
 # Matches are substitution rules: when you type the "trigger" string
 # it gets replaced by the "replace" string.
+#
+imports:
+  - "work/commands.yml"
+  - "work/email.yml"
+
 matches:
-  # Simple text replacement
-  - trigger: ":email"
+  # (w)ork (email)
+  - trigger: ":wemail"
     replace: "conor.mcshane@yahooinc.com"
 
-  - trigger: ":dcoprint"
-    replace: "https://dcoprint.ops.yahoo.com/?site=IR"
-
-  - trigger: ":cyclecount"
-    replace: "Hi Michael, Sorry for the delay, Cycle count is uploaded for today."
+  # (p)ersonal (email)
+  - trigger: ":pemail"
+    replace: "conor.d.mcshane@gmail.com"
 
   # No swearing allowed
   - trigger: "fuck"
