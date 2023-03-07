@@ -1,17 +1,17 @@
 #zmodload zsh/zprof
 
-# non host specific settings
-for CONFIG ($HOME/.config/zsh/*.zsh); do
-  source "$CONFIG"
-done
-
 # application specific zsh files
 for APPLICATION ($HOME/.config/zsh/applications/*.zsh); do
   source "$APPLICATION"
 done
 
-# source host specific configs
+# host specific settings
 for CONFIG ($HOME/.config/zsh/hosts/$HOST/*.zsh); do
+  source "$CONFIG"
+done
+
+# host agnostic settings
+for CONFIG ($HOME/.config/zsh/*.zsh); do
   source "$CONFIG"
 done
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 #
-# variables.zsh
+# directories.zsh
 #
 # Copyright (C) 2023 conor-sometimes <conor dot d dot mcshane at gmail dot com>
 #
