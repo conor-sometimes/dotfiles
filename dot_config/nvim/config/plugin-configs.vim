@@ -1,8 +1,6 @@
 " plugin-configs.vim
 "
-" Copyright (C) 2021 dindybutts
-"
-" Distributed under terms of the GPLv3 license.
+" Copyright (C) 2023 conor-sometimes <conor dot d dot mcshane at gmail dot com>
 "
 " ale {{{
 let g:ale_enabled = 1
@@ -44,7 +42,7 @@ let g:cpp_clang_options = '-Iinclude -Weverything'
 
 let g:ale_rust_cargo_use_clippy = 1
 let g:ale_rust_cargo_check_all_targets = 1
-let g:ale_rust_analyzer_executable = trim(system('rustup which --toolchain stable rust-analyzer'))
+let g:ale_rust_analyzer_executable = system('which rust-analyzer')
 
 " allows us to use clippy alongside rust-analyzer
 let g:ale_rust_analyzer_config = { 'checkOnSave': { 'command': 'clippy', 'enable': v:true } }
