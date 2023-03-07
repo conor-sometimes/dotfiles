@@ -18,6 +18,10 @@ indent_size = 4
 indent_style = space
 indent_size = 2
 
+[$HOME/.ssh/config]
+indent_style = tab
+indent_size = 4
+
 [Makefile]
 indent_style = tab
 

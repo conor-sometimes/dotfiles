@@ -223,3 +223,7 @@ EOF
 " vimtex {{{
 let maplocalleader = ','
 " }}}
+
+" editorconfig {{{
+let g:EditorConfig_exec_path = system("which editorconfig")
+" }}}
