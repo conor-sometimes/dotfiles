@@ -1,9 +1,5 @@
 #zmodload zsh/zprof
 
-# application specific zsh files
-for APPLICATION ($HOME/.config/zsh/applications/*.zsh); do
-  source "$APPLICATION"
-done
 
 # host specific settings
 for CONFIG ($HOME/.config/zsh/hosts/$HOST/*.zsh); do
@@ -13,6 +9,11 @@ done
 # host agnostic settings
 for CONFIG ($HOME/.config/zsh/*.zsh); do
   source "$CONFIG"
+done
+
+# application specific zsh files
+for APPLICATION ($HOME/.config/zsh/applications/*.zsh); do
+  source "$APPLICATION"
 done
 
 if [ -n "$DISPLAY" ]; then # checks if we're not in a tty
