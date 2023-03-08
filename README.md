@@ -4,7 +4,9 @@
 
 ## Init repo
 ```
-chezmoi init https://github.com/conor-sometimes/dotfiles.git
+# Be aware, this will overwrite your own configs
+# Run with `-n` to do a dry run first
+chezmoi -v init https://github.com/conor-sometimes/dotfiles.git
 ```
 
 ## Pull the latest changes from your repo and apply them
@@ -15,11 +17,8 @@ chezmoi update && chezmoi -v apply
 ## Editing files
 ```
 chezmoi cd
-# edit files here, don't edit configs at their destination
-```
-
-## Apply changes
-```
+# Edit files here, don't edit configs at their destination as they wont be saved
+# When finished
 chezmoi -v apply
 ```
 
