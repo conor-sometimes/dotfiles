@@ -1,18 +1,28 @@
 #zmodload zsh/zprof
 
+DEBUG=0
 
 # host specific settings
 for CONFIG ($HOME/.config/zsh/hosts/$HOST/*.zsh); do
+  if [ "$DEBUG" -gt 0 ]; then
+    echo "$CONFIG"
+  fi
   source "$CONFIG"
 done
 
 # host agnostic settings
 for CONFIG ($HOME/.config/zsh/*.zsh); do
+  if [ "$DEBUG" -gt 0 ]; then
+    echo "$CONFIG"
+  fi
   source "$CONFIG"
 done
 
 # application specific zsh files
 for APPLICATION ($HOME/.config/zsh/applications/*.zsh); do
+  if [ "$DEBUG" -gt 0 ]; then
+    echo "$APPLICATION"
+  fi
   source "$APPLICATION"
 done
 

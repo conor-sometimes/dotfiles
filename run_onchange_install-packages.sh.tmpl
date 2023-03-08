@@ -1,0 +1,7 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+sudo pacman -S bspwm sxhkd ranger mpv dunst zsh restic alacritty firefox task
+{{ else if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+brew install ripgrep ranger task
+{{ end -}}

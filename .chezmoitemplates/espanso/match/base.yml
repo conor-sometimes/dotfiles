@@ -21,6 +21,10 @@ matches:
   - trigger: ":pemail"
     replace: "conor.d.mcshane@gmail.com"
 
+  # (g)ood (m)orning
+  - trigger: ":gm"
+    replace: "Morning all"
+
   # No swearing allowed
   - trigger: "fuck"
     replace: ""
