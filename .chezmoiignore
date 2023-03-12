@@ -1,8 +1,13 @@
 {{ if ne .chezmoi.os "darwin" }}
 Library/Application Support/espanso
 {{ end }}
+
 {{ if ne .chezmoi.os "linux" }}
 .config/espanso/
+{{ end }}
+
+{{ if eq .chezmoi.os "windows" -}}
+./run_onchange_install-packages.sh.tmpl
 {{ end }}
 
 README.md
