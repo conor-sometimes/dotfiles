@@ -4,7 +4,10 @@ sudo pacman -S bspwm sxhkd ranger mpv dunst zsh restic alacritty firefox task
 {{ else if eq .chezmoi.hostname "hokkaido" -}}
 #!/usr/bin/env bash
 sudo pacman -S ranger zsh restic task
-{{ else if eq .chezmoi.hostname "K9J507N7L0" -}}
+{{ else if eq .chezmoi.os "darwin" -}}
 #!/usr/bin/env bash
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 brew install ripgrep ranger task
+{{ else if eq .chezmoi.os "windows" -}}
+powershell.exe echo "hello"
 {{ end -}}
