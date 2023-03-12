@@ -1,7 +1,0 @@
-matches:
-  # Sigs
-  - trigger: ":sig"
-    replace: "All the best\nConor"
-
-  - trigger: ":sig"
-    replace: "Regards\nConor"

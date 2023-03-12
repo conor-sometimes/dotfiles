@@ -1,0 +1,18 @@
+matches:
+  - trigger: ":email"
+    replace: "conor.mcshane@yahooinc.com"
+
+  # Sigs
+  - trigger: ":sig"
+    replace: "All the best\nConor"
+
+  - trigger: ":sig"
+    replace: "Regards\nConor"
+
+  # commands
+  - trigger: ":calarms"
+    replace: "show chassis alarms"
+
+  # DEBUG
+  - trigger: ":hello"
+    replace: "Hello from macbook specific config!"

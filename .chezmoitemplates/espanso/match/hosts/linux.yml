@@ -1,0 +1,7 @@
+matches:
+  - trigger: ":email"
+    replace: "conor.d.mcshane@gmail.com"
+
+  # DEBUG
+  - trigger: ":hello"
+    replace: "Hello from linux specific config!"

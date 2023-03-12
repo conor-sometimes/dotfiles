@@ -8,17 +8,19 @@
 # Matches are substitution rules: when you type the "trigger" string
 # it gets replaced by the "replace" string.
 #
+{{ if eq .chezmoi.hostname "honshu" -}}
 imports:
-  - "work/commands.yml"
-  - "work/email.yml"
+  - "hosts/linux.yml"
+{{ else if eq .chezmoi.os "darwin" -}}
+imports:
+  - "hosts/macbook.yml"
+{{ else if eq .chezmoi.os "windows" -}}
+imports:
+  - "hosts/windows.yml"
+{{ end -}}
 
 matches:
-  # (w)ork (email)
-  - trigger: ":wemail"
-    replace: "conor.mcshane@yahooinc.com"
-
-  # (p)ersonal (email)
-  - trigger: ":pemail"
+  - trigger: ":email"
     replace: "conor.d.mcshane@gmail.com"
 
   # (g)ood (m)orning
