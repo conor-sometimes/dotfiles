@@ -10,13 +10,13 @@
 #
 {{ if eq .chezmoi.hostname "honshu" -}}
 imports:
-  - "hosts/linux.yml"
+  - "hosts/_linux.yml"
 {{ else if eq .chezmoi.os "darwin" -}}
 imports:
-  - "hosts/macbook.yml"
+  - "hosts/_macbook.yml"
 {{ else if eq .chezmoi.os "windows" -}}
 imports:
-  - "hosts/windows.yml"
+  - "hosts/_windows.yml"
 {{ end -}}
 
 matches:
