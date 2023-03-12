@@ -6,8 +6,4 @@ Library/Application Support/espanso
 .config/espanso/
 {{ end }}
 
-{{ if eq .chezmoi.os "windows" -}}
-./run_onchange_install-packages.sh.tmpl
-{{ end }}
-
 README.md
