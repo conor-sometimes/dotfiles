@@ -32,7 +32,7 @@ matches:
   - trigger: "shit"
     replace: ""
 
-  - trigger: "test"
+  - trigger: ":test"
     replace: "hello from server"
 
   # But matches can also be dynamic:
