@@ -1,0 +1,4 @@
+include ~/.config/remind/birthdays.rem
+include ~/.config/remind/holidays.rem
+include ~/.config/remind/days_off.rem
+include ~/.config/remind/work.rem

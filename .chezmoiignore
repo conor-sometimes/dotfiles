@@ -3,7 +3,11 @@ Library/Application Support/espanso
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
-.config/espanso/
+.config/espanso
+{{ end }}
+
+{{ if ne .chezmoi.os "windows" }}
+./AppData/Roaming/espanso
 {{ end }}
 
 README.md

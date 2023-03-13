@@ -1,4 +1,6 @@
-{{ if eq .chezmoi.os "linux" -}}
+# ; vim: set ft=toml:
+
+{{ if or .chezmoi.os "linux" .chezmoi.os "darwin" -}}
 ["repos/zsh-autosuggestions"]
 type = "archive"
 url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"

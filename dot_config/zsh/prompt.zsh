@@ -22,7 +22,7 @@ PROMPT='[%F{yellow}%?%f] %n::%F{$PROMPT_COLOR}%M%{%f%}: %~ > '
 
 RPROMPT='$(vcs_info_wrapper)'
 if [[ $SHLVL > 1 ]]; then
-  RPROMPT="$RPROMPT %F{red}SUBSHELL%f"
+  RPROMPT="$RPROMPT %F{red}[SUBSHELL $(( SHLVL - 1 ))]%f"
 fi
 
 

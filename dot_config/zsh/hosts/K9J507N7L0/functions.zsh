@@ -19,3 +19,15 @@ ta() {
     task add +$1 $2
   fi
 }
+
+add_tickets_to_task() {
+  while IFS="," read -r TICKET HOST ISSUE LOCATION
+do
+  task add +tickets "$TICKET, $HOST, $ISSUE"
+done <$HOME/tickets.csv
+
+  # while read TICKET; do
+    # task add +tickets "Fix ticket: $TICKET"
+  # done <$HOME/tickets.txt
+
+}

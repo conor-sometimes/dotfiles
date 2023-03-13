@@ -1,20 +1,31 @@
+# ; vim: set ft=sh:
+
 {{ if eq .chezmoi.os "linux" -}}
 #!/usr/bin/env bash
-sudo pacman -S git zsh restic ranger ripgrep
+sudo pacman -S git zsh restic ranger ripgrep remind git-delta openssh age neovim python-pynvim
+
+cd $HOME
+sudo pacman -S --needed base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
 {{ end -}}
 
 {{ if eq .chezmoi.hostname "honshu" -}}
 #!/usr/bin/env bash
-sudo pacman -S bspwm sxhkd mpv dunst alacritty firefox redshift
+sudo pacman -S bspwm sxhkd mpv dunst alacritty firefox redshift xrandr sshfs polybar xorg-xinit nvidia-open
 {{ end -}}
 
 {{ if eq .chezmoi.hostname "hokkaido" -}}
 #!/usr/bin/env bash
-sudo pacman -S docker docker-compose
+sudo pacman -S docker docker-compose rtorrent
 {{ end -}}
 
 {{ if eq .chezmoi.os "darwin" -}}
 #!/usr/bin/env bash
-curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-brew install ripgrep ranger task
+if [[ ! -x "$(command -v "brew")" ]]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+  brew install ripgrep ranger task remind git-delta age
+fi
 {{ end -}}
