@@ -58,7 +58,7 @@ if [ "$HOST" = "K9J507N7L0" ]; then
   source "$HOME/.iterm2_shell_integration.zsh"
 fi
 
-export BW_SESSION=$(bw {login,unlock} --raw)
+# export BW_SESSION=$(bw {login,unlock} --raw)
 
 
 #zprof
