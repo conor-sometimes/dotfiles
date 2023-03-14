@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+#
+# helpy.sh
+#
+# Copyright (C) 2023 Conor McShane <conor-sometimes <conor dot d dot mcshane at gmail dot com>>
+#
+# Distributed under terms of the GPLv3 license.
+
+# set -o errexit
+# set -o nounset
+
+# ssh bastion "ssh $HOST"
+# ssh bastion "console $HOST"
+# ping $HOST
+
+HOST="kafka00030.prod.tgt.ir2.yahoo.com"
+
+echo "Pinging host"
+ping -c 10 "$HOST" > /dev/null 2>&1
+PING_EXIT_CODE="$?"
+
+echo "ssh'ing host"
+SSH_STATUS=$(nmap kafka00030.prod.tgt.ir2.yahoo.com -Pn -p 22 | grep -E -io 'open|closed')
+case $SSH_STATUS in
+  "open")
+    echo "Host is UP to ssh!"
+    ;;
+  "closed")
+    echo "Host is DOWN to ssh!"
+    ;;
+esac
+
+echo "console'ing host"
+ssh -A site.ops.corp.yahoo.com "console $HOST"
+CONSOLE_EXIT_CODE="$?"
+
+echo "Add this to the ticket:"
+if [[ $PING_EXIT_CODE -eq 0 ]]; then
+  echo "We have ping"
+fi
+
+if [[ $CONSOLE_EXIT_CODE -eq 0 ]]; then
+  echo "We have console"
+fi
+
+if [[ $SSH_STATUS == "open" ]]; then
+  echo "We have ssh"
+fi
+
+
+# INPUT="kubeetcd4.mail-canary1.omega.ir2.yahoo.com"
+# # INPUT="20000425"
+
+# if [[ $INPUT =~ ^[0-9]+$ ]] ; then
+#   open "https://opsdb.ops.yahoo.com/nodes.php?action=index&ytag=$INPUT"
+# elif [[ $INPUT =~ .*.com ]] ; then
+#   open "https://opsdb.ops.yahoo.com/nodes.php?action=index&node=$INPUT"
+# fi
