@@ -6,4 +6,4 @@ matches:
 
   # DEBUG
   - trigger: ":hello"
-    replace: "Hello from linux specific config!"
+    replace: "Hello from linux config!"

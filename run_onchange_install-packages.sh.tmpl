@@ -2,13 +2,7 @@
 
 {{ if eq .chezmoi.os "linux" -}}
 #!/usr/bin/env bash
-sudo pacman -S git zsh restic ranger ripgrep remind git-delta openssh age neovim python-pynvim
-
-cd $HOME
-sudo pacman -S --needed base-devel
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
+sudo pacman -S git zsh restic ranger ripgrep remind git-delta openssh age neovim python-pynvim jq
 {{ end -}}
 
 {{ if eq .chezmoi.hostname "honshu" -}}
@@ -23,9 +17,5 @@ sudo pacman -S docker docker-compose rtorrent
 
 {{ if eq .chezmoi.os "darwin" -}}
 #!/usr/bin/env bash
-if [[ ! -x "$(command -v "brew")" ]]; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-  brew install ripgrep ranger task remind git-delta age
-fi
+brew install ripgrep ranger task remind git-delta age jq
 {{ end -}}

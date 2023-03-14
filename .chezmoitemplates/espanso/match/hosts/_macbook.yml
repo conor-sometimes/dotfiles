@@ -8,9 +8,6 @@ matches:
   - trigger: ":sig"
     replace: "All the best\nConor"
 
-  - trigger: ":sig"
-    replace: "Regards\nConor"
-
   # commands
   - trigger: ":calarms"
     replace: "show chassis alarms"
@@ -18,9 +15,12 @@ matches:
   - trigger: ":raidstatus"
     replace: "sudo /opt/MegaRAID/MegaCli/MegaCli64 -AdpBbuCmd -a0"
 
-  - trigger: ":ramdisk"
+  - trigger: ":yramdisk"
     replace: "jump --ramdisk --reboot --file"
+
+  - trigger: ":nramdisk"
+    replace: "jump --revert --reboot --file"
 
   # DEBUG
   - trigger: ":hello"
-    replace: "Hello from macbook specific config!"
+    replace: "Hello from Macbook config!"
