@@ -2,13 +2,13 @@ cert-digest-algo SHA512
 charset utf-8
 
 # $HOME/wiki/programs/gpg.wiki
-{{ if eq .chezmoi.os "darwin" }}
+{{- if eq .chezmoi.os "darwin" }}
 default-key C59E2EA148098193BEEEE42087BFE2E84FE74F61
-{{ else if eq .chezmoi.hostname "hokkaido" }}
+{{- else if eq .chezmoi.hostname "hokkaido" }}
 default-key 7032F7F9BC73C52B99956EB1F79E4AE90F072A31
-{{ else if eq .chezmoi.hostname "honshu" }}
+{{- else if eq .chezmoi.hostname "honshu" }}
 # default-key 26521FB9AEA047007F6D49489B8AC2D618B9D0E1
-{{ end }}
+{{- end }}
 
 default-preference-list SHA512 SHA384 SHA256 AES256 AES192 AES ZLIB BZIP2 ZIP Uncompressed
 fixed-list-mode

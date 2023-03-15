@@ -60,5 +60,4 @@ fi
 
 # export BW_SESSION=$(bw {login,unlock} --raw)
 
-
 #zprof

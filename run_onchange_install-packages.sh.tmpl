@@ -1,5 +1,3 @@
-# ; vim: set ft=sh:
-
 {{ if eq .chezmoi.os "linux" -}}
 #!/usr/bin/env bash
 sudo pacman -S git zsh restic ranger ripgrep remind git-delta openssh age neovim python-pynvim jq
@@ -19,3 +17,4 @@ sudo pacman -S docker docker-compose rtorrent
 #!/usr/bin/env bash
 brew install ripgrep ranger task remind git-delta age jq
 {{ end -}}
+# ; vim: set ft=sh:
