@@ -10,7 +10,16 @@
 alias reload='RELOAD=1 source $HOME/.zshrc'
 alias attach='tmux attach'
 alias burndown='task burndown.daily'
-alias ccd='chezmoi cd'
-# Doesn't work on macos
+# Doesn't work on macos because macos is weird
 # ls: invalid option -- X
 # alias ls='ls -lAGh1vX --group-directories-first --color'
+
+# chezmoi
+alias czd='chezmoi cd'
+alias cza='chezmoi -v apply'
+alias czu='chezmoi -v update'
+
+# git
+alias ga='git add -A'
+alias gc='git commit -s -v'
+alias gp='git push -u origin main'
