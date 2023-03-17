@@ -1,0 +1,30 @@
+# set up monitors
+xrandr --output DP-4 --primary --mode 1920x1080 --rate 239.76 --output DP-0 --mode 1920x1080 --rate 144 --right-of DP-4
+
+# set the wallpaper
+xsetroot -solid webgray
+
+# set the cursor
+xrdb -merge ~/.Xresources
+xsetroot -cursor_name left_ptr
+
+# set keyboard layout
+setxkbmap ie
+
+# set start the panel
+polybar panel_left &
+polybar panel_right &
+
+# remove the cursor when it's doing nothing
+unclutter --jitter 25 &
+
+# save my eyes, even if it's placebo
+redshift &
+
+dunst &
+
+sxhkd &
+
+while true; do
+  bspwm || break
+done

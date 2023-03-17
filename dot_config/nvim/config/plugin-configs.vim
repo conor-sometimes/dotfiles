@@ -2,6 +2,8 @@
 "
 " Copyright (C) 2023 conor-sometimes <conor dot d dot mcshane at gmail dot com>
 "
+" Distributed under terms of the GPLv3 license.
+"
 " ale {{{
 let g:ale_enabled = 1
 let g:ale_completion_enabled = 1

@@ -1,20 +1,36 @@
-{{ if eq .chezmoi.os "linux" -}}
 #!/usr/bin/env bash
-sudo pacman -S git zsh restic ranger ripgrep remind git-delta openssh age neovim python-pynvim jq
+ESSENTIALS=(
+	"git"
+	"git-delta"
+	"github-cli"
+	"zsh"
+	"restic"
+	"ranger"
+	"ripgrep"
+	"remind"
+	"git-delta"
+	"openssh"
+	"age"
+	"neovim"
+	"python-pynvim"
+	"jq"
+	"task"
+	"remind"
+)
+
+{{ if eq .chezmoi.os "linux" -}}
+sudo pacman -S ${ESSENTIALS[*]}
 {{ end -}}
 
 {{ if eq .chezmoi.hostname "honshu" -}}
-#!/usr/bin/env bash
-sudo pacman -S bspwm sxhkd mpv dunst alacritty firefox redshift xrandr sshfs polybar xorg-xinit nvidia-open
+sudo pacman -S ${ESSENTIALS[*]} bspwm sxhkd mpv dunst alacritty firefox redshift xrandr sshfs polybar xorg-xinit nvidia-open
 {{ end -}}
 
 {{ if eq .chezmoi.hostname "hokkaido" -}}
-#!/usr/bin/env bash
 sudo pacman -S docker docker-compose rtorrent
 {{ end -}}
 
 {{ if eq .chezmoi.os "darwin" -}}
-#!/usr/bin/env bash
-brew install ripgrep ranger task remind git-delta age jq
+brew install ${ESSENTIALS[*]}
 {{ end -}}
 # ; vim: set ft=sh:

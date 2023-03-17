@@ -57,20 +57,23 @@ fi
 
 #clean.sh
 
-# unmounts mountpoints and closes all vaults
-backup-preparation.sh
+# This only applies to main desktop
+if check_hostname "honshu"; then
+  # unmounts mountpoints and closes all vaults
+  backup-preparation.sh
 
-# backup docker files from remote server
-backup-docker.sh
+  # backup docker files from remote server
+  backup-docker.sh
 
-# backup gpg related files
-backup-gpg.sh
+  # backup gpg related files
+  backup-gpg.sh
 
-# backs up minecraft container
-backup-minecraft.sh
+  # backs up minecraft container
+  backup-minecraft.sh
 
-# backs up all vaults to onedrive
-backup-rclone.sh
+  # backs up all vaults to onedrive
+  backup-rclone.sh
 
-# backs up system
-backup-restic.sh
+  # backs up system
+  backup-restic.sh
+fi
