@@ -1,8 +1,8 @@
 #$POLICTY = Get-ExecutionPolicy
 Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
 
-$PACKAGES = (
-	'Git.Git'
+$PACKAGES = @(
+	'Git.Git',
 	'twpayne.chezmoi'
 	'Microsoft.PowerShell'
 )
