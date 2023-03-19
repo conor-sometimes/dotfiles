@@ -7,19 +7,29 @@ $PACKAGES = (
 	'Microsoft.PowerShell'
 )
 
-{{ if eq .chezmoi.username "chiba\dind" -}}
-$PACKAGES += 'VideoLAN.VLC'
-$PACKAGES += 'Valve.Steam'
-$PACKAGES += 'Anki.Anki'
-$PACKAGES += 'Klocman.BulkCrapUninstaller'
-$PACKAGES += 'GIMP.GIMP'
-$PACKAGES += 'Microsoft.PowerToys'
-{{ end -}}
-
-{{ if eq .chezmoi.username "chiba\lewis" -}}
-$PACKAGES += 'BlenderFoundation.VLC'
-{{ end -}}
+if ($env:Username -eq "dind" -Or $env:Username -eq "Conor") {
+	$PACKAGES += 'VideoLAN.VLC'
+	$PACKAGES += 'Valve.Steam'
+	$PACKAGES += 'Anki.Anki'
+	$PACKAGES += 'Klocman.BulkCrapUninstaller'
+	$PACKAGES += 'GIMP.GIMP'
+	$PACKAGES += 'Microsoft.PowerToys'
+	$PACKAGES += 'Doist.Todoist'
+	$PACKAGES += 'KeePassXCTeam.KeePassXC'
+	$PACKAGES += 'Cryptomator.Cryptomator'
+	$PACKAGES += 'AntibodySoftware.WizTree'
+	$PACKAGES += 'Microsoft.VisualStudioCode'
+	$PACKAGES += 'Microsoft.WindowsTerminal'
+}
 
 Foreach ($PACKAGE in $PACKAGES) {
 	echo "winget install -e --id $PACKAGE"
+}
+
+if ($env:Username -eq "dind" -Or $env:Username -eq "Conor") {
+	wsl --install
+}
+
+if ($env:Username -eq "lewis") {
+	$PACKAGES += 'BlenderFoundation.VLC'
 }
