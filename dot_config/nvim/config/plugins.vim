@@ -19,8 +19,8 @@ Plug 'dense-analysis/ale'
 " colorscheme
 Plug 'morhetz/gruvbox',
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'luochen1990/rainbow', { 'for': ['rust', 'cpp', 'c', 'sh', 'python', 'vim', 'tex'] }
-Plug 'tpope/vim-commentary', { 'for': ['rust', 'cpp', 'vim', 'zsh', 'sh', 'c', 'asm', 'python', 'tex'] }
+Plug 'luochen1990/rainbow', { 'for': ['rust', 'cpp', 'c', 'sh', 'python', 'vim', 'tex', 'ps1'] }
+Plug 'tpope/vim-commentary', { 'for': ['rust', 'cpp', 'vim', 'zsh', 'sh', 'c', 'asm', 'python', 'tex', 'ps1'] }
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
