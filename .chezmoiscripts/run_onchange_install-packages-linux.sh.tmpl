@@ -3,13 +3,10 @@ ESSENTIALS=(
 	"age"
 	"git"
 	"git-delta"
-	"github-cli"
 	"jq"
 	"neovim"
 	"openssh"
-	"python-pynvim"
 	"ranger"
-	"remind"
 	"remind"
 	"restic"
 	"ripgrep"
@@ -18,12 +15,14 @@ ESSENTIALS=(
 	"zsh"
 )
 
+
 {{ if eq .chezmoi.os "linux" -}}
 sudo pacman -S ${ESSENTIALS[*]}
 {{ end -}}
 
 {{ if eq .chezmoi.hostname "honshu" -}}
-sudo pacman -S ${ESSENTIALS[*]} bspwm sxhkd mpv dunst alacritty firefox redshift xrandr sshfs polybar xorg-xinit nvidia-open
+sudo pacman -S ${ESSENTIALS[*]} bspwm sxhkd mpv dunst alacritty firefox redshift xrandr sshfs polybar xorg-xinit nvidia-open github-cli python-pip
+pip3 install pynvim
 {{ end -}}
 
 {{ if eq .chezmoi.hostname "hokkaido" -}}
@@ -31,6 +30,8 @@ sudo pacman -S docker docker-compose rtorrent
 {{ end -}}
 
 {{ if eq .chezmoi.os "darwin" -}}
-brew install ${ESSENTIALS[*]}
+brew install ${ESSENTIALS[*]} gh python
+brew install python
+pip3 install pynvim
 {{ end -}}
 # ; vim: set ft=sh:

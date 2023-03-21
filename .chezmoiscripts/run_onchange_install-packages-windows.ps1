@@ -20,6 +20,7 @@ $PACKAGES = @(
 	'Mozilla.Firefox'
 	'AutoHotkey.AutoHotkey'
 	'Xournal++.Xournal++'
+	'Microsoft.VisualStudioCode'
 )
 
 # TODO: Get lewis's username
@@ -31,6 +32,15 @@ if ($env:Username -eq "lewis") {
 Foreach ($PACKAGE in $PACKAGES) {
 	echo "winget install -e --id $PACKAGE"
 	#winget install -e --id $PACKAGE
+}
+
+$EXTENSIONS = @(
+	'eamodio.gitlens'
+)
+
+Foreach ($EXTENSION in $EXTENSIONS) {
+	echo "vscode.exe --install-extension $EXTENSION"
+	#vscode.exe --install-extension $EXTENSION
 }
 
 if ($env:Username -eq "dind" -Or $env:Username -eq "Conor") {
