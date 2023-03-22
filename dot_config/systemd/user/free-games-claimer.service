@@ -4,8 +4,10 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-Type=oneshot
+Restart=on-failure
+
 ExecStart=docker start fgc
+ExecStop=/usr/bin/docker stop fgc
 
 [Install]
 RequiredBy=multi-user.target

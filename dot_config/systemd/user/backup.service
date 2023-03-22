@@ -1,5 +1,5 @@
 [Unit]
-Description=Removes discord messages
+Description="Removes discord messages"
 Wants=network-online.target
 After=network-online.target
 

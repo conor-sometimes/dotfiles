@@ -5,3 +5,9 @@
 [interpreters.ps1]
 	command = "pwsh"
 	args = ["-NoLogo"]
+
+
+encryption = "age"
+[age]
+	identity = "~/key.txt"
+	recipient = "age10tk0a6psmswr0qulzg3atythaxqcgzfn5r56er90ufyk8cdz0c4qcmhxqu"
