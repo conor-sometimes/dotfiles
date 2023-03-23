@@ -1,6 +1,6 @@
 #zmodload zsh/zprof
 
-DEBUG=0
+DEBUG=1
 
 # host specific settings
 for CONFIG ($HOME/.config/zsh/hosts/$HOST/*.zsh); do
