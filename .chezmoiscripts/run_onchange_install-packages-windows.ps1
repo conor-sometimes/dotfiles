@@ -21,12 +21,11 @@ $PACKAGES = @(
 	'AutoHotkey.AutoHotkey'
 	'Xournal++.Xournal++'
 	'Microsoft.VisualStudioCode'
+	'BlenderFoundation.VLC'
 )
 
-# TODO: Get lewis's username
-# tell him to run `env $env:username`
-if ($env:Username -eq "lewis") {
-	$PACKAGES += 'BlenderFoundation.VLC'
+if ($env:Username -eq "Lewis") {
+	# Lewis specific packages go here
 }
 
 Foreach ($PACKAGE in $PACKAGES) {
@@ -43,6 +42,4 @@ Foreach ($EXTENSION in $EXTENSIONS) {
 	#vscode.exe --install-extension $EXTENSION
 }
 
-if ($env:Username -eq "dind" -Or $env:Username -eq "Conor") {
-	wsl --install
-}
+wsl --install

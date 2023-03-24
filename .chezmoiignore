@@ -1,38 +1,63 @@
-# TODO: Add sections for individual hostnames
-
-# if we're not on mac, don't create the following files/dirs
+# if we're not on mac, ignore the following files/dirs
 {{ if ne .chezmoi.os "darwin" }}
 Library/Application Support/espanso
 {{ end }}
 
-# if we're not on linux, don't create the following files/dirs
-{{ if ne .chezmoi.os "linux" }}
+# if we're not on honshu (desktop), ignore the following files/dirs
+{{ if ne .chezmoi.hostname "honshu" }}
 .xinitrc
-dot_config/alacritty
-dot_config/bspwm
-dot_config/dunst
-dot_config/espanso
-dot_config/gtk-2.0
-dot_config/gtk-3.0
-dot_config/mimeapps.list
-dot_config/OpenTabletDriver
-dot_config/polybar
-dot_config/redshift
-dot_config/rofi
-dot_config/sxhkd
-dot_config/systemd
-dot_config/ncmpcpp
-dot_config/zathura
+.config/alacritty
+.config/bspwm
+.config/dunst
+.config/espanso
+.config/gtk-2.0
+.config/gtk-3.0
+.config/kritarc
+.config/kritashortcutsrc
+.config/mimeapps.list
+.config/mpd
+.config/mpv
+.config/ncmpcpp
+.config/OpenTabletDriver
+.config/polybar
+.config/redshift
+.config/restic
+.config/rofi
+.config/sxhkd
+.config/ncmpcpp
+.config/zathura
 {{ end }}
 
-# since we can't run scripts outside of linux/mac, we don't create the directory
-{{ if or .chezmoi.os "darwin" .chezmoi.os "linux" }}
-dot_bin
+# We only use systemd on linux (server/desktop), so ignore directory otherwise
+{{ if ne .chezmoi.os "linux" }}
+.config/systemd
 {{ end }}
 
-# if we're not on windows, don't create the following files/dirs
+# if we are not on mac or linux (generic) then we ignore the following dirs
+{{ if or (ne .chezmoi.os "darwin") (ne .chezmoi.os "linux") }}
+.bin
+.config/tmux
+.config/git
+.config/ranger
+{{ end }}
+
+# if we're not on windows, ignore the following files/dirs
 {{ if ne .chezmoi.os "windows" }}
 AppData/Roaming/espanso
+{{ end }}
+
+# If we're not on $HOSTNAME, then we don't need the other ssh private keys
+{{ if ne .chezmoi.hostname "honshu" }}
+.ssh/encrypted_private_macbook.age
+.ssh/encrypted_private_server.age
+{{ end }}
+{{ if ne .chezmoi.hostname "hokkaido" }}
+.ssh/encrypted_private_macbook.age
+.ssh/encrypted_private_desktop.age
+{{ end }}
+{{ if ne .chezmoi.hostname "K9J507N7L0" }}
+.ssh/encrypted_private_server.age
+.ssh/encrypted_private_desktop.age
 {{ end }}
 
 README.md

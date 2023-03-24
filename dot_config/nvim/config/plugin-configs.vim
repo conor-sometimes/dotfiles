@@ -31,7 +31,6 @@ let g:ale_fixers = {
       \ 'rust': ['rustfmt'],
       \ 'python': ['autopep8'],
       \ 'go': ['gofmt'],
-      \ 'ps1': ['powershell'],
       \ }
 
 let g:ale_vim_vint_show_style_issues = 1
@@ -51,7 +50,7 @@ let g:ale_rust_analyzer_executable = system('which rust-analyzer')
 " allows us to use clippy alongside rust-analyzer
 let g:ale_rust_analyzer_config = { 'checkOnSave': { 'command': 'clippy', 'enable': v:true } }
 
-" let g:ale_powershell_powershell_executable = '/usr/local/bin/pwsh'
+let g:ale_powershell_powershell_executable = '/usr/local/bin/pwsh'
 
 " Keybinds
 nnoremap <silent> <F3> :call ToggleLocationList()<cr>
