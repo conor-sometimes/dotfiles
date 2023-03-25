@@ -46,26 +46,20 @@ Library/Application Support/espanso
 AppData/Roaming/espanso
 {{ end }}
 
-# If we're not on $HOSTNAME, then we don't need the other ssh private keys
-{{ if eq .chezmoi.hostname "honshu" }}
-.ssh/macbook
-.ssh/macbook.pub
-.ssh/server
-.ssh/server.pub
-{{ end }}
-
-{{ if eq .chezmoi.hostname "hokkaido" }}
-.ssh/macbook
-.ssh/macbook.pub
+# If we're not on $HOSTNAME, then we don't create the $HOSTNAME's ssh key
+{{ if ne .chezmoi.hostname "honshu" }}
 .ssh/desktop
 .ssh/desktop.pub
 {{ end }}
 
-{{ if eq .chezmoi.hostname "K9J507N7L0" }}
+{{ if ne .chezmoi.hostname "hokkaido" }}
 .ssh/server
 .ssh/server.pub
-.ssh/desktop
-.ssh/desktop.pub
+{{ end }}
+
+{{ if ne .chezmoi.hostname "K9J507N7L0" }}
+.ssh/macbook
+.ssh/macbook.pub
 {{ end }}
 
 README.md
