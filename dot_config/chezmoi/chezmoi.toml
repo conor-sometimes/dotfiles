@@ -2,9 +2,9 @@
 	autoCommit = true
 	autoPush = true
 
-[interpreters.ps1]
-	command = "pwsh"
-	args = ["-NoLogo"]
+#[interpreters.ps1]
+#	command = "pwsh"
+#	args = ["-NoLogo"]
 
 
 encryption = "age"
