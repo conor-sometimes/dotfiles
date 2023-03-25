@@ -48,16 +48,24 @@ AppData/Roaming/espanso
 
 # If we're not on $HOSTNAME, then we don't need the other ssh private keys
 {{ if ne .chezmoi.hostname "honshu" }}
-.ssh/encrypted_private_macbook.age
-.ssh/encrypted_private_server.age
+.ssh/macbook
+.ssh/macbook.pub
+.ssh/server
+.ssh/server.pub
 {{ end }}
-{{ if ne .chezmoi.hostname "hokkaido" }}
-.ssh/encrypted_private_macbook.age
-.ssh/encrypted_private_desktop.age
+
+{{ if eq .chezmoi.hostname "hokkaido" }}
+.ssh/macbook
+.ssh/macbook.pub
+.ssh/desktop
+.ssh/desktop.pub
 {{ end }}
+
 {{ if ne .chezmoi.hostname "K9J507N7L0" }}
-.ssh/encrypted_private_server.age
-.ssh/encrypted_private_desktop.age
+.ssh/server
+.ssh/server.pub
+.ssh/desktop
+.ssh/desktop.pub
 {{ end }}
 
 README.md
