@@ -35,5 +35,5 @@ git push -u origin master
 ### Windows
 ```
 # installs applications I use
-irm 'https://raw.githubusercontent.com/conor-sometimes/dotfiles/main/provision/install-packages-windows.ps1' | [iex](iex)
+irm 'https://raw.githubusercontent.com/conor-sometimes/dotfiles/main/provision/install-packages-windows.ps1' | iex
 ```
