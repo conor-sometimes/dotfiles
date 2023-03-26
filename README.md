@@ -34,6 +34,6 @@ git push -u origin master
 ## Provisioning
 ### Windows
 ```
-# installs applications I use
+# installs winget, applications and wsl
 irm 'https://raw.githubusercontent.com/conor-sometimes/dotfiles/main/provision/install-packages-windows.ps1' | iex
 ```
