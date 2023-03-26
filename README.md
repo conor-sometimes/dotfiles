@@ -30,3 +30,10 @@ git add -A
 git commit -s -m "Witty and hilarious commit message"
 git push -u origin master
 ```
+
+## Provisioning
+### Windows
+```
+# installs applications I use
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/conor-sometimes/dotfiles/main/provision/install-packages-windows.ps1'))
+```
