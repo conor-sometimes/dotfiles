@@ -35,5 +35,5 @@ git push -u origin master
 ### Windows
 ```
 # installs applications I use
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/conor-sometimes/dotfiles/main/provision/install-packages-windows.ps1'))
+irm 'https://raw.githubusercontent.com/conor-sometimes/dotfiles/main/provision/install-packages-windows.ps1' | [iex](iex)
 ```
