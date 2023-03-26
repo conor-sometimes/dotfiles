@@ -4,7 +4,7 @@ Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller
 $PACKAGES = @(
 	'Anki.Anki'
 	'AntibodySoftware.WizTree'
-	'AutoHotkey.AutoHotkey'
+	#'AutoHotkey.AutoHotkey'
 	'Bitwarden.Bitwarden'
 	'Cryptomator.Cryptomator'
 	'Doist.Todoist'
