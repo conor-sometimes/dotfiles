@@ -18,15 +18,20 @@ $PACKAGES = @(
 	'Microsoft.PowerToys'
 	'Microsoft.VisualStudioCode'
 	'Microsoft.WindowsTerminal'
-	#'Mozilla.Firefox'
+	'Mozilla.Firefox'
 	'Valve.Steam'
 	'VideoLAN.VLC'
 	'Xournal++.Xournal++'
 	'twpayne.chezmoi'
+	'Google.Drive'
+	'BlenderFoundation.Blender'
+	'Mozilla.Thunderbird'
+	'DuongDieuPhap.ImageGlass'
 )
 
+# Lewis specific packages go here when he thinks of any
 if ($env:Username -eq "Lewis") {
-	$PACKAGES += 'BlenderFoundation.VLC'
+	$PACKAGES += 'BlenderFoundation.Blender'
 }
 
 Foreach ($PACKAGE in $PACKAGES) {
