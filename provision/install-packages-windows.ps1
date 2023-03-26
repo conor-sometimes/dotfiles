@@ -2,36 +2,34 @@
 Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
 
 $PACKAGES = @(
-	'Git.Git',
-	'twpayne.chezmoi'
-	'Microsoft.PowerShell'
-	'VideoLAN.VLC'
-	'Valve.Steam'
 	'Anki.Anki'
-	'Klocman.BulkCrapUninstaller'
-	'GIMP.GIMP'
-	'Microsoft.PowerToys'
-	'Doist.Todoist'
-	'KeePassXCTeam.KeePassXC'
-	'Cryptomator.Cryptomator'
 	'AntibodySoftware.WizTree'
+	'AutoHotkey.AutoHotkey'
+	'Bitwarden.Bitwarden'
+	'Cryptomator.Cryptomator'
+	'Doist.Todoist'
+	'GIMP.GIMP'
+	'Git.Git',
+	'KeePassXCTeam.KeePassXC'
+	'Klocman.BulkCrapUninstaller'
+	'Microsoft.PowerShell'
+	'Microsoft.PowerToys'
 	'Microsoft.VisualStudioCode'
 	'Microsoft.WindowsTerminal'
-	'Mozilla.Firefox'
-	'AutoHotkey.AutoHotkey'
+	#'Mozilla.Firefox'
+	'Valve.Steam'
+	'VideoLAN.VLC'
 	'Xournal++.Xournal++'
-	'Microsoft.VisualStudioCode'
+	'twpayne.chezmoi'
 )
 
-# TODO: Get lewis's username
-# tell him to run `env $env:username`
 if ($env:Username -eq "Lewis") {
 	$PACKAGES += 'BlenderFoundation.VLC'
 }
 
 Foreach ($PACKAGE in $PACKAGES) {
 	echo "winget install -e --id $PACKAGE"
-	#winget install -e --id $PACKAGE
+	winget install -e --id $PACKAGE
 }
 
 $EXTENSIONS = @(

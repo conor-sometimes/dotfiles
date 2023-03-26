@@ -6,11 +6,15 @@
 #
 # Distributed under terms of the GPLv3 license.
 
-export PROMPT_COLOR="red"
+export PROMPT_COLOR="yellow"
+
+# $HOME/wiki/programs/gpg.wiki
+#export GPG_KEY={{ .MACBOOK.GPG_KEY }}
 
 # this stops gpg from yelling at me while in ssh
-export GPG_KEY="7032F7F9BC73C52B99956EB1F79E4AE90F072A31"
 export GPG_TTY="$(tty)"
 
-# this also stops tmux from yelling at me when in ssh
-export TERM="screen-256color"
+# $HOME/wiki/programs/ssh.wiki
+export SSH_KEY={{ .MACBOOK.SSH_KEY }}
+
+export SSH_AUTH_SOCK=/Users/cmcshane/.yubiagent/sock

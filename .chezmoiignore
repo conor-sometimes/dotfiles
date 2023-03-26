@@ -63,4 +63,5 @@ AppData/Roaming/espanso
 {{ end }}
 
 README.md
+provision/
 key.txt.age

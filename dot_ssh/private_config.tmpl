@@ -35,9 +35,9 @@ host *
 Host github.com
 	HostName github.com
 {{- if eq .chezmoi.os "darwin" }}
-	IdentityFile ~/.ssh/macbook
-{{- else if eq .chezmoi.hostname "hokkaido" }}
-	IdentityFile ~/.ssh/server
-{{- else if eq .chezmoi.hostname "honshu" }}
-	IdentityFile ~/.ssh/desktop
+	IdentityFile {{ .MACBOOK.SSH_KEY }}
+{{ else if eq .chezmoi.hostname "honshu" }}
+	IdentityFile {{ .DESKTOP.SSH_KEY }}
+{{ else if eq .chezmoi.hostname "hokkaido" }}
+	IdentityFile {{ .SERVER.SSH_KEY }}
 {{- end }}

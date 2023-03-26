@@ -6,13 +6,15 @@
 #
 # Distributed under terms of the GPLv3 license.
 
-export PROMPT_COLOR="yellow"
+export PROMPT_COLOR="green"
 
 # $HOME/wiki/programs/gpg.wiki
-export GPG_KEY="C59E2EA148098193BEEEE42087BFE2E84FE74F61"
+export GPG_KEY="{{ .DESKTOP.GPG_KEY }}"
+
+# this stops gpg from yelling at me while in ssh
 export GPG_TTY="$(tty)"
 
 # $HOME/wiki/programs/ssh.wiki
-export SSH_KEY="$HOME/.ssh/macbook.pub"
+export SSH_KEY="{{ .DESKTOP.SSH_KEY }}"
 
-export SSH_AUTH_SOCK=/Users/cmcshane/.yubiagent/sock
+source "/home/dind/.local/share/cargo/env"

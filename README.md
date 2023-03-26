@@ -4,6 +4,7 @@
 
 ## Init repo
 ```
+sudo pacman -S chezmoi
 # Be aware, this will overwrite your own configs
 # Run with `-n` to do a dry run first
 chezmoi -v init https://github.com/conor-sometimes/dotfiles.git

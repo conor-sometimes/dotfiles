@@ -1,0 +1,15 @@
+NAME = "Conor McShane"
+EMAIL = "conor.d.mcshane@gmail.com"
+
+[MACBOOK]
+	EMAIL = "conor.mcshane@yahooinc.com"
+	GPG_KEY = "C59E2EA148098193BEEEE42087BFE2E84FE74F61"
+	SSH_KEY = "~/.ssh/macbook"
+
+[SERVER]
+	GPG_KEY = "7032F7F9BC73C52B99956EB1F79E4AE90F072A31"
+	SSH_KEY = "~/.ssh/macbook"
+
+[DESKTOP]
+	GPG_KEY = "26521FB9AEA047007F6D49489B8AC2D618B9D0E1"
+	SSH_KEY = "~/.ssh/desktop"
