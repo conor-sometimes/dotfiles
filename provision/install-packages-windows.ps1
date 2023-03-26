@@ -27,6 +27,7 @@ $PACKAGES = @(
 	'BlenderFoundation.Blender'
 	'Mozilla.Thunderbird'
 	'DuongDieuPhap.ImageGlass'
+	'7zip.7zip'
 )
 
 # Lewis specific packages go here when he thinks of any
