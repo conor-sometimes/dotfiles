@@ -7,6 +7,6 @@ EMAIL = "conor.d.mcshane@gmail.com"
 	DESKTOP = "26521FB9AEA047007F6D49489B8AC2D618B9D0E1"
 
 [ssh]
-	MACBOOK = "~/.ssh/server"
+	MACBOOK = "~/.ssh/macbook"
 	SERVER = "~/.ssh/server"
 	DESKTOP = "~/.ssh/desktop"
