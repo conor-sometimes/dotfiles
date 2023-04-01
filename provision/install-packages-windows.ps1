@@ -13,7 +13,8 @@ if(!(Get-Command winget -ErrorAction SilentlyContinue)) {
     Install-Module -Name Microsoft.PowerShell.PackageManagement -Force
     Install-Package -ProviderName winget -Name winget -Force
 }
-$wingetInstallParams = @{ ErrorAction = 'Stop'; Verbose = $true }
+
+$wingetInstallParams = @{ ErrorAction = 'Stop'; VerbosePreference = 'Continue' }
 
 $PACKAGES = @(
     'Anki.Anki'
