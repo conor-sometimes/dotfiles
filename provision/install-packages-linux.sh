@@ -9,7 +9,8 @@
 set -o errexit
 set -o nounset
 
-ESSENTIALS=(
+# Define essential packages to install on all hosts
+declare -a essentials=(
 	"age"
 	"git"
 	"git-delta"
@@ -25,25 +26,45 @@ ESSENTIALS=(
 	"zsh"
 )
 
-if [ "$HOSTNAME" = "hokkaido"]; then
-  sudo pacman -S docker docker-compose rtorrent
-fi
+# Define host-specific packages to install
+declare -A host_packages=(
+	["hokkaido"]="docker docker-compose rtorrent"
+	["honshu"]="bspwm sxhkd mpv dunst alacritty firefox redshift xrandr sshfs polybar xorg-xinit nvidia-open github-cli"
+	["K9J507N7L0"]="gh python"
+)
 
-if [ "$HOSTNAME" = "honshu"]; then
-  # install paru
-  sudo pacman -S --needed base-devel
-  git clone https://aur.archlinux.org/paru.git
-  cd paru
-  makepkg -si
+# Install essential packages on all hosts
+sudo pacman -S --needed "${essentials[@]}"
 
-  sudo pacman -S ${ESSENTIALS[*]} bspwm sxhkd mpv dunst alacritty firefox redshift xrandr sshfs polybar xorg-xinit nvidia-open github-cli python-pip
-  pip3 install pynvim
-fi
+# Install host-specific packages based on hostname
+case "${HOSTNAME}" in
+	"hokkaido")
+		sudo pacman -S "${host_packages[hokkaido]}"
 
+    pip3 install pynvim
+		;;
+	"honshu")
+		# Install paru package manager
+		sudo pacman -S --needed base-devel
+		git clone https://aur.archlinux.org/paru.git
+		cd paru
+		makepkg -si
 
-if [ "$HOSTNAME" = "K9J507N7L0"]; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  brew install ${ESSENTIALS[*]} gh python
-  brew install python
-  pip3 install pynvim
-fi
+		# Install host-specific packages
+		sudo pacman -S "${host_packages[honshu]}"
+
+    pip3 install pynvim
+		;;
+	"K9J507N7L0")
+		# Install Homebrew package manager
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+		# Install host-specific packages
+		brew install "${host_packages[K9J507N7L0]}"
+		pip3 install pynvim
+		;;
+	*)
+		echo "Unknown hostname: ${HOSTNAME}" >&2
+		exit 1
+		;;
+esac

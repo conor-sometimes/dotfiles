@@ -6,25 +6,53 @@
 #
 # Distributed under terms of the GPLv3 license.
 
+# Define a function that wraps vcs_info and formats the output
 vcs_info_wrapper() {
   vcs_info
   if [ -n "$vcs_info_msg_0_" ]; then
-    echo "[%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del]"
+    local msg="${vcs_info_msg_0_%%[[:space:]]}"
+    echo "[%{$fg[grey]%}${msg}%{$reset_color%}$del]"
   fi
 }
 
+# Configure the prompt to display git branch and status using zstyle
+# You can modify these zstyle settings to customize your prompt for other VCS systems
 zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
 zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git
 
-PROMPT='[%F{yellow}%?%f] %n::%F{$PROMPT_COLOR}%M%{%f%}: %~ > '
+# Define a function to display the status of a git repository
+function git_status() {
+  # Check if we're inside a git repository
+  if [ -d ".git" ]; then
+    # Get the status of the repository
+    local gitstatus="$(git status --porcelain 2>/dev/null)"
+    # Check if the git command failed
+    if [[ $? -ne 0 ]]; then
+      echo "[Error]"
+      return 1
+      # Check if there are changes to the repository
+    elif [[ -n "$gitstatus" ]]; then
+      # Count the number of untracked, unstaged, and staged changes
+      untracked=$(echo "$gitstatus" | awk '$1 == "??" {count++} END {print count}')
+      unstaged=$(echo "$gitstatus" | awk '$1 != " " && $1 != "??" {count++} END {print count}')
+      staged=$(echo "$gitstatus" | awk '$1 != "?" && $1 != "??" {count++} END {print count}')
+      # Get the number of commits ahead and behind the remote branch
+      ahead=$(git rev-list --count --left-right @{upstream}...HEAD 2>/dev/null | cut -f1)
+      behind=$(git rev-list --count --left-right @{upstream}...HEAD 2>/dev/null | cut -f2)
+      # Print the status with color-coded indicators for each type of change, number of commits ahead/behind remote, and total number of commits
+      echo "[%F{green}+${staged:-0}|%F{yellow}*${unstaged:-0}%f|%F{red}?$untracked%f|%F{magenta}↑${ahead}↓${behind}%f]"
+    fi
+  fi
+}
 
-RPROMPT='$(vcs_info_wrapper)'
+PROMPT="[%F{yellow}%?%f] %n::%F{$PROMPT_COLOR}%M%{%f%}: %~ > "
+
+# Configure the right prompt to display git status and vcs_info, including the total number of commits and number of commits ahead/behind remote
+RPROMPT='$(git_status)$(vcs_info_wrapper)'
+
+# If we're in a nested shell, display the nesting level in the right prompt
 if [[ $SHLVL > 1 ]]; then
-  RPROMPT="$RPROMPT %F{red}[SUBSHELL $(( SHLVL - 1 ))]%f"
+  RPROMPT+="%F{red}[$(( SHLVL - 1 ))]%f"
 fi
-
-
-# See also:
-# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html

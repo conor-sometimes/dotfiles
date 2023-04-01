@@ -1,41 +1,10 @@
+[Feature] Add new search functionality: Enable searching by keyword
 
-#######################################################################
-# Git commit rules
-#######################################################################
-# Subject line is limited to 50 characters
-# Capitalize subject line unless function or specific file is referenced
-# Do not end subjects with a full stop
-# Wrap body at 72 characters
-# Use the body to explain what and why vs. how
-#
-#######################################################################
-# Example git commit:
-#######################################################################
-# Summarize changes in around 50 characters or less
-#
-# More detailed explanatory text, if necessary. Wrap it to about 72
-# characters or so. In some contexts, the first line is treated as the
-# subject of the commit and the rest of the text as the body. The
-# blank line separating the summary from the body is critical (unless
-# you omit the body entirely); various tools like `log`, `shortlog`
-# and `rebase` can get confused if you run the two together.
-#
-# Explain the problem that this commit is solving. Focus on why you
-# are making this change as opposed to how (the code explains that).
-# Are there side effects or other unintuitive consequences of this
-# change? Here's the place to explain them.
-#
-# Further paragraphs come after blank lines.
-#
-# - Bullet points are okay, too
-#
-# - Typically a hyphen or asterisk is used for the bullet, preceded
-#   by a single space, with blank lines in between, but conventions
-#   vary here
-#
-# If you use an issue tracker, put references to them at the bottom,
-# like this:
-#
-# Resolves: #123
-# See also: #456, #789
-#######################################################################
+This commit adds a new search functionality to the app, allowing users to search by keyword in addition to the existing search options. This feature was requested by several users who found it difficult to find specific items using the existing search options.
+
+To enable this feature, I added a new search method to the backend API and modified the frontend search component to support keyword search. The new functionality is fully tested and working as expected.
+
+- Added new search method to backend API
+- Modified frontend search component to support keyword search
+
+Resolves: #1234

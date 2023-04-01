@@ -1,10 +1,10 @@
 # if we're not on mac, ignore the following files/dirs
-{{ if ne .chezmoi.os "darwin" }}
+{{ if not (eq .chezmoi.os "darwin") }}
 Library/Application Support/espanso
 {{ end }}
 
 # if we're not on honshu (desktop), ignore the following files/dirs
-{{ if ne .chezmoi.hostname "honshu" }}
+{{ if not (eq .chezmoi.hostname "honshu") }}
 .xinitrc
 .config/alacritty
 .config/bspwm
@@ -29,12 +29,12 @@ Library/Application Support/espanso
 {{ end }}
 
 # We only use systemd on linux (server/desktop), so ignore directory otherwise
-{{ if ne .chezmoi.os "linux" }}
+{{ if not (eq .chezmoi.os "linux") }}
 .config/systemd
 {{ end }}
 
 # if we are not on mac and linux (generic) then we ignore the following dirs
-{{ if and (ne .chezmoi.os "darwin") (ne .chezmoi.os "linux") }}
+{{ if not (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) }}
 .bin
 .config/tmux
 .config/git
@@ -42,22 +42,25 @@ Library/Application Support/espanso
 {{ end }}
 
 # if we're not on windows, ignore the following files/dirs
-{{ if ne .chezmoi.os "windows" }}
+{{ if not (eq .chezmoi.os "windows") }}
 AppData/Roaming/espanso
 {{ end }}
 
 # If we're not on $HOSTNAME, then we don't create the $HOSTNAME's ssh key
-{{ if ne .chezmoi.hostname "honshu" }}
+{{ if not (eq .chezmoi.hostname "honshu") }}
+.gnupg/desktop.gpg
 .ssh/desktop
 .ssh/desktop.pub
 {{ end }}
 
-{{ if ne .chezmoi.hostname "hokkaido" }}
+{{ if not (eq .chezmoi.hostname "hokkaido") }}
+.gnupg/server.gpg
 .ssh/server
 .ssh/server.pub
 {{ end }}
 
-{{ if ne .chezmoi.hostname "K9J507N7L0" }}
+{{ if not (eq .chezmoi.hostname "K9J507N7L0") }}
+.gnupg/macbook.gpg
 .ssh/macbook
 .ssh/macbook.pub
 {{ end }}
