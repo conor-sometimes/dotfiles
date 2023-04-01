@@ -10,7 +10,7 @@ if (!(Get-AppxPackage $packageName -ErrorAction SilentlyContinue)) {
 $PACKAGES = @(
     'Anki.Anki'
     'AntibodySoftware.WizTree'
-    'AutoHotkey.AutoHotkey'
+    'AutoHotkey.AutoHotkey --location "C:\Program Files\AutoHotkey"'
     'Bitwarden.Bitwarden'
     'Cryptomator.Cryptomator'
     'Doist.Todoist'
