@@ -1,3 +1,9 @@
+# install-packages-windows.ps1
+#
+# Copyright (C) 2023 Conor McShane <conor dot d dot mcshane at gmail dot com>
+#
+# Distributed under terms of the GPLv3 license.
+
 #Requires -RunAsAdministrator
 
 # Install Microsoft Store App Installer
@@ -37,6 +43,15 @@ $PACKAGES = @(
 # Lewis specific packages go here when he thinks of any
 if ($env:Username -eq "Lewis") {
     $PACKAGES += 'BlenderFoundation.Blender'
+}
+
+Foreach ($PACKAGE in $PACKAGES) {
+    Write-Host "Installing $PACKAGE ..."
+    if ($PACKAGE.StartsWith("AutoHotkey")) {
+        winget install -e --id $PACKAGE --location "C:\Program Files\AutoHotkey"
+    } else {
+        winget install -e --id $PACKAGE
+    }
 }
 
 Foreach ($PACKAGE in $PACKAGES) {
