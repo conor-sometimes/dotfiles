@@ -10,7 +10,7 @@ if (!(Get-AppxPackage $packageName -ErrorAction SilentlyContinue)) {
 $PACKAGES = @(
     'Anki.Anki'
     'AntibodySoftware.WizTree'
-    #'AutoHotkey.AutoHotkey'
+    'AutoHotkey.AutoHotkey'
     'Bitwarden.Bitwarden'
     'Cryptomator.Cryptomator'
     'Doist.Todoist'
@@ -47,6 +47,8 @@ Foreach ($PACKAGE in $PACKAGES) {
 # Install Visual Studio Code extensions
 $EXTENSIONS = @(
     'eamodio.gitlens'
+    'ms-vscode-remote.remote-wsl'
+    'vscode-icons-team.vscode-icons'
 )
 
 Foreach ($EXTENSION in $EXTENSIONS) {
@@ -55,10 +57,5 @@ Foreach ($EXTENSION in $EXTENSIONS) {
 
 # Install WSL
 if ($env:Username -eq "dind" -Or $env:Username -eq "Conor") {
-    $wslInstalled = wsl.exe --list --all | Select-String -Pattern "Ubuntu"
-    if (!$wslInstalled) {
-        wsl --install
-    } else {
-        Write-Output "WSL is already installed"
-    }
+    wsl --install --no-launch
 }
