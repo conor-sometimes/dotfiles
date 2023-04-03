@@ -1,22 +1,11 @@
-[git]
-	autoCommit = true
-	autoPush = true
+# ; vim: set ft=toml:
 
-#[interpreters.ps1]
-#	command = "pwsh"
-#	args = ["-NoLogo"]
+encryption = "gpg"
+[gpg]
+symmetric = true
 
-
-encryption = "age"
-[age]
-	identity = "~/key.txt"
-	recipient = "age10tk0a6psmswr0qulzg3atythaxqcgzfn5r56er90ufyk8cdz0c4qcmhxqu"
-
-[data]
-{{- if eq .chezmoi.os "darwin" }}
-computer = "MACBOOK"
-{{ else if eq .chezmoi.hostname "honshu" }}
-computer = "DESKTOP"
-{{ else if eq .chezmoi.hostname "hokkaido" }}
-computer = "SERVER"
-{{ end -}}
+{{- if eq .chezmoi.os "windows" }}
+[interpreters.ps1]
+command = "pwsh"
+args = ["-NoLogo"]
+{{ end }}

@@ -16,7 +16,6 @@ if (!(Get-AppxPackage $packageName -ErrorAction SilentlyContinue)) {
 $PACKAGES = @(
     'Anki.Anki'
     'AntibodySoftware.WizTree'
-    'AutoHotkey.AutoHotkey --location "C:\Program Files\AutoHotkey"'
     'Bitwarden.Bitwarden'
     'Cryptomator.Cryptomator'
     'Doist.Todoist'
@@ -46,12 +45,7 @@ if ($env:Username -eq "Lewis") {
 }
 
 Foreach ($PACKAGE in $PACKAGES) {
-    Write-Host "Installing $PACKAGE ..."
-    if ($PACKAGE.StartsWith("AutoHotkey")) {
-        winget install -e --id $PACKAGE --location "C:\Program Files\AutoHotkey"
-    } else {
-        winget install -e --id $PACKAGE
-    }
+    winget install -e --id $PACKAGE
 }
 
 Foreach ($PACKAGE in $PACKAGES) {
@@ -67,7 +61,7 @@ $EXTENSIONS = @(
 )
 
 Foreach ($EXTENSION in $EXTENSIONS) {
-    code --install-extension $EXTENSION
+    code --install-extension --force $EXTENSION
 }
 
 # Install WSL

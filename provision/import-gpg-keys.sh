@@ -16,6 +16,7 @@ case "$HOSTNAME" in
     ;;
   "hokkaido")
     KEY="server"
+    TRUST="7032F7F9BC73C52B99956EB1F79E4AE90F072A31:6:"
     ;;
   "honshu")
     KEY="desktop"
@@ -24,9 +25,5 @@ esac
 
 REPO_DIR="$HOME/.local/share/chezmoi"
 
-# TODO:
-# check if $IDENTITY exists first before using it
-IDENTITY="$HOME/key.txt"
-
-age --identity "$IDENTITY" --decrypt "$REPO_DIR/provision/gpg/encrypted_${KEY}.gpg.age" | gpg --import
+gpg --decrypt "$REPO_DIR/provision/gpg/encrypted_${KEY}.gpg.asc" | gpg --import
 echo "$TRUST" | gpg --import-ownertrust

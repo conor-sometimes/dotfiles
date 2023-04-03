@@ -33,4 +33,10 @@ host *
 
 Host github.com
 	HostName github.com
-	IdentityFile = {{ dig .computer "" .ssh }}
+{{- if eq .chezmoi.hostname "honshu" }}
+	IdentityFile = {{ .hosts.desktop.ssh }}
+{{ else if eq .chezmoi.hostname "hokkaido" }}
+	IdentityFile = {{ .hosts.server.ssh }}
+{{ else if eq .chezmoi.os "darwin" }}
+	IdentityFile = {{ .hosts.macbook.ssh }}
+{{ end -}}

@@ -1,4 +1,10 @@
-default-key = {{ dig .computer "" .gpg }}
+{{- if eq .chezmoi.hostname "honshu" -}}
+default-key = {{ .hosts.desktop.gpg }}
+{{- else if eq .chezmoi.hostname "hokkaido" -}}
+default-key = {{ .hosts.server.gpg }}
+{{- else if eq .chezmoi.os "darwin" -}}
+default-key = {{ .hosts.macbook.gpg }}
+{{- end }}
 
 cert-digest-algo SHA512
 charset utf-8

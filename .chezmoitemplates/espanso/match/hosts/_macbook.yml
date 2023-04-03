@@ -8,6 +8,12 @@ matches:
   - trigger: ":sig"
     replace: "All the best\nConor"
 
+  - trigger: ":gm"
+    replace: "Morning all"
+
+  - trigger: ":up"
+    replace: "Host is up to ping and console"
+
   # commands
   - trigger: ":calarms"
     replace: "show chassis alarms"

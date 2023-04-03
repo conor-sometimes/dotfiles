@@ -1,9 +1,15 @@
 ; vim: set ft=gitconfig:
 
 [user]
-	name = {{ .NAME }}
-	email = {{ .EMAIL }}
-	signingkey = {{ dig .computer "" .gpg }}
+	name = {{ .name }}
+	email = {{ .email }}
+{{- if eq .chezmoi.hostname "honshu" }}
+	signingkey = {{ .hosts.desktop.gpg }}
+{{ else if eq .chezmoi.hostname "hokkaido" }}
+	signingkey = {{ .hosts.server.gpg }}
+{{ else if eq .chezmoi.os "darwin" }}
+	signingkey = {{ .hosts.macbook.gpg }}
+{{ end -}}
 
 [core]
 	editor = nvim

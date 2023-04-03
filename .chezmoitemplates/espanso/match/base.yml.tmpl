@@ -22,18 +22,6 @@ imports:
 {{ end -}}
 
 matches:
-  # (g)ood (m)orning
-  - trigger: ":gm"
-    replace: "Morning all"
-
-  # No swearing allowed
-  - trigger: "fuck"
-    replace: ""
-
-  - trigger: "shit"
-    replace: ""
-
-  # But matches can also be dynamic:
 
   # Print the current date
   - trigger: ":date"
