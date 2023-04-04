@@ -1,15 +1,9 @@
-# if we're not on mac, ignore the following files/dirs
-{{ if not (eq .chezmoi.os "darwin") }}
-Library/Application Support/espanso
-{{ end }}
-
 # if we're not on honshu (desktop), ignore the following files/dirs
 {{ if not (eq .chezmoi.hostname "honshu") }}
 .xinitrc
 .config/alacritty
 .config/bspwm
 .config/dunst
-.config/espanso
 .config/gtk-2.0
 .config/gtk-3.0
 .config/kritarc
@@ -39,6 +33,7 @@ Library/Application Support/espanso
 .config/tmux
 .config/git
 .config/ranger
+.config/espanso
 {{ end }}
 
 # if we're not on windows, ignore the following files/dirs

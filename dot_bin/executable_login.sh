@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+yinit
+
 while true; do
   echo "which host do you want to log onto?"
   echo "1)  tool1.ops"
