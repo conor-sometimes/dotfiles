@@ -54,7 +54,7 @@ AppData/Roaming/espanso
 .ssh/server.pub
 {{ end }}
 
-{{ if not (eq .chezmoi.hostname "K9J507N7L0") }}
+{{ if not (eq .chezmoi.hostname "PY60HY3QW3") }}
 .gnupg/macbook.gpg
 .ssh/macbook
 .ssh/macbook.pub

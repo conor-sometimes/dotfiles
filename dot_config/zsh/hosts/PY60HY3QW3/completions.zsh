@@ -9,8 +9,8 @@
 autoload -Uz compinit vcs_info
 
 fpath=(
-  "/usr/share/zsh/5.8.1/functions"
-  "/usr/share/zsh/5.8.1/site-functions"
+  "/usr/share/zsh/5.9/functions"
+  "/usr/share/zsh/5.9/site-functions"
 
   "$HOME/repos/zsh-completions"
 )

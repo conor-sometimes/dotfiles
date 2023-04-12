@@ -9,21 +9,28 @@
 set -o errexit
 set -o nounset
 
-case "$HOSTNAME" in
-  "K9J507N7L0")
+readonly HOST_DESKTOP="honshu"
+readonly HOST_SERVER="hokkaido"
+readonly HOST_MACBOOK="PY60HY3QW3"
+
+readonly REPO_DIR="$HOME/.local/share/chezmoi"
+
+KEY=""
+TRUST=""
+
+case "$(hostname)" in
+  $HOST_MACBOOK)
+    echo "Macbook"
     KEY="macbook"
     TRUST="C59E2EA148098193BEEEE42087BFE2E84FE74F61:6:"
     ;;
-  "hokkaido")
+  $HOST_SERVER)
+    echo "Server"
     KEY="server"
     TRUST="7032F7F9BC73C52B99956EB1F79E4AE90F072A31:6:"
     ;;
-  "honshu")
-    KEY="desktop"
-    ;;
 esac
 
-REPO_DIR="$HOME/.local/share/chezmoi"
 
-gpg --decrypt "$REPO_DIR/provision/gpg/encrypted_${KEY}.gpg.asc" | gpg --import
+gpg --decrypt "$REPO_DIR/provision/gpg/${KEY}-private-key.gpg.asc" | gpg --import
 echo "$TRUST" | gpg --import-ownertrust

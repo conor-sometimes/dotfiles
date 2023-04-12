@@ -7,20 +7,21 @@
 #Requires -RunAsAdministrator
 
 # Install Microsoft Store App Installer
-$packageName = "Microsoft.DesktopAppInstaller_8wekyb3d8bbwe"
-if (!(Get-AppxPackage $packageName -ErrorAction SilentlyContinue)) {
-    Add-AppxPackage -RegisterByFamilyName -MainPackage $packageName
-}
+Add-AppxPackage -RegisterByFamilyName -MainPackage 'Microsoft.DesktopAppInstaller_8wekyb3d8bbwe'
 
 # Install packages
 $PACKAGES = @(
+    '7zip.7zip'
     'Anki.Anki'
     'AntibodySoftware.WizTree'
     'Bitwarden.Bitwarden'
+    'BlenderFoundation.Blender'
     'Cryptomator.Cryptomator'
     'Doist.Todoist'
+    'DuongDieuPhap.ImageGlass'
     'GIMP.GIMP'
     'Git.Git'
+    'Google.Drive'
     'KeePassXCTeam.KeePassXC'
     'Klocman.BulkCrapUninstaller'
     'Microsoft.PowerShell'
@@ -28,24 +29,17 @@ $PACKAGES = @(
     'Microsoft.VisualStudioCode'
     'Microsoft.WindowsTerminal'
     'Mozilla.Firefox'
+    'Mozilla.Thunderbird'
+    'Notepad++.Notepad++'
     'Valve.Steam'
     'VideoLAN.VLC'
     'Xournal++.Xournal++'
-    'twpayne.chezmoi'
-    'Google.Drive'
-    'BlenderFoundation.Blender'
-    'Mozilla.Thunderbird'
-    'DuongDieuPhap.ImageGlass'
-    '7zip.7zip'
+    'Yubico.YubikeyManager'
 )
 
 # Lewis specific packages go here when he thinks of any
 if ($env:Username -eq "Lewis") {
     $PACKAGES += 'BlenderFoundation.Blender'
-}
-
-Foreach ($PACKAGE in $PACKAGES) {
-    winget install -e --id $PACKAGE
 }
 
 Foreach ($PACKAGE in $PACKAGES) {
