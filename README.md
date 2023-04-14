@@ -28,7 +28,7 @@ chezmoi -v apply
 chezmoi cd
 git add -A
 git commit -s -m "Witty and hilarious commit message"
-git push -u origin master
+git push -u origin main
 ```
 
 ## Provisioning
