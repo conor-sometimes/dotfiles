@@ -1,0 +1,101 @@
+variables {
+    # API Keys
+    CLOUDFLARE_API_KEY {env.CLOUDFLARE_API_KEY}
+    CROWDSEC_API_KEY {env.CROWDSEC_API_KEY}
+
+    # Port numbers.
+    PORT_PORTAINER {env.PORT_PORTAINER} "9000"
+    PORT_GITEA {env.PORT_GITEA} "3000"
+    PORT_MINECRAFT {env.PORT_MINECRAFT} "25565"
+    PORT_MINISERVE {env.PORT_MINISERVE} "8080"
+    PORT_SSH {env.PORT_SSH} "22"
+    PORT_AUTHELIA {env.PORT_AUTHELIA} "9091"
+}
+
+forward_auth forward_auth_authelia {
+    uri /api/verify?rd=https://auth.referencefolder.wiki/
+    copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
+}
+
+referencefolder.wiki {
+
+    encode gzip zstd
+
+    tls {
+        dns cloudflare {
+            api_token {CLOUDFLARE_API_KEY}
+        }
+    }
+
+    # Authelia Portal.
+    auth.referencefolder.wiki {
+        reverse_proxy authelia:{PORT_AUTHELIA}
+    }
+
+    # Portainer.
+    portainer.referencefolder.wiki {
+        forward_auth forward_auth_authelia
+        reverse_proxy portainer:{PORT_PORTAINER}
+    }
+
+    # Git.
+    git.referencefolder.wiki {
+        forward_auth forward_auth_authelia
+        reverse_proxy git:{PORT_GIT}
+    }
+
+    # Minecraft.
+    minecraft.referencefolder.wiki {
+        forward_auth forward_auth_authelia
+        reverse_proxy minecraft:{PORT_MINECRAFT}
+    }
+
+    # MiniServe.
+    miniserve.referencefolder.wiki {
+        forward_auth forward_auth_authelia
+        reverse_proxy miniserve:{PORT_MINISERVE}
+    }
+
+    # SSH.
+    ssh.referencefolder.wiki {
+    crowdsec {
+        api_url https://api.crowdsec.net/v2/
+        api_key {CROWDSEC_API_KEY}
+        api_fail_mode block
+        api_failover_mode local
+        api_max_wait_duration 5s
+        api_max_retry_duration 10s
+        api_min_retry_delay 250ms
+        api_max_retry_delay 2s
+        api_custom_headers {
+            "X-Forwarded-For" "{remote}"
+            "User-Agent" "{header.User-Agent}"
+        }
+    }
+    reverse_proxy ssh:{PORT_SSH}
+}
+
+
+    # qBittorrent.
+    qbittorrent.referencefolder.wiki {
+        forward_auth forward_auth_authelia
+        reverse_proxy qbittorrent:8080 {
+            # Set host header to original host requested by the client.
+            header_up Host {host}
+            # Set the real IP of the client making the request.
+            header_up X-Real-IP {remote}
+            # Set the list of all IP addresses that the request has been forwarded through.
+            header_up X-Forwarded-For {remote}
+            # Set the original host requested by the client.
+            header_up X-Forwarded-Host {host}
+            # Set the original protocol requested by the client.
+            header_up X-Forwarded-Proto {scheme}
+            # Set the Upgrade header to "upgrade".
+            header_up Connection "upgrade"
+            # Set the Upgrade header value to the value of the HTTP Upgrade header.
+            header_up Upgrade $http_upgrade
+            # Set the Origin header to an empty string.
+            header_up Origin ""
+        }
+    }
+}
