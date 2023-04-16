@@ -35,4 +35,4 @@ indent_size = 4
 
 [Caddyfile]
 indent_style = space
-indent_size = 4
+indent_size = 8
