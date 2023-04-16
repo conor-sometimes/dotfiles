@@ -1,0 +1,12 @@
+*.referencefolder.wiki {
+        encode gzip zstd
+
+        tls {
+                dns cloudflare {env.CLOUDFLARE_API_KEY}
+        }
+
+        # MiniServe.
+        reverse_proxy files.referencefolder.wiki {
+                to miniserve:8080
+        }
+}
