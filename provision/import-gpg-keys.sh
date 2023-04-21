@@ -23,14 +23,27 @@ case "$(hostname)" in
     echo "Macbook"
     KEY="macbook"
     TRUST="C59E2EA148098193BEEEE42087BFE2E84FE74F61:6:"
+    gpg --import "$REPO_DIR/provision/gpg/public/yubikey-public-key.asc"
+    gpg --import "$REPO_DIR/provision/gpg/public/server-public-key.asc"
+    gpg --import "$REPO_DIR/provision/gpg/public/desktop-public-key.asc"
     ;;
   $HOST_SERVER)
     echo "Server"
     KEY="server"
     TRUST="7032F7F9BC73C52B99956EB1F79E4AE90F072A31:6:"
+    gpg --import "$REPO_DIR/provision/gpg/public/yubikey-public-key.asc"
+    gpg --import "$REPO_DIR/provision/gpg/public/macbook-public-key.asc"
+    gpg --import "$REPO_DIR/provision/gpg/public/desktop-public-key.asc"
+    ;;
+  $HOST_DESKTOP)
+    echo "Desktop"
+    KEY="desktop"
+    gpg --import "$REPO_DIR/provision/gpg/public/yubikey-public-key.asc"
+    gpg --import "$REPO_DIR/provision/gpg/public/macbook-public-key.asc"
+    gpg --import "$REPO_DIR/provision/gpg/public/server-public-key.asc"
     ;;
 esac
 
 
-gpg --decrypt "$REPO_DIR/provision/gpg/${KEY}-private-key.gpg.asc" | gpg --import
+gpg --decrypt "$REPO_DIR/provision/gpg/private/${KEY}-private-key.gpg.asc" | gpg --import
 echo "$TRUST" | gpg --import-ownertrust

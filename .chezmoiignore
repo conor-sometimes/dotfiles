@@ -41,7 +41,7 @@
 AppData/Roaming/espanso
 {{ end }}
 
-# If we're not on $HOSTNAME, then we don't create the $HOSTNAME's ssh key
+# If we're not on $HOSTNAME, then we don't create the following dirs
 {{ if not (eq .chezmoi.hostname "honshu") }}
 .gnupg/desktop.gpg
 .ssh/desktop
@@ -52,6 +52,7 @@ AppData/Roaming/espanso
 .gnupg/server.gpg
 .ssh/server
 .ssh/server.pub
+docker
 {{ end }}
 
 {{ if not (eq .chezmoi.hostname "PY60HY3QW3") }}
