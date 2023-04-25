@@ -2,7 +2,8 @@
 
 encryption = "gpg"
 [gpg]
-symmetric = true
+# Dotfile gpg key
+recipient = "87598FB224CE55A319D461BC092543F7A4AFB15F"
 
 {{- if eq .chezmoi.os "windows" }}
 [interpreters.ps1]

@@ -34,9 +34,17 @@ host *
 Host github.com
 	HostName github.com
 {{- if eq .chezmoi.hostname "honshu" }}
-	IdentityFile = {{ .hosts.desktop.ssh }}
+	IdentityFile = {{ .hosts.desktop.ssh.public }}
 {{ else if eq .chezmoi.hostname "hokkaido" }}
-	IdentityFile = {{ .hosts.server.ssh }}
+	IdentityFile = {{ .hosts.server.ssh.public }}
 {{ else if eq .chezmoi.os "darwin" }}
-	IdentityFile = {{ .hosts.macbook.ssh }}
+	IdentityFile = {{ .hosts.macbook.ssh.public }}
+{{ end }}
+Host hokkaido
+	HostName 79.97.201.32
+	User dind
+{{- if eq .chezmoi.hostname "honshu" }}
+	IdentityFile = {{ .hosts.desktop.ssh.public }}
+{{ else if eq .chezmoi.os "darwin" }}
+	IdentityFile = {{ .hosts.macbook.ssh.public }}
 {{ end -}}

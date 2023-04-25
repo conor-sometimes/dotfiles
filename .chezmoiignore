@@ -36,31 +36,19 @@
 .config/espanso
 {{ end }}
 
-# if we're not on windows, ignore the following files/dirs
-{{ if not (eq .chezmoi.os "windows") }}
-AppData/Roaming/espanso
-{{ end }}
-
 # If we're not on $HOSTNAME, then we don't create the following dirs
 {{ if not (eq .chezmoi.hostname "honshu") }}
-.gnupg/desktop.gpg
-.ssh/desktop
-.ssh/desktop.pub
+.ssh/keys/private/desktop-yubikey
 {{ end }}
 
 {{ if not (eq .chezmoi.hostname "hokkaido") }}
-.gnupg/server.gpg
-.ssh/server
-.ssh/server.pub
+.ssh/keys/private/server
 docker
 {{ end }}
 
 {{ if not (eq .chezmoi.hostname "PY60HY3QW3") }}
-.gnupg/macbook.gpg
-.ssh/macbook
-.ssh/macbook.pub
+.ssh/keys/private/macbook
 {{ end }}
 
 README.md
 provision/
-key.txt.age

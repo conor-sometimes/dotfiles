@@ -15,7 +15,7 @@ export GPG_KEY={{ .hosts.server.gpg }}
 export GPG_TTY="$(tty)"
 
 # $HOME/wiki/programs/ssh.wiki
-export SSH_KEY={{ .hosts.server.ssh }}
+export SSH_KEY={{ .hosts.server.ssh.public }}
 
 # this also stops tmux from yelling at me when in ssh
 export TERM="screen-256color"

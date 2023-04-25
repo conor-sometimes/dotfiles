@@ -15,6 +15,6 @@ export GPG_KEY={{ .hosts.macbook.gpg }}
 export GPG_TTY="$(tty)"
 
 # $HOME/wiki/programs/ssh.wiki
-export SSH_KEY={{ .hosts.macbook.ssh }}
+export SSH_KEY={{ .hosts.macbook.ssh.public }}
 
 export SSH_AUTH_SOCK=/Users/cmcshane/.yubiagent/sock
