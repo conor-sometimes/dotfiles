@@ -13,19 +13,11 @@ set -o pipefail
 readonly HOST_DESKTOP="honshu"
 readonly HOST_SERVER="hokkaido"
 readonly HOST_MACBOOK="PY60HY3QW3"
-echo "$HOSTNAME"
+
+readonly GPG_KEY_NAME="encrypted_unified"
+readonly GPG_KEY_TRUST="F86191F6CF88CCE1D908775633A923AB357604B2:6:"
 
 readonly REPO_DIR="$HOME/.local/share/chezmoi"
-echo "Bash version: $BASH_VERSION"
-
-
-declare -A info=(
-  ["GPG_KEY_NAME"]=""
-  ["GPG_KEY_TRUST"]=""
-  ["SSH_KEYS"]=""
-  ["GPG_PUBLIC_KEYS"]=""
-)
-
 
 add_ssh_key_to_authorized_keys() {
   for KEYFILE in "$@"; do
@@ -49,44 +41,38 @@ import_gpg_public_keys() {
 }
 
 case "$HOSTNAME" in
-  $HOST_MACBOOK)
+  "$HOST_MACBOOK")
     echo "MACBOOK"
-    info["GPG_KEY_NAME"]="macbook-private"
-    info["GPG_KEY_TRUST"]="C59E2EA148098193BEEEE42087BFE2E84FE74F61:6:"
+    GPG_PUBLIC_KEYS=(
+      "$REPO_DIR/provision/gpg/public/unified.pub"
+      "$REPO_DIR/provision/gpg/public/work.pub"
+    )
+    gpg --decrypt "$REPO_DIR/provision/gpg/private/encrypted_work.asc" | gpg --import
     ;;
-
-  $HOST_SERVER)
-    info["GPG_KEY_NAME"]="server-private"
-    info["GPG_KEY_TRUST"]="7032F7F9BC73C52B99956EB1F79E4AE90F072A31:6:"
-
-    info["SSH_KEYS"]=(
-      "$REPO_DIR/dot_ssh/keys/macbook-public.pub"
-      "$REPO_DIR/dot_ssh/keys/desktop-yubikey-public.pub"
+  "$HOST_SERVER")
+    SSH_KEYS=(
+      "$REPO_DIR/dot_ssh/keys/public/macbook.pub"
+      "$REPO_DIR/dot_ssh/keys/public/desktop-yubikey.pub"
     )
 
-  info["GPG_PUBLIC_KEYS"]=(
-    "$REPO_DIR/provision/gpg/public/macbook-public-key.asc"
-    "$REPO_DIR/provision/gpg/public/server-public-key.asc"
-    #"$REPO_DIR/provision/gpg/public/desktop-public-key.asc"
-  )
-;;
+    add_ssh_key_to_authorized_keys "${SSH_KEYS[@]}"
 
-$HOST_DESKTOP)
-  info["GPG_KEY_NAME"]="PLACEHOLDER_PLACEHOLDER"
-  info["GPG_KEY_TRUST"]="PLACEHOLDER_PLACEHOLDER"
-  ;;
+    GPG_PUBLIC_KEYS=(
+      "$REPO_DIR/provision/gpg/public/unified.pub"
+    )
+    ;;
+  # "$HOST_DESKTOP")
+    # ;;
+  *)
+    echo "Unknown host: $HOSTNAME"
+    exit 1
+    ;;
 esac
 
-if [[ -v info["SSH_KEYS"] ]]; then
-  add_ssh_key_to_authorized_keys "${info["SSH_KEYS"][@]}"
+import_gpg_public_keys "${GPG_PUBLIC_KEYS[@]}"
 
-fi
-
-import_gpg_public_keys "${info["GPG_PUBLIC_KEYS"][@]}"
-
-# import private key for host
-
-gpg --decrypt "$REPO_DIR/provision/gpg/private/${info["GPG_KEY_NAME"]}.gpg.asc" | gpg --import
+# import unified gpg key
+gpg --decrypt "$REPO_DIR/provision/gpg/private/${GPG_KEY_NAME}.asc" | gpg --import
 
 # update trust of key
-echo "${info["GPG_OWNER_TRUST"]}" | gpg --import-ownertrust
+echo "$GPG_KEY_TRUST" | gpg --import-ownertrust

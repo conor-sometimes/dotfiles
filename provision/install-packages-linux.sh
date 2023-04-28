@@ -7,7 +7,7 @@
 # Distributed under terms of the GPLv3 license.
 #
 
-set -euo pipefail
+set -e pipefail
 set -o errexit
 set -o nounset
 
@@ -19,7 +19,7 @@ readonly HOST_MACBOOK="PY60HY3QW3"
 declare -a packages_essential=( "chezmoi" "git" "git-delta" "jq" "neovim" "openssh" "ranger" "remind" "restic" "ripgrep" "task" "tmux" "zsh")
 declare -a packages_server=( "docker" "docker-compose" "rtorrent" )
 declare -a packages_desktop=( "bspwm" "sxhkd" "mpv" "dunst" "alacritty" "firefox" "redshift" "xrandr" "sshfs" "polybar" "xorg-xinit" "nvidia-open" )
-declare -a packages_macbook=( "espanso" "pinentry-mac" "bash" "gpg" )
+declare -a packages_macbook=( "espanso" "pinentry-mac" "bash" "gpg" "gh")
 
 case "$(hostname)" in
   ${HOST_SERVER})

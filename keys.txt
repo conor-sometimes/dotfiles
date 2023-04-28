@@ -1,0 +1,23 @@
+dotfiles: 87598FB224CE55A319D461BC092543F7A4AFB15F
+  [
+    hokkaido
+    honshu
+    macbook
+  ] decrypt dotfiles chezmoi
+
+  # in provision
+  gpg -o dotfile.asc-d dotfile.asc.gpg #chezmoi dotfiles in bitwarden
+  gpg --import dotfile.asc
+  gpg --import dotfile.pub
+  echo "F86191F6CF88CCE1D908775633A923AB357604B2:6:" | gpg --import-ownertrust
+  # add to import-keys.sh!
+
+unified:  F86191F6CF88CCE1D908775633A923AB357604B2
+  [
+    hokkaido
+    honshu
+    macbook
+  ] private git repos on personal github
+
+work:     117E2CFC450E2BDF60D6E6F19F9C252869DE2E5F
+  internal git

@@ -3,13 +3,7 @@
 [user]
 	name = {{ .name }}
 	email = {{ .email }}
-{{- if eq .chezmoi.hostname "honshu" }}
-	signingkey = {{ .hosts.desktop.gpg }}
-{{ else if eq .chezmoi.hostname "hokkaido" }}
-	signingkey = {{ .hosts.server.gpg }}
-{{ else if eq .chezmoi.os "darwin" }}
-	signingkey = {{ .hosts.macbook.gpg }}
-{{ end -}}
+	signingkey = {{ .hosts.gpg.unified }}
 
 [core]
 	editor = nvim
@@ -45,3 +39,6 @@
 
 [interactive]
 	diffFilter = delta --color-only
+
+[includeIf "gitdir:~/work/"]
+	path = ~/.config/git/config-work

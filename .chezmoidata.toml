@@ -1,22 +1,28 @@
 name = "Conor McShane"
 email = "conor.d.mcshane@gmail.com"
+work_email = "conor.mcshane@yahooinc.com"
 
 [hosts]
+  [hosts.gpg]
+  unified = "F86191F6CF88CCE1D908775633A923AB357604B2"
+  work = "117E2CFC450E2BDF60D6E6F19F9C252869DE2E5F"
 
-[hosts.desktop]
-gpg = "26521FB9AEA047007F6D49489B8AC2D618B9D0E1"
-  [hosts.desktop.ssh]
-  public = "~/.ssh/keys/desktop-yubikey-public.pub"
-  private = "~/.ssh/desktop-yubikey"
+  [hosts.desktop]
+    [hosts.desktop.ssh]
+    public = "~/.ssh/keys/public/desktop-yubikey"
+    private = "~/.ssh/keys/private/desktop-yubikey"
 
-[hosts.server]
-gpg = "7032F7F9BC73C52B99956EB1F79E4AE90F072A31"
-  [hosts.server.ssh]
-  public = "~/.ssh/keys/server-public"
-  private = "~/.ssh/server"
+  [hosts.server]
+    [hosts.server.ssh]
+    public = "~/.ssh/keys/public/server"
+    private = "~/.ssh/keys/private/server"
 
-[hosts.macbook]
-gpg = "C59E2EA148098193BEEEE42087BFE2E84FE74F61"
-  [hosts.macbook.ssh]
-  public = "~/.ssh/keys/macbook-public"
-  private = "~/.ssh/macbook"
+  [hosts.macbook]
+    [hosts.macbook.ssh]
+      [hosts.macbook.ssh.personal]
+      public = "~/.ssh/keys/public/macbook"
+      private = "~/.ssh/keys/private/macbook"
+
+      [hosts.macbook.ssh.work]
+      public = "~/.ssh/keys/public/macbook-work"
+      private = "~/.ssh/keys/private/macbook-work"

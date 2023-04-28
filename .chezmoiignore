@@ -48,7 +48,9 @@ docker
 
 {{ if not (eq .chezmoi.hostname "PY60HY3QW3") }}
 .ssh/keys/private/macbook
+.ssh/keys/private/macbook-work
 {{ end }}
 
 README.md
+keys.txt
 provision/
