@@ -5,6 +5,7 @@
 # Copyright (C) 2023 Conor McShane <conor dot d dot mcshane at gmail dot com>
 #
 # Distributed under terms of the GPLv3 license.
+#
 
 set -o errexit
 set -o nounset
@@ -42,14 +43,20 @@ import_gpg_public_keys() {
 
 case "$HOSTNAME" in
   "$HOST_MACBOOK")
-    echo "MACBOOK"
     GPG_PUBLIC_KEYS=(
       "$REPO_DIR/provision/gpg/public/unified.pub"
+      "$REPO_DIR/provision/gpg/public/dotfiles.pub"
       "$REPO_DIR/provision/gpg/public/work.pub"
     )
+
     gpg --decrypt "$REPO_DIR/provision/gpg/private/encrypted_work.asc" | gpg --import
     ;;
   "$HOST_SERVER")
+    GPG_PUBLIC_KEYS=(
+      "$REPO_DIR/provision/gpg/public/unified.pub"
+      "$REPO_DIR/provision/gpg/public/dotfiles.pub"
+    )
+
     SSH_KEYS=(
       "$REPO_DIR/dot_ssh/keys/public/macbook.pub"
       "$REPO_DIR/dot_ssh/keys/public/desktop-yubikey.pub"
@@ -57,9 +64,6 @@ case "$HOSTNAME" in
 
     add_ssh_key_to_authorized_keys "${SSH_KEYS[@]}"
 
-    GPG_PUBLIC_KEYS=(
-      "$REPO_DIR/provision/gpg/public/unified.pub"
-    )
     ;;
   # "$HOST_DESKTOP")
     # ;;
@@ -69,10 +73,18 @@ case "$HOSTNAME" in
     ;;
 esac
 
+
+echo "Importing dotfiles gpg key"
+gpg --decrypt "$REPO_DIR/provision/gpg/private/dotfiles.asc.gpg" | gpg --import
+gpg --import "$REPO_DIR/provision/gpg/public/dotfiles.pub"
+echo "87598FB224CE55A319D461BC092543F7A4AFB15F:6:" | gpg --import-ownertrust
+
+
 import_gpg_public_keys "${GPG_PUBLIC_KEYS[@]}"
 
 # import unified gpg key
 gpg --decrypt "$REPO_DIR/provision/gpg/private/${GPG_KEY_NAME}.asc" | gpg --import
+# readonly GPG_KEY_NAME="encrypted_unified"
 
 # update trust of key
 echo "$GPG_KEY_TRUST" | gpg --import-ownertrust

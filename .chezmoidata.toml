@@ -6,18 +6,25 @@ work_email = "conor.mcshane@yahooinc.com"
   [hosts.gpg]
   unified = "F86191F6CF88CCE1D908775633A923AB357604B2"
   work = "117E2CFC450E2BDF60D6E6F19F9C252869DE2E5F"
+  dotfiles = "87598FB224CE55A319D461BC092543F7A4AFB15F"
 
   [hosts.desktop]
+    hostname = "honshu"
+
     [hosts.desktop.ssh]
     public = "~/.ssh/keys/public/desktop-yubikey"
     private = "~/.ssh/keys/private/desktop-yubikey"
 
   [hosts.server]
+    hostname = "hokkaido"
+
     [hosts.server.ssh]
     public = "~/.ssh/keys/public/server"
     private = "~/.ssh/keys/private/server"
 
   [hosts.macbook]
+    hostname = "PY60HY3QW3"
+
     [hosts.macbook.ssh]
       [hosts.macbook.ssh.personal]
       public = "~/.ssh/keys/public/macbook"

@@ -14,6 +14,7 @@ services:
       - "${DOCKER_DIR}/caddy/data:/data"
       - "${DOCKER_DIR}/caddy/config:/config"
     depends_on:
+      - "authelia"
       - "miniserve"
     restart: unless-stopped
     environment:
@@ -41,7 +42,22 @@ services:
     networks:
       - cool
 
-  image: containrrr/watchtower
+  authelia:
+    container_name: "authelia"
+    image: "authelia/authelia"
+    volumes:
+      - "${DOCKER_DIR}/authelia/configuration:/config"
+      - "${DOCKER_DIR}/authelia/users_database:/data"
+    ports:
+      - "${PORT_AUTHELIA}:8080"
+    environment:
+      - TZ="Europe/Dublin"
+    restart: unless-stopped
+    networks:
+      - cool
+
+  watchtower:
+    image: containrrr/watchtower
     container_name: watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
