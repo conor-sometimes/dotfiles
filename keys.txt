@@ -14,7 +14,7 @@ needed to sign personal git commits
   macbook
 ]
 
-work: 117E2CFC450E2BDF60D6E6F19F9C252869DE2E5F
+work: 92ADF15FA1065EA23B45BE32F7DD77A0EB212928
 needed to sign work git commits
 [
   macbook

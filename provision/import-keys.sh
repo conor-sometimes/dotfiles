@@ -15,7 +15,7 @@ readonly HOST_DESKTOP="honshu"
 readonly HOST_SERVER="hokkaido"
 readonly HOST_MACBOOK="PY60HY3QW3"
 
-readonly GPG_KEY_NAME="encrypted_unified"
+readonly GPG_KEY_NAME="unified"
 readonly GPG_KEY_TRUST="F86191F6CF88CCE1D908775633A923AB357604B2:6:"
 
 readonly REPO_DIR="$HOME/.local/share/chezmoi"
@@ -49,7 +49,9 @@ case "$HOSTNAME" in
       "$REPO_DIR/provision/gpg/public/work.pub"
     )
 
-    gpg --decrypt "$REPO_DIR/provision/gpg/private/encrypted_work.asc" | gpg --import
+    # work bitwarden
+    gpg --decrypt "$REPO_DIR/provision/gpg/private/work.asc" | gpg --import
+    echo "92ADF15FA1065EA23B45BE32F7DD77A0EB212928:6:" | gpg --import-ownertrust
     ;;
   "$HOST_SERVER")
     GPG_PUBLIC_KEYS=(
@@ -83,7 +85,7 @@ echo "87598FB224CE55A319D461BC092543F7A4AFB15F:6:" | gpg --import-ownertrust
 import_gpg_public_keys "${GPG_PUBLIC_KEYS[@]}"
 
 # import unified gpg key
-gpg --decrypt "$REPO_DIR/provision/gpg/private/${GPG_KEY_NAME}.asc" | gpg --import
+gpg --decrypt "$REPO_DIR/provision/gpg/private/${GPG_KEY_NAME}.gpg" | gpg --import
 # readonly GPG_KEY_NAME="encrypted_unified"
 
 # update trust of key
