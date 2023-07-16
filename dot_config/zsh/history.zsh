@@ -2,7 +2,7 @@
 #
 # history.zsh
 #
-# Copyright (C) 2023 Conor McShane <conor dot d dot mcshane at gmail dot com>
+# Copyright (C) 2023 Conor McShane
 #
 # Distributed under terms of the GPLv3 license.
 

@@ -54,7 +54,7 @@ fi
 source "$HOME/repos/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-if [ "$HOST" = "K9J507N7L0" ]; then
+if [ "$HOST" = "PY60HY3QW3" ]; then
   source "$HOME/.iterm2_shell_integration.zsh"
 fi
 

@@ -25,9 +25,11 @@ add_tickets_to_task() {
 do
   task add +tickets "$TICKET, $HOST, $ISSUE"
 done <$HOME/tickets.csv
+}
 
   # while read TICKET; do
     # task add +tickets "Fix ticket: $TICKET"
   # done <$HOME/tickets.txt
-
+set_title() {
+  echo -e "\033];${1}\007"
 }

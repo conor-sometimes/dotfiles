@@ -9,7 +9,21 @@ matches:
     replace: "All the best\nConor"
 
   - trigger: ":gm"
-    replace: "Morning all"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: random
+        params:
+          choices:
+            - "Morning all"
+            - "Morning guys"
+            - "Guten morgen all"
+
+  - trigger: ":thanks"
+    replace: "Perfect, Thanks a million"
+
+  - trigger: ":thanks"
+    replace: "Many thanks"
 
   - trigger: ":up"
     replace: "Host is up to ping and console"
@@ -21,11 +35,189 @@ matches:
   - trigger: ":raidstatus"
     replace: "sudo /opt/MegaRAID/MegaCli/MegaCli64 -AdpBbuCmd -a0"
 
-  - trigger: ":yramdisk"
-    replace: "jump --ramdisk --reboot --file"
+  # Ramdisk {{{
+  - trigger: ":ramdisk"
+    label: "Boot into ramdisk"
+    form: "jump --ramdisk --reboot --file [[hostname]]"
 
-  - trigger: ":nramdisk"
-    replace: "jump --revert --reboot --file"
+  - trigger: ":ramdisk"
+    label: "Revert out of ramdisk"
+    form: "jump --revert --reboot --file [[hostname]]"
+  # }}}
+
+  # Retire {{{
+  - trigger: ":retire"
+    label: "Get SKU, Serial and Model for belmont sheet"
+    form: opsFind -q -f "ytag sku_name serialno model" [[filename]]
+
+  - trigger: ":retire"
+    label: "Get SKU, Serial and Model for OSTK sheet"
+    form: opsFind -q -f "ytag name site backplane locroom locarea locrow locrack locshelf type model eosl_date sku_name sku_config" [[filename]]
+
+  - trigger: ":retire"
+    label: "Remove parent from ytag"
+    form: /home/rcarroll/scripts/nuke_parent [[filename]]
+
+  - trigger: ":retire"
+    label: "Set hosts as destroyed in opsdb"
+    form: /home/rcarroll/scripts/opsfind_set [[filename]] status 'destroyed'
+
+  - trigger: ":retire"
+    label: "Create a pallet file for ytags"
+    form: vi "pallet-[[number]]-$(date --iso-8601)".txt
+  # }}}
+
+  - trigger: ":oor"
+    label: "Generic OOR request template"
+    replace: |
+      Hi Team!
+      Working on {{oor.ticket}}
+      Can this host be taken OOR to {{oor.issue}}
+      {{oor.hostname}}
+      Thanks!
+    vars:
+      - name: "oor"
+        type: form
+        params:
+          layout: "Ticket: [[ticket]]\nIssue: [[issue]]\nHost: [[hostname]]"
+
+  - trigger: ":hdd"
+    label: "Get HDD Serial"
+    form: sudo hdparm -I /dev/[[DRIVE]]
+
+  - trigger: ":swap"
+    label: "Chassis Swap Host"
+    form: /home/y/bin/opsSwap.pl -f chassis -y -s [[SOURCE_YTAG]] -d [[DEST_YTAG]]
+
+  - trigger: ":raid"
+    label: "Show raid status"
+    replace: /opt/MegaRaid/storcli64 show all
+
+  - trigger: ":raid"
+    label: "Check raid battery status"
+    replace: sudo hwscan -raw | jq .raid_configs[].battery
+
+  - trigger: ":raid"
+    label: "Show SMART errors with disk serials"
+    replace: /opt/MegaRAID/MegaCli/MegaCli64 -PDList -aAll | grep -e "Slot Number" -e "Inquiry Data:" -e "Drive has flagged a S.M.A.R.T alert" -e "Firmware state"
+
+  # Switch {{{
+  - trigger: ":switch"
+    label: "Show all addresses on a switch"
+    form: show mac address-table
+
+  - trigger: ":switch"
+    label: "Check port status"
+    form: show interface Ethernet[[PORT]]
+  # }}}
+
+  # Openstack {{{
+  - trigger: ":ostk"
+    label: "De-register host"
+    form: sose_ironic -r [[hostname]] --deregister
+
+  - trigger: ":ostk"
+    label: "Register host"
+    form: sose_ironic -r [[hostname]] --register
+
+  - trigger: ":ostk"
+    replace: "sose_ironic -r {{rebuild.hostname}} --rebuild {{rebuild.version}}"
+    vars:
+      - name: "rebuild"
+        type: form
+        params:
+          layout: "Hostname: [[hostname]] \nVersion: [[version]]"
+          fields:
+            hostname:
+              multiline: false
+            version:
+              type: list
+              values:
+                - 7.x
+  # }}}
+
+  # DIMM {{{
+  - trigger: ":dimm"
+    label: "Shows uncorrectable and correctable memory count"
+    replace: sudo edac-util -v
+
+  - trigger: ":dimm"
+    label: "Check mcelog for errors."
+    replace: sudo mcelog --client
+
+  - trigger: ":dimm"
+    label: "Check SEL log"
+    replace: sudo ipmitool sel elist | tail -50
+
+  - trigger: ":dimm"
+    label: "Get dimm serials and location"
+    replace: sudo hwscan -raw | jq '.memory[] | [.serial, .asset_tag]'
+  # }}}
+
+  # ticket {{{
+  - trigger: ":ticket"
+    label: "Filer Drive replaced (sanitized)"
+    replace: Faulty drive replaced, set to recycled in yo/diskwipe and placed in box ready for shipping.
+
+  - trigger: ":ticket"
+    label: "Filer Drive replaced (unsanitized)"
+    replace: Faulty disk replaced and placed in disk sanitiser for manual sanitisation.
+
+  - trigger: ":ticket"
+    label: "Faulty disk replaced"
+    replace: Faulty disk replaced, good to close.
+
+  - trigger: ":ticket"
+    label: "Faulty disk replaced, (replacement is bigger)"
+    replace: Faulty disk replaced. Be advised as new disk is bigger than faulty one due to low stocks.
+
+  - trigger: ":ticket"
+    label: "Faulty disk replaced, (host will need to be rebuilt)"
+    replace: Faulty disk replaced. Be advised as host is a single disk machine and WILL need to be rebuilt.
+
+  - trigger: ":ticket"
+    label: "Faulty PSU replaced"
+    replace: Faulty PSU replaced. Host is back up to ping and ssh.
+  # }}}
+
+  - trigger: ":sel"
+    label: "Clear SEL log"
+    replace: sudo ipmitool sel clear
+
+  - trigger: ":sel"
+    label: "REALLY Clear SEL log"
+    replace: sudo ipmitool sel clear; sudo dd if=/dev/null of=/var/log/mcelog; sudo dd if=/dev/null of=/var/log/messages; sudo dd if=/dev/null of=/var/log/dmesg
+
+  - trigger: ":install"
+    label: "Install cool tools while in ramdisk"
+    replace: >
+      sudo yum install -y
+      stress-ng
+      lm_sensors
+
+  - trigger: ":cpu"
+    label: "Check CPU for errors, this will take 10 minutes, grab a coffee"
+    replace: stress-ng --cpu 0 --verify --verbose --cpu-method all --tz -t 10m
+
+  # Scripts {{{
+  - trigger: ":pyscript"
+    replace: "{{output}}\n{{gamers}}"
+    vars:
+      - name: output
+        type: script
+        params:
+          args:
+            - zsh
+            - "%CONFIG%/scripts/test.sh"
+            - "1"
+      - name: gamers
+        type: script
+        params:
+          args:
+            - bash
+            - "%CONFIG%/scripts/test.sh"
+            - "2"
+  # }}}
 
   # DEBUG
   - trigger: ":hello"
