@@ -35,5 +35,5 @@ work_email = "conor.mcshane@yahooinc.com"
       private = "~/.ssh/keys/private/macbook"
 
       [hosts.macbook.ssh.work]
-      public = "~/.ssh/keys/public/macbook-work"
-      private = "~/.ssh/keys/private/macbook-work"
+      public = "~/.ssh/keys/public/work"
+      private = "~/.ssh/keys/private/work"

@@ -62,5 +62,6 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'jamessan/vim-gnupg'
 
 Plug 'chrisbra/csv.vim'
+Plug 'imsnif/kdl.vim'
 call plug#end()
 filetype plugin indent on
