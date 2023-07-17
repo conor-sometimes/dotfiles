@@ -1,9 +1,8 @@
 # ; vim: set ft=toml:
 
-encryption = "gpg"
-[gpg]
-# Dotfile gpg key
-recipient = "87598FB224CE55A319D461BC092543F7A4AFB15F"
+encryption = "age"
+[age]
+    passphrase = true
 
 {{- if eq .chezmoi.os "windows" }}
 [interpreters.ps1]

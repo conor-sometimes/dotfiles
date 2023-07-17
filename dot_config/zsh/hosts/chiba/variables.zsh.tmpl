@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+#
+# variables.zsh
+#
+# Copyright (C) 2023 Conor McShane <conor dot d dot mcshane at gmail dot com>
+#
+# Distributed under terms of the GPLv3 license.
+
+export PROMPT_COLOR="red"
+
+# $HOME/wiki/programs/gpg.wiki
+export GPG_KEY={{ .hosts.gpg.unified }}
+
+# this stops gpg from yelling at me while in ssh
+export GPG_TTY="$(tty)"
+
+# $HOME/wiki/programs/ssh.wiki
+export SSH_KEY={{ .hosts.server.ssh.public }}
+
+# this also stops tmux from yelling at me when in ssh
+export TERM="screen-256color"
