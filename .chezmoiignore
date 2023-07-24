@@ -2,6 +2,7 @@
 {{ if not (eq .chezmoi.hostname "honshu") }}
 .xinitrc
 .mozilla
+.rtorrent.rc
 .config/alacritty
 .config/bspwm
 .config/dunst
@@ -23,12 +24,12 @@
 .config/zathura
 {{ end }}
 
-# We only use systemd on linux (server/desktop), so ignore directory otherwise
+# We only use systemd on linux (server/desktop), so ignore the directory otherwise
 {{ if not (eq .chezmoi.os "linux") }}
 .config/systemd
 {{ end }}
 
-# if we are not on mac and linux (generic) then we ignore the following dirs
+# if we are not on mac or linux (generic) then we ignore the following dirs
 {{ if not (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) }}
 .bin
 .config/tmux
