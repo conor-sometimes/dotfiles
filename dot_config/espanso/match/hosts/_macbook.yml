@@ -103,7 +103,7 @@ matches:
 
   # Switch {{{
   - trigger: ":switch"
-    label: "Show all addresses on a switch"
+    label: "Show all mac addresses on a switch"
     form: show mac address-table
 
   - trigger: ":switch"
@@ -178,6 +178,32 @@ matches:
   - trigger: ":ticket"
     label: "Faulty PSU replaced"
     replace: Faulty PSU replaced. Host is back up to ping and ssh.
+
+  - trigger: ":ticket"
+    label: "Faulty Fan replaced"
+    form: Fan [[FAN_NUMBER]] replaced, no more fan errors present, good to close
+
+  - trigger: ":ticket"
+    label: "Faulty Raid Battery replaced"
+    form: Faulty Raid battery replaced, battery is "good" in hwscan.
+  # }}}
+
+  # DNS{{{
+  - trigger: ":dns"
+    label: "Create DNS (OOB)"
+    form: dnstopalloc -r [[HOSTNAME]] --oobonly
+
+  - trigger: ":dns"
+    label: "Create DNS (Production)"
+    form: dnsalloc create -s [[HOSTNAME]] -c [[CIDR]]
+
+  - trigger: ":dns"
+    label: "Remove DNS (OOB)"
+    form: dnsdbrm --oob-only --commit [[HOSTNAME]]
+
+  - trigger: ":dns"
+    label: "Remove DNS (Production)"
+    form: dnsdbrm --commit [[HOSTNAME]]
   # }}}
 
   - trigger: ":sel"

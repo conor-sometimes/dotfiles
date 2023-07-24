@@ -37,21 +37,28 @@
 {{ end }}
 
 # If we're not on $HOSTNAME, then we don't create the following dirs
+#
+# Desktop (Linux)
 {{ if not (eq .chezmoi.hostname "honshu") }}
 .ssh/keys/private/desktop-yubikey
 {{ end }}
 
+# Server
 {{ if not (eq .chezmoi.hostname "hokkaido") }}
 .ssh/keys/private/server
-docker
 {{ end }}
 
+# Macbook
 {{ if not (eq .chezmoi.hostname "PY60HY3QW3") }}
 .ssh/keys/private/macbook
 .ssh/keys/private/macbook-work
 {{ end }}
 
+# WSL
+{{ if not (eq .chezmoi.hostname "chiba") }}
+.ssh/keys/private/wsl
+{{ end }}
+
 README.md
 keys.txt
 provision/
-key.txt.age

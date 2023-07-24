@@ -2,7 +2,7 @@
 #
 # import-keys.sh
 #
-# Copyright (C) 2023 Conor McShane <conor dot d dot mcshane at gmail dot com>
+# Copyright (C) 2023 Conor McShane
 #
 # Distributed under terms of the GPLv3 license.
 #
@@ -38,6 +38,7 @@ add_ssh_key_to_authorized_keys() {
 import_gpg_public_keys() {
   for PUBKEY in "$@"; do
     gpg --import "$PUBKEY"
+    gpg --import <<< $(age -d encrypted_dotfiles-encrypted.gpg.age)
   done
 }
 
@@ -50,7 +51,7 @@ case "$HOSTNAME" in
     )
 
     # work bitwarden
-    gpg --decrypt "$REPO_DIR/provision/gpg/private/work.asc" | gpg --import
+    gpg --import <<< $(age -d "$REPO_DIR"/provision/gpg/private/encrypted_dotfiles.gpg.age)
     echo "92ADF15FA1065EA23B45BE32F7DD77A0EB212928:6:" | gpg --import-ownertrust
     ;;
   "$HOST_SERVER")

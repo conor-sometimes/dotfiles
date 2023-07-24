@@ -1,5 +1,5 @@
 name = "Conor McShane"
-email = "conor.d.mcshane@gmail.com"
+email = "conor.d.mcshane@outlook.com"
 work_email = "conor.mcshane@yahooinc.com"
 
 [hosts]
@@ -37,3 +37,8 @@ work_email = "conor.mcshane@yahooinc.com"
       [hosts.macbook.ssh.work]
       public = "~/.ssh/keys/public/work"
       private = "~/.ssh/keys/private/work"
+
+  [hosts.wsl]
+    [hosts.wsl.ssh]
+    public = "~/.ssh/keys/public/wsl"
+    private = "~/.ssh/keys/private/wsl"
