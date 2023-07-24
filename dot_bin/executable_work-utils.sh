@@ -37,12 +37,12 @@ function switch_utils() {
 }
 
 function retire_utils() {
-  TEMP_DIR=$(mktemp)
+  YTAG_DIR="$HOME/ytags"
   #gdate is mac specific, add os checking maybe?
   FILENAME="ytags-$(gdate --iso-8601)"
-  nvim "$TEMP_DIR/$FILENAME"
-  if [[ -f "$TEMP_DIR/$FILENAME" ]]; then
-    scp "$TEMP_DIR/$FILENAME" "cmcshane@site.ops.corp.yahoo.com:~/ytags/$FILENAME"
+  nvim "$YTAG_DIR/$FILENAME"
+  if [[ -f "$YTAG_DIR/$FILENAME" ]]; then
+    scp "$YTAG_DIR/$FILENAME" "cmcshane@site.ops.corp.yahoo.com:~/ytags/$FILENAME"
   fi
 
   echo "What are we doing today?"
@@ -64,11 +64,17 @@ function retire_utils() {
 }
 
 function host_utils() {
-  # check raid battery
-  # check fan status
-  # check sel log
-  # check uptime
-  # check mce
+  echo "What's the hostname?"
+  read -r HOSTNAME
+
+  echo "What are we doing today?"
+  echo -e "\t 1) SSH into $HOSTNAME"
+  echo -e "\t 2) Check Raid battery status"
+  echo -e "\t 3) Check Fan status"
+  echo -e "\t 3) Check SEL log "
+  echo -e "\t 4) Check Uptime"
+  echo -e "\t 4) Check MCE"
+  # clear sel logs
 }
 
 echo "##########################################"
@@ -79,6 +85,14 @@ echo "What are we doing today?"
 echo "1) Network device"
 echo "2) Retires"
 echo "3) Hosts"
+echo "4) Ramdisk"
+
+# rebuild, de-register/register and status
+echo "4) Openstack"
+
+echo "4) bootbox"
+# colomap
+# opsdb stuff, get serial of ytag and stuff, you get me
 echo ""
 echo "0)  exit"
 echo ""

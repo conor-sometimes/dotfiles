@@ -1,6 +1,7 @@
 # if we're not on honshu (desktop), ignore the following files/dirs
 {{ if not (eq .chezmoi.hostname "honshu") }}
 .xinitrc
+.mozilla
 .config/alacritty
 .config/bspwm
 .config/dunst
