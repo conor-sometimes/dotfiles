@@ -10,33 +10,41 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+# Switch Utilities {{{
 function switch_utils() {
+  SERVER="tool1.ops.ir2.yahoo.com"
+
   echo "What's the hostname?"
   read -r HOSTNAME
 
   echo "What are we doing today?"
-  echo -e "\t 1) SSH into $HOSTNAME"
-  echo -e "\t 2) Show all MAC Addresses on $HOSTNAME"
-  echo -e "\t 3) Get status of interface on $HOSTNAME"
+  echo -e "\t 1) SSH into ${HOSTNAME}"
+  echo -e "\t 2) Show all MAC Addresses on ${HOSTNAME}"
+  echo -e "\t 3) Get status of interface on ${HOSTNAME}"
+  echo -e "\t 4) Get environment of ${HOSTNAME}"
   case $1 in
     1)
-      ssh -A -J tool1.ops.ir2.yahoo.com "${HOSTNAME}"
+      ssh -A -J "${SERVER}" "${HOSTNAME}"
       ;;
     2)
-      ssh -A -J tool1.ops.ir2.yahoo.com "${HOSTNAME}" "show mac address-table"
+      ssh -A -J "${SERVER}" "${HOSTNAME}" "show mac address-table"
       ;;
     3)
       echo "What port?"
       read -r -n 1 PORT
-      ssh -A -J tool1.ops.ir2.yahoo.com "${HOSTNAME}" "show interface Ethernet${PORT}"
+      ssh -A -J "${SERVER}" "${HOSTNAME}" "show interface Ethernet${PORT}"
       ;;
     4)
-      echo "get psu status"
+      ssh -A -J "${SERVER}" "${HOSTNAME}" "sh env"
       ;;
   esac
 }
+# }}}
 
+# Retire Process Utilities {{{
 function retire_utils() {
+  SERVER="site.ops.corp.yahoo.com"
+
   YTAG_DIR="$HOME/ytags"
   #gdate is mac specific, add os checking maybe?
   FILENAME="ytags-$(gdate --iso-8601)"
@@ -52,45 +60,125 @@ function retire_utils() {
   read -r OPERATION
   case $OPERATION in
     1)
-      ssh site.ops.corp.yahoo.com "opsFind -q -f \"ytag sku_name serialno model\" ~/ytags/$FILENAME"
+      ssh "${SERVER}" "opsFind -q -f \"ytag sku_name serialno model\" ~/ytags/$FILENAME"
       ;;
     2)
-      ssh site.ops.corp.yahoo.com "/home/rcarroll/scripts/nuke_parent ~/ytags/$FILENAME"
+      ssh "${SERVER}" "/home/rcarroll/scripts/nuke_parent ~/ytags/$FILENAME"
       ;;
     3)
-      ssh site.ops.corp.yahoo.com "/home/rcarroll/scripts/opsfind_set $FILENAME status \'destroyed\'"
+      ssh "${SERVER}" "/home/rcarroll/scripts/opsfind_set $FILENAME status \'destroyed\'"
       ;;
   esac
 }
+# }}}
 
+# Host Utilities {{{
 function host_utils() {
+  SERVER="site.ops.corp.yahoo.com"
+
   echo "What's the hostname?"
   read -r HOSTNAME
 
   echo "What are we doing today?"
-  echo -e "\t 1) SSH into $HOSTNAME"
-  echo -e "\t 2) Check Raid battery status"
-  echo -e "\t 3) Check Fan status"
-  echo -e "\t 3) Check SEL log "
-  echo -e "\t 4) Check Uptime"
-  echo -e "\t 4) Check MCE"
+  echo "1) SSH into ${HOSTNAME}"
+  echo "2) Check Raid battery status"
+  echo "3) Check Fan status"
+  echo "4) Check SEL log "
+  echo "5) Check Uptime"
+  echo "6) Check MCE"
   # clear sel logs
+  #
+  read -r -n 1 OPERATION
+  case $OPERATION in
+    1)
+      ssh -A -J "${SERVER}" "${HOSTNAME}"
+      ;;
+    2)
+      ssh -A -J "${SERVER}" "${HOSTNAME}" "sudo hwscan -raw | jq .raid_configs[].battery"
+      ;;
+    3)
+      ssh -A -J "${SERVER}" "${HOSTNAME}" "sudo hwscan -raw | jq .system.system_fan[]"
+      ;;
+    4)
+      ssh -A -J "${SERVER}" "${HOSTNAME}" "sudo ipmitool sel elist | less"
+      ;;
+    5)
+      ssh -A -J "${SERVER}" "${HOSTNAME}" "uptime"
+      ;;
+    6)
+      ssh -A -J "${SERVER}" "${HOSTNAME}" "sudo mcelog --client"
+      ;;
+  esac
 }
+# }}}
 
-echo "##########################################"
-echo "# Yell at @cmshane if this stops working #"
-echo "##########################################"
+# Openstack Utilities {{{
+function openstack_utils() {
+  SERVER="site.ops.corp.yahoo.com"
+
+  echo "What's the hostname?"
+  read -r HOSTNAME
+
+  echo "What are we doing today?"
+  echo "1) Openstack status of ${HOSTNAME}"
+  echo "1) Register ${HOSTNAME}"
+  echo "2) Deregister ${HOSTNAME}"
+  echo "3) Rebuild ${HOSTNAME} to RHEL 7.x via openstack"
+
+  read -r -n 1 OPERATION
+  case $OPERATION in
+    1)
+      ssh "${SERVER}" "sose_ironic -r ${HOSTNAME}"
+      ;;
+    2)
+      ssh "${SERVER}" "sose_ironic -r ${HOSTNAME} --register"
+      ;;
+    3)
+      ssh "${SERVER}" "sose_ironic -r ${HOSTNAME} --deregister"
+      ;;
+    4)
+      # Fixme, What if we need different versions?
+      ssh "${SERVER}" "sose_ironic -r ${HOSTNAME} --rebuild 7.x"
+      ;;
+  esac
+}
+# }}}
+
+# Ramdisk Utilities {{{
+function ramdisk_utils() {
+  SERVER="site.ops.corp.yahoo.com"
+
+  echo "What's the hostname?"
+  read -r HOSTNAME
+
+  echo "What are we doing today?"
+  echo "1) Jump into Ramdisk"
+  echo "2) Revert from ramdisk"
+
+  read -r -n 1 OPERATION
+  case $OPERATION in
+    1)
+      ssh "${SERVER}" "jump --ramdisk --reboot --file ${HOSTNAME}"
+      ;;
+    2)
+      ssh "${SERVER}" "jump --revert --reboot --file ${HOSTNAME}"
+      ;;
+  esac
+}
+# }}}
+
+echo "###########################################"
+echo "# Yell at @cmcshane if this stops working #"
+echo "###########################################"
 
 echo "What are we doing today?"
 echo "1) Network device"
 echo "2) Retires"
 echo "3) Hosts"
 echo "4) Ramdisk"
+echo "5) Openstack"
 
-# rebuild, de-register/register and status
-echo "4) Openstack"
-
-echo "4) bootbox"
+echo "6) bootbox"
 # colomap
 # opsdb stuff, get serial of ytag and stuff, you get me
 echo ""
@@ -103,6 +191,8 @@ case $SELECTION in
   1 ) switch_utils;;
   2 ) retire_utils;;
   3 ) host_utils;;
+  4 ) ramdisk_utils;;
+  5 ) openstack_utils;;
   q | 0 ) exit 1;;
   * )
 esac
