@@ -1,5 +1,5 @@
 # set up monitors
-xrandr --output DP-4 --primary --mode 1920x1080 --rate 239.76 --output DP-0 --mode 1920x1080 --rate 144 --right-of DP-4
+xrandr --output {{ .hosts.desktop.monitor_240hz }} --primary --mode 1920x1080 --rate 239.76 --output {{ .hosts.desktop.monitor_144hz }} --mode 1920x1080 --rate 144 --right-of {{ .hosts.desktop.monitor_240hz }}
 
 # set the wallpaper
 xsetroot -solid webgray

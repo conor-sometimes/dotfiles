@@ -1,16 +1,12 @@
-old dotfiles: 87598FB224CE55A319D461BC092543F7A4AFB15F
-new dotfiles: C76746974E2C3BB4EDD2A28ABA763F5C9E4EE865
-needed to decrypt dotfiles
+Age: bw $(age dotfiles)
 [
   hokkaido
   honshu
   macbook
 ]
 
-old unified: F86191F6CF88CCE1D908775633A923AB357604B2
-new unified: 7C68137DB9B1E2293746C74742BB5D6F5CD54311
-
-needed to sign personal git commits
+GPG Key: 563D8518C3DF748018C8F0E07A914829A62D6DEA
+Needed to sign personal git commits
 [
   hokkaido
   honshu

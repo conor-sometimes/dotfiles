@@ -14,10 +14,12 @@ work_email = "conor.mcshane@yahooinc.com"
 
   [hosts.desktop]
     hostname = "honshu"
+    monitor_240hz = "DP-2"
+    monitor_144hz = "DP-0"
 
     [hosts.desktop.ssh]
-    public = "~/.ssh/keys/public/desktop-yubikey"
-    private = "~/.ssh/keys/private/desktop-yubikey"
+    public = "~/.ssh/keys/public/honshu"
+    private = "~/.ssh/keys/private/honshu"
 
   [hosts.server]
     hostname = "hokkaido"
@@ -40,5 +42,5 @@ work_email = "conor.mcshane@yahooinc.com"
 
   [hosts.wsl]
     [hosts.wsl.ssh]
-    public = "~/.ssh/keys/public/wsl"
-    private = "~/.ssh/keys/private/wsl"
+    public = "~/.ssh/keys/public/chiba"
+    private = "~/.ssh/keys/private/chiba"
