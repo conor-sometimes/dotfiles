@@ -35,20 +35,20 @@ if [ -n "$DISPLAY" ]; then # checks if we're not in a tty
 fi
 
 # mounts drives
-if [ "$HOST" = "honshu" ]; then
-  if [ -n "$DISPLAY" ]; then
-    # checks if the drives are not mounted, if not then we mount them
-    if [ ! -b /dev/disk/by-label/bastion ] || [ ! -b /dev/disk/by-label/citadel ]; then
-      manage-drives.sh "m" "bastion" "fd9d1ac2-8531-4f73-9e3a-548b7d800394" "$(pass drives/bastion)"
-      manage-drives.sh "m" "citadel" "a3d66160-665d-4c0f-829b-7c4234f8d345" "$(pass drives/citadel)"
-    fi
-
-    if ! mountpoint --quiet /mnt; then
-      echo "Mounting windows"
-      sudo mount /dev/disk/by-uuid/B41A06A91A066926 /mnt
-    fi
-  fi
-fi
+#if [ "$HOST" = "honshu" ]; then
+#  if [ -n "$DISPLAY" ]; then
+#    # checks if the drives are not mounted, if not then we mount them
+#    if [ ! -b /dev/disk/by-label/bastion ] || [ ! -b /dev/disk/by-label/citadel ]; then
+#      manage-drives.sh "m" "bastion" "fd9d1ac2-8531-4f73-9e3a-548b7d800394" "$(pass drives/bastion)"
+#      manage-drives.sh "m" "citadel" "a3d66160-665d-4c0f-829b-7c4234f8d345" "$(pass drives/citadel)"
+#    fi
+#
+#    if ! mountpoint --quiet /mnt; then
+#      echo "Mounting windows"
+#      sudo mount /dev/disk/by-uuid/B41A06A91A066926 /mnt
+#    fi
+#  fi
+#fi
 
 # Add a check if the repo exist, if not, git clone it maybe?
 source "$HOME/repos/zsh-autosuggestions/zsh-autosuggestions.zsh"
