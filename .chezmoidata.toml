@@ -4,18 +4,17 @@ work_email = "conor.mcshane@yahooinc.com"
 
 [hosts]
   [hosts.gpg]
-
   work  = "117E2CFC450E2BDF60D6E6F19F9C252869DE2E5F"
   torii = "563D8518C3DF748018C8F0E07A914829A62D6DEA"
 
   [hosts.desktop]
-    hostname = "honshu"
+    hostname = "nara"
     monitor_240hz = "DP-2"
     monitor_144hz = "DP-0"
 
     [hosts.desktop.ssh]
-    public = "~/.ssh/keys/public/honshu"
-    private = "~/.ssh/keys/private/honshu"
+    public = "~/.ssh/keys/public/nara"
+    private = "~/.ssh/keys/private/nara"
 
   [hosts.server]
     hostname = "hokkaido"
