@@ -1,26 +1,20 @@
-# if we're not on honshu (desktop), ignore the following files/dirs
-{{ if not (eq .chezmoi.hostname "honshu") }}
+# if we're not on nara (desktop), ignore the following files/dirs
+{{ if not (eq .chezmoi.hostname "nara") }}
 .xinitrc
 .mozilla
-.rtorrent.rc
 .config/alacritty
 .config/bspwm
 .config/dunst
 .config/gtk-2.0
 .config/gtk-3.0
-.config/kritarc
-.config/kritashortcutsrc
 .config/mimeapps.list
-.config/mpd
 .config/mpv
 .config/ncmpcpp
-.config/OpenTabletDriver
 .config/polybar
 .config/redshift
 .config/restic
 .config/rofi
 .config/sxhkd
-.config/ncmpcpp
 .config/zathura
 {{ end }}
 
@@ -32,7 +26,6 @@
 # if we are not on mac or linux (generic) then we ignore the following dirs
 {{ if not (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) }}
 .bin
-.config/tmux
 .config/git
 .config/ranger
 .config/espanso
@@ -41,8 +34,8 @@
 # If we're not on $HOSTNAME, then we don't create the following dirs
 #
 # Desktop (Linux)
-{{ if not (eq .chezmoi.hostname "honshu") }}
-.ssh/keys/private/honshu
+{{ if not (eq .chezmoi.hostname "nara") }}
+.ssh/keys/private/nara
 {{ end }}
 
 # Server

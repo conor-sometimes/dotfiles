@@ -33,9 +33,9 @@ host *
 
 Host github.com
 	HostName github.com
-{{- if eq .chezmoi.hostname "honshu" }}
+{{- if eq .chezmoi.hostname .hosts.desktop.hostname }}
 	IdentityFile = {{ .hosts.desktop.ssh.private }}
-{{ else if eq .chezmoi.hostname "hokkaido" }}
+{{ else if eq .chezmoi.hostname .hosts.server.hostname }}
 	IdentityFile = {{ .hosts.server.ssh.private }}
 {{ else if eq .chezmoi.os "darwin" }}
 	IdentityFile = {{ .hosts.macbook.ssh.personal.private }}
