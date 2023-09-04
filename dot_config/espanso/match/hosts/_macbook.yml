@@ -152,6 +152,10 @@ matches:
   - trigger: ":dimm"
     label: "Get dimm serials and location"
     replace: sudo hwscan -raw | jq '.memory[] | [.serial, .asset_tag]'
+
+  - trigger: ":dimm"
+    label: "Get dimm speed, serials and location"
+    replace: sudo hwscan -raw | jq '.memory[] | [.serial, .speed_mhz, .asset_tag]'
   # }}}
 
   # ticket {{{

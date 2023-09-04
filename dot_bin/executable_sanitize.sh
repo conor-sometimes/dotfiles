@@ -9,7 +9,6 @@
 set -o errexit
 set -o nounset
 
-
 echo "Anti-Fingerprinting"
 declare -a FINGERPRINT=( "$HOME/.zhistory" "$HOME/.cache/rofi-3.runcache" )
 

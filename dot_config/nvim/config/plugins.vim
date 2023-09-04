@@ -63,5 +63,6 @@ Plug 'jamessan/vim-gnupg'
 
 Plug 'chrisbra/csv.vim'
 Plug 'imsnif/kdl.vim'
+Plug 'github/copilot.vim'
 call plug#end()
 filetype plugin indent on
