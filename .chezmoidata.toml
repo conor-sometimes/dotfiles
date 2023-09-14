@@ -36,6 +36,8 @@ work_email = "conor.mcshane@yahooinc.com"
       private = "~/.ssh/keys/private/work"
 
   [hosts.wsl]
+    hostname = "chiba"
+
     [hosts.wsl.ssh]
     public = "~/.ssh/keys/public/chiba"
     private = "~/.ssh/keys/private/chiba"

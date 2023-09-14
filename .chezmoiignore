@@ -1,5 +1,5 @@
 # if we're not on nara (desktop), ignore the following files/dirs
-{{ if not (eq .chezmoi.hostname "nara") }}
+{{ if not (eq .chezmoi.hostname .hosts.desktop.hostname) }}
 .xinitrc
 .mozilla
 .config/alacritty
@@ -34,23 +34,23 @@
 # If we're not on $HOSTNAME, then we don't create the following dirs
 #
 # Desktop (Linux)
-{{ if not (eq .chezmoi.hostname "nara") }}
+{{ if not (eq .chezmoi.hostname .hosts.desktop.hostname) }}
 .ssh/keys/private/nara
 {{ end }}
 
 # Server
-{{ if not (eq .chezmoi.hostname "hokkaido") }}
+{{ if not (eq .chezmoi.hostname .hosts.server.hostname) }}
 .ssh/keys/private/server
 {{ end }}
 
 # Macbook
-{{ if not (eq .chezmoi.hostname "PY60HY3QW3") }}
+{{ if not (eq .chezmoi.hostname .hosts.macbook.hostname) }}
 .ssh/keys/private/macbook
 .ssh/keys/private/macbook-work
 {{ end }}
 
 # WSL
-{{ if not (eq .chezmoi.hostname "chiba") }}
+{{ if not (eq .chezmoi.hostname .hosts.wsl.hostname) }}
 .ssh/keys/private/chiba
 {{ end }}
 
