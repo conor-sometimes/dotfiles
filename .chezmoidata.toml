@@ -13,31 +13,24 @@ work_email = "conor.mcshane@yahooinc.com"
     monitor_144hz = "DP-0"
 
     [hosts.desktop.ssh]
-    public = "~/.ssh/keys/public/nara"
-    private = "~/.ssh/keys/private/nara"
+    public = "~/.ssh/keys/nara/nara.pub"
+    private = "~/.ssh/keys/nara/nara"
 
   [hosts.server]
     hostname = "hokkaido"
 
     [hosts.server.ssh]
-    public = "~/.ssh/keys/public/server"
-    private = "~/.ssh/keys/private/server"
+    public = "~/.ssh/keys/hokkaido/hokkaido.pub"
+    private = "~/.ssh/keys/hokkaido/hokkaido"
 
   [hosts.macbook]
     hostname = "PY60HY3QW3"
 
     [hosts.macbook.ssh]
       [hosts.macbook.ssh.personal]
-      public = "~/.ssh/keys/public/macbook"
-      private = "~/.ssh/keys/private/macbook"
+      public = "~/.ssh/keys/macbook/macbook.pub"
+      private = "~/.ssh/keys/macbook/macbook"
 
       [hosts.macbook.ssh.work]
-      public = "~/.ssh/keys/public/work"
-      private = "~/.ssh/keys/private/work"
-
-  [hosts.wsl]
-    hostname = "chiba"
-
-    [hosts.wsl.ssh]
-    public = "~/.ssh/keys/public/chiba"
-    private = "~/.ssh/keys/private/chiba"
+      public = "~/.ssh/keys/work/work.pub"
+      private = "~/.ssh/keys/work/work"

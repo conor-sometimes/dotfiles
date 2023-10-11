@@ -49,11 +49,6 @@
 .ssh/keys/private/macbook-work
 {{ end }}
 
-# WSL
-{{ if not (eq .chezmoi.hostname .hosts.wsl.hostname) }}
-.ssh/keys/private/chiba
-{{ end }}
-
 README.md
 keys.txt
 provision/
