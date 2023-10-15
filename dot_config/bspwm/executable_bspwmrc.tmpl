@@ -8,6 +8,12 @@
 
 bspc config pointer_motion_interval 40
 
+#if ! [[ -s "$BSPWM_STATE" ]]; then
+#  exit 1
+#else
+#  bspc wm -l "$HOME/.config/bspwm/state.json"
+#fi
+
 bspc config top_padding 0
 bspc config bottom_padding 0
 bspc config window_gap 6

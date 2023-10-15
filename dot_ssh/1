@@ -33,6 +33,7 @@ host *
 
 Host github.com
 	HostName github.com
+	Port 3663
 {{- if eq .chezmoi.hostname .hosts.desktop.hostname }}
 	IdentityFile = {{ .hosts.desktop.ssh.private }}
 {{ else if eq .chezmoi.hostname .hosts.server.hostname }}
@@ -44,7 +45,6 @@ Host github.com
 Host hokkaido
 	HostName 192.168.0.124
 	User conor
-	Port 3663
 {{- if eq .chezmoi.hostname .hosts.desktop.hostname }}
 	IdentityFile = {{ .hosts.desktop.ssh.private }}
 {{ else if eq .chezmoi.os "darwin" }}
@@ -54,7 +54,3 @@ Host hokkaido
 Host git.ouryahoo.com
 	IdentityFile = {{ .hosts.macbook.ssh.work.private }}
 	IdentitiesOnly yes
-
-host ems
-	HostName 10.50.7.160
-	ForwardAgent yes
