@@ -164,6 +164,10 @@ matches:
     replace: Faulty drive replaced, set to recycled in yo/diskwipe and placed in box ready for shipping.
 
   - trigger: ":ticket"
+    label: "Filer Drive replaced (already sanitized)"
+    replace: Faulty drive replaced and placed in box ready for shipping.
+
+  - trigger: ":ticket"
     label: "Filer Drive replaced (unsanitized)"
     replace: Faulty disk replaced and placed in disk sanitiser for manual sanitisation.
 
