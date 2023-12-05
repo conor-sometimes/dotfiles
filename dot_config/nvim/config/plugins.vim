@@ -20,7 +20,7 @@ Plug 'dense-analysis/ale'
 Plug 'morhetz/gruvbox',
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'luochen1990/rainbow', { 'for': ['rust', 'cpp', 'c', 'sh', 'python', 'vim', 'tex', 'ps1'] }
-Plug 'tpope/vim-commentary', { 'for': ['rust', 'cpp', 'vim', 'zsh', 'sh', 'c', 'asm', 'python', 'tex', 'ps1'] }
+Plug 'tpope/vim-commentary', { 'for': ['rust', 'cpp', 'vim', 'zsh', 'sh', 'c', 'asm', 'python', 'tex', 'ps1', 'go'] }
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 

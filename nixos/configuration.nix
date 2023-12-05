@@ -24,7 +24,7 @@
     };
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.consoleLogLevel = 0;
 
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
@@ -85,6 +85,7 @@
     bspwm
     btop
     chezmoi
+    chromium
     curl
     dunst
     editorconfig-core-c
@@ -119,6 +120,23 @@
     maim
     ncdu
     yt-dlp
+    feh
+    sqlitebrowser
+    sqlite
+    csvkit
+    trash-cli
+    gnuplot
+    miller
+    go
+    hyperfine
+    yubikey-agent
+    yubikey-manager
+    yubikey-manager-qt
+    yubikey-personalization
+    yubikey-personalization-gui
+    yubioath-flutter
+    pam_u2f
+    libfaketime
   ];
 
   fonts.fonts = with pkgs; [
@@ -133,6 +151,13 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+  };
+
+  services.pcscd.enable = true;
 
   # List services that you want to enable:
 
