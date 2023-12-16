@@ -18,6 +18,7 @@ matches:
             - "Morning all"
             - "Morning guys"
             - "Guten morgen all"
+            - "Morning morning"
 
   - trigger: ":thanks"
     replace: "Perfect, Thanks a million"
@@ -103,24 +104,30 @@ matches:
 
   # Switch {{{
   - trigger: ":switch"
-    label: "Show all mac addresses on a switch"
+    label: "Switch/Console: Show all mac addresses on a switch"
     form: show mac address-table
 
   - trigger: ":switch"
-    label: "Check port status"
+    label: "Switch/Console: Check port status"
     form: show interface Ethernet[[PORT]]
+
+  - trigger: ":switch"
+    label: "Switch/Console: Check status of all ports"
+    form: show interface status
+
   # }}}
 
   # Openstack {{{
   - trigger: ":ostk"
-    label: "De-register host"
+    label: "Openstack: De-register host"
     form: sose_ironic -r [[hostname]] --deregister
 
   - trigger: ":ostk"
-    label: "Register host"
+    label: "Openstack: Register host"
     form: sose_ironic -r [[hostname]] --register
 
   - trigger: ":ostk"
+    label: "Openstack: Rebuild host"
     replace: "sose_ironic -r {{rebuild.hostname}} --rebuild {{rebuild.version}}"
     vars:
       - name: "rebuild"

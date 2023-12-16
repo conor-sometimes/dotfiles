@@ -24,7 +24,7 @@
     };
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_default;
   boot.consoleLogLevel = 0;
 
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
