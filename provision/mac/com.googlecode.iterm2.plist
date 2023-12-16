@@ -551,7 +551,7 @@
 				</dict>
 			</dict>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
@@ -777,6 +777,8 @@
 			<string>/Users/cmcshane</string>
 		</dict>
 	</array>
+	<key>PMPrintingPanelSize</key>
+	<string>{777, 1079}</string>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -813,7 +815,7 @@
 	<key>Print In Black And White</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
-	<true/>
+	<false/>
 	<key>Snippets</key>
 	<array>
 		<dict>
