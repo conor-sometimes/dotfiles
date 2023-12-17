@@ -53,8 +53,7 @@ fi
 # Add a check if the repo exist, if not, git clone it maybe?
 source "$HOME/repos/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$HOME/Repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
-
+source "$HOME/repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
 if [ "$HOST" = "PY60HY3QW3" ]; then
   source "$HOME/.iterm2_shell_integration.zsh"
