@@ -88,63 +88,64 @@
     alacritty
     arc-theme
     bc
+    bitwarden-cli
     bspwm
     btop
     chezmoi
     chromium
+    csvkit
     curl
     dunst
     editorconfig-core-c
+    feh
     filezilla
-    firefox
+    firefox-bin-unwrapped
     gh
     git
+    gnuplot
+    go
+    htop
+    hyperfine
     jq
+    keepassxc
     keychain
+    libfaketime
     lxappearance
+    maim
+    miller
     mpv
+    ncdu
     neovim
     nodejs
     ntfs3g
+    pam_u2f
     pamixer
     pavucontrol
     polybar
     ranger
     redshift
+    remind
     restic
     rofi
     shellcheck
+    slop
+    sqlite
+    sqlitebrowser
     sxhkd
+    thunderbird-bin-unwrapped
     tree-sitter
     wget
     xclip
-    zellij
-    zsh
-    zsh-completions
-    slop
-    maim
-    ncdu
     yt-dlp
-    feh
-    sqlitebrowser
-    sqlite
-    csvkit
-    gnuplot
-    miller
-    go
-    hyperfine
     yubikey-agent
     yubikey-manager
     yubikey-manager-qt
     yubikey-personalization
     yubikey-personalization-gui
     yubioath-flutter
-    pam_u2f
-    libfaketime
-    htop
-    keepassxc
-    bitwarden-cli
-    remind
+    zellij
+    zsh
+    zsh-completions
   ];
 
   fonts.fonts = with pkgs; [
