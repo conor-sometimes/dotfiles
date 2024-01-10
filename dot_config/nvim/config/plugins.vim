@@ -66,5 +66,8 @@ Plug 'imsnif/kdl.vim'
 Plug 'github/copilot.vim'
 
 Plug 'fatih/vim-go'
+
+" Look into this eventually
+" https://github.com/xvzc/chezmoi.nvim
 call plug#end()
 filetype plugin indent on

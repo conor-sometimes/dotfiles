@@ -5,6 +5,10 @@
 
 {
   imports =[ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports =
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
   boot = {
     kernelModules = [ "kvm-amd" ];
@@ -30,6 +34,9 @@
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/2f3e1cd4-3df6-4328-b4fa-8b42b46fd5e0"; } ];
+    [
+      { device = "/dev/disk/by-uuid/2f3e1cd4-3df6-4328-b4fa-8b42b46fd5e0"; }
+    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

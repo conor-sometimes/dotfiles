@@ -2,6 +2,11 @@ name = "Conor McShane"
 email = "conor.d.mcshane@outlook.com"
 work_email = "conor.mcshane@yahooinc.com"
 
+# 2023-12-16 04:07
+# Will change to new eventually...
+# new method is using keepassxc database instead of age and the hacky way of decrypting
+file_encryption_method = "new"
+
 [hosts]
   [hosts.gpg]
   work  = "117E2CFC450E2BDF60D6E6F19F9C252869DE2E5F"

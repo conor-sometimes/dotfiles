@@ -49,6 +49,14 @@
 .ssh/keys/private/macbook-work
 {{ end }}
 
+# Migration to keepassxc
+# Probably add the following files too...
+# .ssh/config (has work related stuff that probably shouldn't be in a public repo)
+{{ if eq .file_encryption_method "old" }}
+.ssh/id_rsa
+.ssh/id_rsa.pub
+{{ end }}
+
 README.md
 keys.txt
 provision/

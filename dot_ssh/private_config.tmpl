@@ -1,5 +1,6 @@
 Protocol 2
 
+{{- if eq .chezmoi.hostname .hosts.macbook.hostname }}
 host site.ops.corp.yahoo.com
 	ForwardAgent yes
 	ServerAliveInterval 180
@@ -31,6 +32,15 @@ host *
 	ForwardAgent no
 	ServerAliveInterval 180
 
+host ems
+	HostName 10.50.7.160
+	ForwardAgent yes
+
+Host git.ouryahoo.com
+	IdentityFile = {{ .hosts.macbook.ssh.work.private }}
+	IdentitiesOnly yes
+{{ end }}
+
 Host github.com
 	HostName github.com
 {{- if eq .chezmoi.hostname .hosts.desktop.hostname }}
@@ -50,11 +60,3 @@ Host hokkaido
 {{ else if eq .chezmoi.os "darwin" }}
 	IdentityFile = {{ .hosts.macbook.ssh.personal.private }}
 {{ end }}
-
-Host git.ouryahoo.com
-	IdentityFile = {{ .hosts.macbook.ssh.work.private }}
-	IdentitiesOnly yes
-
-host ems
-	HostName 10.50.7.160
-	ForwardAgent yes

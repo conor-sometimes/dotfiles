@@ -14,21 +14,27 @@
   networking.hostName = "nara";
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices = {
-    crypted = {
-      device = "/dev/disk/by-uuid/a13e803a-9069-483d-b016-e84676b9d864";
-      preLVM = true;
+  boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;
+      };
+      efi.canTouchEfiVariables = true;
     };
+    initrd.luks.devices = {
+      crypted = {
+        device = "/dev/disk/by-uuid/a13e803a-9069-483d-b016-e84676b9d864";
+        preLVM = true;
+      };
+    };
+  consoleLogLevel = 0;
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_default;
-  boot.consoleLogLevel = 0;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
+
 
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
-
 
   # Set your time zone.
   time.timeZone = "Europe/Dublin";
@@ -36,107 +42,110 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    autorun = false;
-    displayManager.startx.enable = true;
+  services = {
+    # Enable the X11 windowing system.
+    xserver = {
+      enable = true;
+      autorun = false;
+      displayManager.startx.enable = true;
 
-    # Configure keymap in X11
-    layout = "gb";
-    xkbOptions = "eurosign:e,caps:escape";
+      # Configure keymap in X11
+      layout = "gb";
+      xkbOptions = "eurosign:e,caps:escape";
+        videoDrivers = ["nvidia"];
+      };
+      pcscd = {
+        enable = true;
+      };
   };
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware = {
+    pulseaudio.enable = true;
 
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    #driSupport32Bit = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+    };
+
+    nvidia = {
+      modesetting.enable = true;
+      open = true;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    open = true;
-    nvidiaSettings = true;
-  };
-
-  users.users.conor= {
+  users.users.conor = {
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "wheel" ];
   };
-
-  programs.neovim.enable = true;
-  programs.neovim.defaultEditor = true;
-
-  environment.variables.EDITOR = "nvim";
-  environment.variables.VISUAL= "nvim";
 
   environment.systemPackages = with pkgs; [
     age
     alacritty
     arc-theme
     bc
+    bitwarden-cli
     bspwm
     btop
     chezmoi
     chromium
+    csvkit
     curl
     dunst
     editorconfig-core-c
+    feh
     filezilla
-    firefox
+    firefox-bin-unwrapped
     gh
     git
+    gnuplot
+    go
+    htop
+    hyperfine
     jq
+    keepassxc
     keychain
+    libfaketime
     lxappearance
-    lxappearance
+    maim
+    miller
     mpv
+    ncdu
     neovim
     nodejs
     ntfs3g
+    pam_u2f
     pamixer
     pavucontrol
     polybar
     ranger
     redshift
+    remind
     restic
     rofi
     shellcheck
+    slop
+    sqlite
+    sqlitebrowser
     sxhkd
+    thunderbird-bin-unwrapped
     tree-sitter
     wget
     xclip
-    zellij
-    zsh
-    zsh-completions
-    slop
-    maim
-    ncdu
     yt-dlp
-    feh
-    sqlitebrowser
-    sqlite
-    csvkit
-    trash-cli
-    gnuplot
-    miller
-    go
-    hyperfine
     yubikey-agent
     yubikey-manager
     yubikey-manager-qt
     yubikey-personalization
     yubikey-personalization-gui
     yubioath-flutter
-    pam_u2f
-    libfaketime
+    zellij
+    zsh
+    zsh-completions
   ];
 
   fonts.fonts = with pkgs; [
@@ -146,18 +155,42 @@
     fira-code-symbols
   ];
 
-  programs.zsh.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+
+  programs = {
+    zsh = {
+      enable = true;
+    };
+
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
+
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
   };
 
-  security.pam.services = {
-    login.u2fAuth = true;
-    sudo.u2fAuth = true;
+  security.pam = {
+    u2f = {
+      enable = true;
+      cue = true;
+      control = "required";
+    };
+
+    services = {
+      login.u2fAuth = true;
+      sudo.u2fAuth = true;
+    };
   };
 
-  services.pcscd.enable = true;
+  environment = {
+    variables = {
+      VISUAL= "nvim";
+      EDITOR = "nvim";
+    };
+  };
 
   # List services that you want to enable:
 

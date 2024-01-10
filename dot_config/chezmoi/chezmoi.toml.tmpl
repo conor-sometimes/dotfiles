@@ -5,8 +5,5 @@ encryption = "age"
 	identity = "~/key.txt"
 	recipient = "age17ta4xdx32z5zu3a8u8xh4yxkenenczdcwdp8uwmdwtvv6mt8ufpsnure6h"
 
-{{- if eq .chezmoi.os "windows" }}
-[interpreters.ps1]
-command = "pwsh"
-args = ["-NoLogo"]
-{{ end }}
+[keepassxc]
+	database = "~/keepass.kdbx"
