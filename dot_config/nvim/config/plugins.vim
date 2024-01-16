@@ -66,6 +66,7 @@ Plug 'imsnif/kdl.vim'
 Plug 'github/copilot.vim'
 
 Plug 'fatih/vim-go'
+Plug 'alker0/chezmoi.vim'
 
 " Look into this eventually
 " https://github.com/xvzc/chezmoi.nvim
