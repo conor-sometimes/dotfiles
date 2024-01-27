@@ -136,16 +136,7 @@ let g:user = 'Conor McShane'
 " }}}
 
 " vimwiki {{{
-let g:vimwiki_list = [{'path': '~/wiki/'}]
-
-
-" allows me to use the marker foldmethod
-" let g:vimwiki_folding = 'expr'
-
-" allows me to use supertab
-let g:vimwiki_table_mappings=0
-let g:vimwiki_table_auto_fmt=0
-let g:vimwiki_key_mappings = { 'table_mappings': 0 }
+let g:wiki_root = '~/wiki'
 "}}}
 
 " latex live preview {{{
@@ -230,4 +221,8 @@ let maplocalleader = ','
 
 " editorconfig {{{
 let g:EditorConfig_exec_path = system("which editorconfig")
+" }}}
+
+" copilot {{{
+let g:copilot_filetypes = {'markdown': v:true}
 " }}}

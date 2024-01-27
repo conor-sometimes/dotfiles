@@ -41,7 +41,7 @@ Plug 'phaazon/hop.nvim'
 Plug 'aperezdc/vim-template'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/vim-cursorword'
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 
 Plug 'junegunn/vim-easy-align'
 
@@ -67,6 +67,9 @@ Plug 'github/copilot.vim'
 
 Plug 'fatih/vim-go'
 Plug 'alker0/chezmoi.vim'
+
+Plug 'lervag/wiki.vim'
+
 
 " Look into this eventually
 " https://github.com/xvzc/chezmoi.nvim

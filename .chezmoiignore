@@ -36,6 +36,7 @@
 # Desktop (Linux)
 {{ if not (eq .chezmoi.hostname .hosts.desktop.hostname) }}
 .ssh/keys/private/nara
+.config/Yubico
 {{ end }}
 
 # Server
