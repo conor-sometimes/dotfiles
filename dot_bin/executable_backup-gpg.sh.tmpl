@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+#
+# backup-gpg.sh
+#
+# Copyright (C) {{ .copyright_year }} Conor McShane <conor dot d dot mcshane at outlook dot com>
+#
+# Distributed under terms of the GPLv3 license.
+
+set -o errexit
+set -o nounset
+
+export VAULT="$HOME/important/gpg/"
+
+if [[ ! -d "$VAULT/plain" ]]; then
+  mkdir -p "$VAULT/plain"
+fi
+
+echo "Unlocking $VAULT"
+pass gocryptfs/gpg | gocryptfs "$VAULT/encrypted" "$VAULT/plain"
+
+# $HOME/wiki/programs/gpg.wiki
+echo "Exporting gpg key"
+gpg --export-secret-keys "$GPG_KEY" > "$VAULT/plain/private.key"
+
+# $HOME/wiki/programs/pass.wiki
+echo "Copying $HOME/.local/share/pass/"
+rsync -Pa --exclude .git "$HOME/.local/share/pass/" "$VAULT/plain/password-store"
+
+echo "Locking $VAULT"
+fusermount -u "$VAULT/plain"
+
+if ! mountpoint -q "$VAULT/plain"; then
+  rmdir "$VAULT/plain"
+fi

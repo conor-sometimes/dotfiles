@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+#
+# sort-files.sh
+#
+# Copyright (C) {{ .copyright_year }} Conor McShane <conor dot d dot mcshane at outlook dot com>
+#
+# Distributed under terms of the GPLv3 license.
+
+set -o errexit
+set -o nounset
+
+source "$HOME"/.bin/functions.sh
+# functions.sh provides:
+# check_dir
+
+for a in "$@"; do
+  echo "$a"
+
+  for b in "$a"/*.{png,jpg,jpeg,JPEG,jpe,gif,webp,jfif}; do
+    if [ -f "$b" ]; then
+      if check_dir "$IMAGE_DIR"; then
+        echo "Moving $b to $IMAGE_DIR"
+        mv "$b" "$IMAGE_DIR"
+      fi
+    fi
+  done
+
+  for c in "$a"/*.{mp4,MP4,mkv,flv,webm,mov}; do
+    if [ -f "$c" ]; then
+      if check_dir "$VIDEO_DIR"; then
+        echo "Moving $c to $VIDEO_DIR"
+        mv "$c" "$VIDEO_DIR"
+      fi
+    fi
+  done
+
+  for d in "$a"/*.{mp3,wav,ogg,flac,opus,m4a}; do
+    if [ -f "$d" ]; then
+      if check_dir "$AUDIO_DIR"; then
+        echo "Moving $d to $AUDIO_DIR"
+        mv "$d" "$AUDIO_DIR"
+      fi
+    fi
+  done
+
+  for e in "$a"/*.{zip,rar,iso,z7,tar*}; do
+    if [ -f "$e" ]; then
+      if check_dir "$ARCHIVE_DIR"; then
+        echo "Moving $e to $ARCHIVE_DIR"
+        mv "$e" "$ARCHIVE_DIR"
+      fi
+    fi
+  done
+
+  for f in "$a"/*.{pdf,epub}; do
+    if [ -f "$f" ]; then
+      if check_dir "$PDF_DIR"; then
+        echo "Moving $f to $PDF_DIR"
+        mv "$f" "$PDF_DIR"
+      fi
+    fi
+  done
+
+  for g in "$a"/*.{lock,ct,CT,exe,msi,desktop,out,jar,pka,apk,xpi}; do
+    if [ -f "$g" ]; then
+      echo "Deleting $g"
+      trash-put "$g"
+    fi
+  done
+
+  for h in "$a"/*.torrent; do
+    if [ -f "$h" ]; then
+      if check_dir "$TORRENT_DIR"; then
+        echo "Moving $h to $TORRENT_DIR"
+        mv "$h" "$TORRENT_DIR"
+      fi
+    fi
+  done
+
+done

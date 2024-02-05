@@ -1,0 +1,23 @@
+" folding.vim
+"
+" Copyright (C) {{ .copyright_year }} Conor McShane <conor dot d dot mcshane at outlook dot com>
+
+"
+" Distributed under terms of the GPLv3 license.
+
+" if you're here for a hint or because you forgot about what the markers are,
+" it's this
+"
+" press z and then a on me <<<
+" you forgot this
+" >>>
+"
+set foldmethod=marker
+set foldmarker=<<<,>>>
+
+" (o)pen
+nnoremap <leader>f za
+
+"set foldmethod=expr
+"set foldexpr=nvim_treesitter#foldexpr()
+"set foldlevel=1

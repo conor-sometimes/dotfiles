@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+# link_handle.sh
+#
+# Copyright (C) {{ .copyright_year }} Conor McShane <conor dot d dot mcshane at outlook dot com>
+#
+# Distributed under terms of the GPLv3 license.
+# shellcheck disable=SC2029
+
+set -o errexit
+
+LINK=$(xclip -selection clipboard -o)
+
+case $LINK in
+  *soundcloud.com*)
+    youtube-dl -o "/run/mount/redoubt/arch/files/music/youtube/%(title)s.%(ext)s" "$LINK"
+    ;;
+  *youtube.com*)
+    youtube-dl -x --audio-format mp3 -o "/run/mount/redoubt/arch/files/music/youtube/%(title)s.%(ext)s" "$LINK"
+    ;;
+  *exhentai.org*.torrent)
+    ssh hokkaido "wget --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' --header 'Cookie: ipb_member_id=1731093; ipb_pass_hash=7d8a1d1301117e2ae7e7423e76d9e802; igneous=f8c5c178e; sk=sppzjmloelqopm4bbpav0a30vd0j; u=1731093-0-ugufz2i9bg2' --directory-prefix='/mnt/torrents/watch/doujins'" "$LINK"
+    ;;
+  *nyaa.si*.torrent)
+    echo "NYAA"
+    ssh hokkaido "wget --directory-prefix=/mnt/torrents/watch/anime/ $LINK"
+    ;;
+  magnet:*)
+    echo "Magnet"
+    ssh hokkaido "aria2c -d '/mnt/torrents/watch/magnet/' --bt-metadata-only=true --bt-save-metadata=true \"$LINK\""
+    ;;
+esac

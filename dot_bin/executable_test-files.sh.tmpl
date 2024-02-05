@@ -1,0 +1,141 @@
+#!/usr/bin/env bash
+#
+# test-files.sh
+#
+# Copyright (C) {{ .copyright_year }} Conor McShane <conor dot d dot mcshane at outlook dot com>
+#
+# Distributed under terms of the GPLv3 license.
+
+# checks if the script is ran without an argument
+if [[ -z "$1" ]]; then
+  echo -e "${COLOR_RED}Error: Incorrect usage${COLOR_NC}"
+  echo -e "${COLOR_GREEN}Usage${COLOR_NC}: test-archives.sh [directory]"
+  echo -e "${COLOR_CYAN}Example${COLOR_NC}: sort-files $ARCHIVE_DIR"
+
+  exit 1
+fi
+
+# checks if the argument's dir exists
+# should also maybe add a check to make sure it's not a file
+if [ ! -d "$1" ]; then
+  echo -e "${COLOR_RED}Error: $1 does not exist${COLOR_NC}"
+  echo -e "${COLOR_RED}Exiting...${COLOR_NC}"
+
+  exit 1
+fi
+
+# creates "testing" if it doesn't exist already
+if [ ! -d "testing/" ]; then
+  echo -e "${COLOR_RED}Error: testing/ does not exist${COLOR_NC}"
+  echo -e "${COLOR_YELLOW}Creating: testing/${COLOR_NC}"
+  mkdir -p "$1"/testing/{broken,other}
+fi
+
+for FILE in "$1"/*.zip; do
+  if [[ ! -f "${FILE}" ]]; then
+    continue
+  fi
+  unzip -t -qq "${FILE}"
+  RETVAL=$?
+  case $RETVAL in
+    0)
+      echo "OK: ${FILE}"
+      ;;
+    3)
+      echo "BROKEN($RETVAL): ${FILE}"
+      mv "${FILE}" "$1"/testing/broken
+      ;;
+    9)
+      echo "WRONGFORMAT($RETVAL): ${FILE}"
+      mv "${FILE}" "$1/testing/other/${FILE}.wrongformat"
+      ;;
+    80)
+      echo "USER ABORT: ${FILE}"
+      ;;
+    81)
+      echo "ENCRYPTED($RETVAL): ${FILE}"
+      mv "${FILE}" "$1/testing/other/${FILE}.encrypted"
+      ;;
+    82)
+      echo "PASSWORD($RETVAL): ${FILE}"
+      mv "${FILE}" "$1/testing/other/${FILE}.password"
+      ;;
+    *)
+      echo "ERROR($RETVAL): ${FILE}"
+      mv "${FILE}" "$1"/testing/broken
+      ;;
+  esac
+done
+
+for FILE in "$1"/*.rar; do
+  if [[ ! -f "${FILE}" ]]; then
+    continue
+  fi
+  unrar t "${FILE}"
+  RETVAL=$?
+  case $RETVAL in
+    0)
+      echo "OK: ${FILE}"
+      ;;
+    3)
+      echo "BROKEN($RETVAL): ${FILE}"
+      mv "${FILE}" "$1"/testing/broken
+      ;;
+    10)
+      echo "WRONGFORMAT($RETVAL): ${FILE}"
+      ;;
+    255)
+      echo "USER ABORT: ${FILE}"
+      ;;
+  esac
+done
+
+for FILE in "$1"/*.tar.gz; do
+  if [[ ! -f "${FILE}" ]]; then
+    continue
+  fi
+  gunzip -t "${FILE}"
+  RETVAL=$?
+  case $RETVAL in
+    0)
+      echo "OK ${FILE}"
+      ;;
+    1)
+      echo "BROKEN: ${FILE}"
+      mv "${FILE}" "$1"/testing/broken
+      ;;
+  esac
+done
+
+for FILE in "$1"/*.mkv; do
+  if [[ ! -f "${FILE}" ]]; then
+    continue
+  fi
+  mkvalidator --quiet "${FILE}"
+  RETVAL=$?
+  case $RETVAL in
+    0)
+      echo "OK ${FILE}"
+      ;;
+    253) # 0 byte filesize or it's broke, either way I don't want it
+      echo "BROKEN: ${FILE}"
+      mv "${FILE}" "$1"/testing/broken
+      ;;
+  esac
+done
+
+# prompts the user if they want to delete the testing dir
+if [ -d "testing/" ]; then
+  echo "Delete everything in testing?"
+  echo "[y]es/[n]o"
+  read -r -n 1 answer
+  echo
+  case "$answer" in
+    [yY])
+      trash-put "$1"/testing
+      ;;
+    *)
+      exit 1
+      ;;
+  esac
+fi
