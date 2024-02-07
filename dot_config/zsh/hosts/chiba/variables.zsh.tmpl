@@ -2,14 +2,14 @@
 #
 # variables.zsh
 #
-# Copyright (C) 2023 Conor McShane
+# Copyright (C) {{ .copyright_year }} Conor McShane <conor dot d dot mcshane at outlook dot com>
 #
 # Distributed under terms of the GPLv3 license.
 
 export PROMPT_COLOR="red"
 
 # $HOME/wiki/programs/gpg.wiki
-export GPG_KEY={{ .hosts.gpg.torii }}
+export GPG_KEY={{ .hosts.desktop.gpg_id }}
 
 # this stops gpg from yelling at me while in ssh
 export GPG_TTY="$(tty)"

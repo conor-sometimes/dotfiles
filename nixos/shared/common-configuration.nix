@@ -37,6 +37,7 @@
     lazygit
     zsh
     zsh-completions
+    pinentry-curses
   ];
 
   programs = {

@@ -1,6 +1,3 @@
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running `nixos-help`).
-
 { config, lib, pkgs, ... }:
 
 {
@@ -47,9 +44,12 @@
       displayManager.startx.enable = true;
 
       # Configure keymap in X11
-      layout = "gb";
-      xkbOptions = "eurosign:e,caps:escape";
-        videoDrivers = ["nvidia"];
+      xkb = {
+        options = "eurosign:e,caps:escape";
+        layout = "gb";
+      };
+
+      videoDrivers = ["nvidia"];
       };
 
       pcscd = {
@@ -136,9 +136,10 @@
     poppler_utils
     zathura
     racket
+    gcc
   ];
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk
     fira-code
