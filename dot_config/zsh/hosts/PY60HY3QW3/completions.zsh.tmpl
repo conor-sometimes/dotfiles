@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+#
+# completions.zsh
+#
+# Copyright (C) {{ .copyright_year }} Conor McShane <conor dot d dot mcshane at outlook dot com>
+#
+# Distributed under terms of the GPLv3 license.
+
+autoload -Uz compinit vcs_info
+
+fpath=(
+  "/usr/share/zsh/5.9/functions"
+  "/usr/share/zsh/5.9/site-functions"
+
+  "$HOME/repos/zsh-completions"
+)

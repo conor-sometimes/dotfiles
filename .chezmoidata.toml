@@ -10,13 +10,12 @@ file_encryption_method = "new"
 
 [hosts]
   [hosts.gpg]
-  work  = "117E2CFC450E2BDF60D6E6F19F9C252869DE2E5F"
-  torii = "563D8518C3DF748018C8F0E07A914829A62D6DEA"
 
   [hosts.desktop]
     hostname = "nara"
     monitor_240hz = "DP-2"
     monitor_144hz = "DP-0"
+    gpg_id = "563D8518C3DF748018C8F0E07A914829A62D6DEA"
 
     [hosts.desktop.ssh]
     public = "~/.ssh/keys/nara/nara.pub"
@@ -31,6 +30,7 @@ file_encryption_method = "new"
 
   [hosts.macbook]
     hostname = "PY60HY3QW3"
+    gpg_id = "117E2CFC450E2BDF60D6E6F19F9C252869DE2E5F"
 
     [hosts.macbook.ssh]
       [hosts.macbook.ssh.personal]

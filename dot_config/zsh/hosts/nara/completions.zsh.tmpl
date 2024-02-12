@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+#
+# completions.zsh
+#
+# Copyright (C) {{ .copyright_year }} Conor McShane <conor dot d dot mcshane at outlook dot com>
+#
+# Distributed under terms of the GPLv3 license.
+
+autoload -Uz compinit vcs_info
+
+fpath=(
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Calendar"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Chpwd"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Completion"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Completion/Base"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Completion/Linux"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Completion/Unix"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Completion/X"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Completion/Zsh"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Exceptions"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Math"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/MIME"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Misc"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Newuser"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Prompts"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/TCP"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/VCS_Info"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Zftp"
+  "/run/current-system/sw/share/zsh/${ZSH_VERSION}/functions/Zle"
+
+  "/run/current-system/sw/share/zsh/site-functions"
+
+  "${HOME}/repos/zsh-completions"
+)
