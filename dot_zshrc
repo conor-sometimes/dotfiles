@@ -59,6 +59,9 @@ if [ "$HOST" = "PY60HY3QW3" ]; then
   source "$HOME/.iterm2_shell_integration.zsh"
 fi
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # export BW_SESSION=$(bw {login,unlock} --raw)
 
 #zprof
