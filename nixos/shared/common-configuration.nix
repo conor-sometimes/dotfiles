@@ -38,6 +38,7 @@
     zsh
     zsh-completions
     pinentry-curses
+    ssh-audit
   ];
 
   programs = {
