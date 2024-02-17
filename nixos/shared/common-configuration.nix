@@ -22,24 +22,31 @@
     defaultLocale = "en_US.UTF-8";
   };
 
-  environment.systemPackages = with pkgs; [
-    git
-    btop
-    htop
-    jq
-    bc
-    chezmoi
-    curl
-    ncdu
-    neovim
-    ranger
-    wget
-    lazygit
-    zsh
-    zsh-completions
-    pinentry-curses
-    ssh-audit
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      git
+        btop
+        htop
+        jq
+        bc
+        chezmoi
+        curl
+        ncdu
+        neovim
+        ranger
+        wget
+        lazygit
+        zsh
+        zsh-completions
+        pinentry-curses
+        ssh-audit
+    ];
+
+    variables = {
+      VISUAL= "nvim";
+      EDITOR = "nvim";
+    };
+  };
 
   programs = {
     zsh = {
@@ -49,13 +56,6 @@
     neovim = {
       enable = true;
       defaultEditor = true;
-    };
-  };
-
-  environment = {
-    variables = {
-      VISUAL= "nvim";
-      EDITOR = "nvim";
     };
   };
 
