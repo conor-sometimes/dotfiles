@@ -1,10 +1,5 @@
-[Feature] Add new search functionality: Enable searching by keyword
-
-This commit adds a new search functionality to the app, allowing users to search by keyword in addition to the existing search options. This feature was requested by several users who found it difficult to find specific items using the existing search options.
-
-To enable this feature, I added a new search method to the backend API and modified the frontend search component to support keyword search. The new functionality is fully tested and working as expected.
-
-- Added new search method to backend API
-- Modified frontend search component to support keyword search
-
-Resolves: #1234
+# examples:
+# [Specification] Changed current_profile to active_profile
+# [Specification] Changed owner to author
+# [Code] Removed useless function
+# [Housekeeping] Bumped crate versions
