@@ -137,6 +137,14 @@
     zathura
     racket
     gcc
+    hyperfine
+    cargo-outdated
+    cargo-nextest
+    act
+    direnv
+    rustup
+    gnumake
+    watchexec
   ];
 
   fonts.packages = with pkgs; [
