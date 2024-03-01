@@ -1,0 +1,52 @@
+; vim: set ft=gitconfig:
+
+[user]
+	name = {{ .name }}
+	email = {{ .email }}
+	signingkey = {{ .hosts.desktop.gpg_id }}
+
+[core]
+	editor = nvim
+	excludesfile = ~/config/git/gitignore
+
+[commit]
+	template = ~/.config/git/commit-template
+<<<<<<< HEAD
+	gpgsign = true
+	verbose = true
+=======
+	gpgsign = false
+>>>>>>> 346082cbe94fe03614376ec830644cbb64e71b7c
+
+[color]
+	ui = true
+
+[pull]
+	rebase = false
+
+[mergetool "nvim"]
+	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+
+[merge]
+	tool = nvim
+
+[mergetool]
+	prompt = false
+
+[core]
+	pager = delta
+
+[delta]
+	plus-style = "syntax #012800"
+	minus-style = "syntax #340001"
+	syntax-theme = Monokai Extended
+	navigate = true
+
+[interactive]
+	diffFilter = delta --color-only
+
+[includeIf "gitdir:~/work/"]
+	path = ~/.config/git/config-work
+
+[init]
+	defaultBranch = main
