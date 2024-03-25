@@ -235,9 +235,21 @@ matches:
     form: dnsdbrm --commit [[HOSTNAME]]
   # }}}
 
-  - trigger: ":sel"
-    label: "Clear SEL log"
-    replace: sudo ipmitool sel clear
+  - trigger: ":ipmi"
+    label: "Check Sensors"
+    replace: sudo ipmitool sdr elist
+
+  - trigger: ":ipmi"
+    label: "Check Chassis Status"
+    replace: sudo ipmitool chassis status
+
+  - trigger: ":ipmi"
+    label: "Check SEL log"
+    replace: sudo ipmitool sel elist | tail -50
+
+  - trigger: ":ipmi"
+    label: "Check LAN/Network Info"
+    replace: sudo ipmitool lan print
 
   - trigger: ":sel"
     label: "REALLY Clear SEL log"

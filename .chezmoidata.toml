@@ -6,7 +6,7 @@ copyright_year = 2024
 # 2023-12-16 04:07
 # Will change to new eventually...
 # new method is using keepassxc database instead of age and the hacky way of decrypting
-file_encryption_method = "new"
+file_encryption_method = "old"
 
 [hosts]
   [hosts.gpg]
