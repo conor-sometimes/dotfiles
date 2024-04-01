@@ -227,17 +227,53 @@ matches:
     form: dnsalloc create -s [[HOSTNAME]] -c [[CIDR]]
 
   - trigger: ":dns"
+    label: "Create DNS (Production) (from file)"
+    form: dnsalloc create -s [[FILENAME]] -c [[CIDR]]
+
+  - trigger: ":dns"
     label: "Remove DNS (OOB)"
-    form: dnsdbrm --oob-only --commit [[HOSTNAME]]
+    form: dnsdbrm --commit [[HOSTNAME]] --oob-only
 
   - trigger: ":dns"
     label: "Remove DNS (Production)"
     form: dnsdbrm --commit [[HOSTNAME]]
+
+  - trigger: ":dns"
+    label: "Remove DNS (OOB) (from file)"
+    form: dnsdbrm --file [[FILENAME]] --commit --oob-only
+
+  - trigger: ":dns"
+    label: "Remove DNS (Production) (from file)"
+    form: dnsdbrm --file [[FILENAME]] --commit
+
+  - trigger: ":dns"
+    label: "Query DNSDB"
+    form: dnsdbq [[HOSTNAME]]
+
+  - trigger: ":dns"
+    label: "Query DNSDB (from file)"
+    form: dnsdbq --file [[FILENAME]]
   # }}}
 
-  - trigger: ":sel"
-    label: "Clear SEL log"
-    replace: sudo ipmitool sel clear
+  - trigger: ":ipmi"
+    label: "Check Sensors"
+    replace: sudo ipmitool sdr elist
+
+  - trigger: ":ipmi"
+    label: "Check Chassis Status"
+    replace: sudo ipmitool chassis status
+
+  - trigger: ":ipmi"
+    label: "Check SEL log"
+    replace: sudo ipmitool sel elist | tail -50
+
+  - trigger: ":ipmi"
+    label: "Check LAN/Network Info"
+    replace: sudo ipmitool lan print
+
+  - trigger: ":ipmi"
+    label: "Reset BMC"
+    replace: sudo ipmitool mc reset cold
 
   - trigger: ":sel"
     label: "REALLY Clear SEL log"
@@ -274,6 +310,22 @@ matches:
             - "2"
 
   # }}}
+
+  - trigger: ":sheets"
+    label: "Belmont Sheet"
+    replace: "https://docs.google.com/spreadsheets/d/1ZwJteWPhyicdNFaWg1EECvTGFMDckrCZsDbh4yS6Ip8"
+
+  - trigger: ":sheets"
+    label: "Retire list sheet"
+    replace: "https://docs.google.com/spreadsheets/d/18CryGNIa5KhBkxjIeYwDauVmCOlh0Wi19kd1mq4rgew"
+
+  - trigger: ":sheets"
+    label: "Weekly meeting notes sheet"
+    replace: "https://docs.google.com/spreadsheets/d/1Yeh43uN6nBkkzoNmMK4IAV4O1r44hajcN2R3jcNggAk"
+
+  - trigger: ":sheets"
+    label: "Disktracker sheet"
+    replace: "https://docs.google.com/spreadsheets/d/1GqDjuE29K5ZENC2-WDn1s8OPlSp0trt_LNsS_2WgY10/"
 
   # DEBUG
   - trigger: ":hello"
