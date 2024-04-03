@@ -66,21 +66,28 @@ matches:
   - trigger: ":retire"
     label: "Create a pallet file for ytags"
     form: vi "pallet-[[number]]-$(date --iso-8601)".txt
+  # }}}
 
   # date
   # echo "${USER}-SUBINVENTORY-TRANSFER-$(date +'%Y-%m-%d-%H-%M')"
-  - trigger: ":retire"
+  - trigger: ":ims"
     label: "Generate Batch name"
-    replace: "{{output}}"
+    replace: "cmcshane-{{action.action}}-{{date}}"
     vars:
-      - name: output
-        type: script
+      - name: date
+        type: date
         params:
-          args:
-            - bash
-            - "-c"
-            - "echo \"${USER}-SUBINVENTORY-TRANSFER-$(date +'%Y-%m-%d-%H-%M')\""
-  # }}}
+          format: "%Y-%m-%d-%H-%M"
+      - name: action
+        type: form
+        params:
+          layout: "[[action]]"
+          fields:
+            action:
+              type: list
+              values:
+                - SUBINVENTORY-TRANSFER
+                - PLACE-IN-SERVICE
 
   - trigger: ":oor"
     label: "Generic OOR request template"
@@ -326,6 +333,10 @@ matches:
   - trigger: ":sheets"
     label: "Disktracker sheet"
     replace: "https://docs.google.com/spreadsheets/d/1GqDjuE29K5ZENC2-WDn1s8OPlSp0trt_LNsS_2WgY10/"
+
+  - trigger: ":links"
+    label: "IMS"
+    replace: "https://erpprd.fin.ouryahoo.com:8000/OA_HTML/OA.jsp?OAFunc=OAHOMEPAGE"
 
   # DEBUG
   - trigger: ":hello"
