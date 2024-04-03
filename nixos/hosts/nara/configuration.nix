@@ -84,8 +84,6 @@
     arp-scan
     bitwarden-cli
     bspwm
-    chromium
-    csvkit
     dunst
     editorconfig-core-c
     feh
@@ -145,6 +143,10 @@
     rustup
     gnumake
     watchexec
+    gimp
+    gitui
+    ripgrep
+    rclone
   ];
 
   fonts.packages = with pkgs; [
@@ -158,6 +160,9 @@
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
+    };
+    dconf = {
+      enable = true;
     };
   };
 

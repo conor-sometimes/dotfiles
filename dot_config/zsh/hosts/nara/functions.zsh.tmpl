@@ -38,7 +38,3 @@ ta() {
     task add +$1 $2
   fi
 }
-
-nvim_or_chezmoi_edit() {
-  chezmoi edit "$1" || nvim "$1"
-}

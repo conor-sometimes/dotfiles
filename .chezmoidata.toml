@@ -34,9 +34,9 @@ file_encryption_method = "old"
 
     [hosts.macbook.ssh]
       [hosts.macbook.ssh.personal]
-      public = "~/.ssh/keys/macbook/macbook.pub"
-      private = "~/.ssh/keys/macbook/macbook"
+        public = "~/.ssh/keys/macbook/macbook.pub"
+        private = "~/.ssh/keys/macbook/macbook"
 
       [hosts.macbook.ssh.work]
-      public = "~/.ssh/keys/work/work.pub"
-      private = "~/.ssh/keys/work/work"
+        public = "~/.ssh/keys/work/work.pub"
+        private = "~/.ssh/keys/work/work"

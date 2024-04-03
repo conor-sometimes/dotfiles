@@ -21,7 +21,6 @@ $PACKAGES = @(
     'DuongDieuPhap.ImageGlass'
     'GIMP.GIMP'
     'Git.Git'
-    'Google.Drive'
     'KeePassXCTeam.KeePassXC'
     'Klocman.BulkCrapUninstaller'
     'Microsoft.PowerShell'

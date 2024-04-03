@@ -53,7 +53,6 @@ let g:ale_rust_analyzer_config = { 'checkOnSave': { 'command': 'clippy', 'enable
 let g:ale_powershell_powershell_executable = '/usr/local/bin/pwsh'
 
 " Keybinds
-nnoremap <silent> <F3> :call ToggleLocationList()<cr>
 nmap <silent> <C-j> <Plug>(ale_previous_wrap)
 nmap <silent> <C-k> <Plug>(ale_next_wrap)
 " >>>
@@ -69,6 +68,10 @@ let g:deoplete#enable_at_startup = 1
 " hop.nvim <<<
 nmap <leader>o :HopWord<CR>
 nmap <leader>s :HopLine<CR>
+
+lua << EOF
+require("hop").setup()
+EOF
 " >>>
 
 " gruvbox <<<
@@ -110,7 +113,7 @@ let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<c-Right>' " TODO: make me more ergonomic, Update vim.md when you change this
 let g:UltiSnipsJumpBackwardTrigger='<c-Left>'
 
-let g:snips_author = 'dind#7958'
+let g:snips_author = 'Conor McShane'
 " >>>
 
 " gitgutter <<<
@@ -213,12 +216,6 @@ nnoremap <space>gs :Git<CR>
 nnoremap <space>gc :Git commit<CR><CR>
 nnoremap <space>gp :Git push<CR><CR>
 nnoremap <space>gd :Git diff<CR><CR>
-" >>>
-
-" hop <<<
-lua << EOF
-require("hop").setup()
-EOF
 " >>>
 
 " vimtex <<<
