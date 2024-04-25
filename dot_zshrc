@@ -59,29 +59,6 @@ if [ "$HOST" = "PY60HY3QW3" ]; then
   source "$HOME/.iterm2_shell_integration.zsh"
 fi
 
-local REPOS=(
-$HOME/projects/personal/cv
-$HOME/projects/personal/health
-$HOME/projects/personal/payload
-$HOME/projects/personal/payload-example-package
-$HOME/wiki
-$HOME/projects/work/ems-rust
-$HOME/projects/work/scripts
-$HOME/projects/libs/conor-lib
-$HOME/projects/libs/equinix-lib
-$HOME/.local/share/chezmoi
-)
-
-for REPO in "${REPOS[@]}"; do
-	if [[ -d "$REPO/.git" ]]; then
-		if [[ $(git -C "$REPO" status --porcelain) ]]; then
-			echo "You have unpushed changes in $REPO"
-		fi
-	else
-		echo "$REPO is not a Git repository"
-	fi
-done
-
 # export BW_SESSION=$(bw {login,unlock} --raw)
 
 #zprof

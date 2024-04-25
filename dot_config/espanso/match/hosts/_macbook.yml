@@ -94,7 +94,7 @@ matches:
     replace: |
       Hi Team!
       Working on {{oor.ticket}}
-      Can this host be taken OOR to {{oor.issue}}
+      Can this host be taken OOR to http://yo/sn/{{oor.issue}}
       {{oor.hostname}}
       Thanks!
     vars:
@@ -297,6 +297,16 @@ matches:
     label: "Check CPU for errors, this will take 10 minutes, grab a coffee"
     replace: stress-ng --cpu 0 --verify --verbose --cpu-method all --tz -t 10m
 
+  - trigger: ":filer"
+    label: "Return Label Request"
+    form: |
+      Hello Ravi,
+
+      We're currently missing a return label for a disk. Could you please assist us with this?
+      Order number: [[order]]
+
+      Thank you in advance!
+
   # Scripts {{{
   - trigger: ":pyscript"
     replace: "{{output}}\n{{gamers}}"
@@ -315,7 +325,6 @@ matches:
             - bash
             - "%CONFIG%/scripts/test.sh"
             - "2"
-
   # }}}
 
   - trigger: ":sheets"
@@ -332,11 +341,23 @@ matches:
 
   - trigger: ":sheets"
     label: "Disktracker sheet"
-    replace: "https://docs.google.com/spreadsheets/d/1GqDjuE29K5ZENC2-WDn1s8OPlSp0trt_LNsS_2WgY10/"
+    replace: "https://docs.google.com/spreadsheets/d/1GqDjuE29K5ZENC2-WDn1s8OPlSp0trt_LNsS_2WgY10"
+
+  - trigger: ":sheets"
+    label: "OKR's"
+    replace: "https://docs.google.com/spreadsheets/d/1_L4cZuDhcuvJSUHgHIlRE5R-QUHET5anQI6ol9VdYTc"
 
   - trigger: ":links"
     label: "IMS"
     replace: "https://erpprd.fin.ouryahoo.com:8000/OA_HTML/OA.jsp?OAFunc=OAHOMEPAGE"
+
+  - trigger: ":links"
+    label: "Opsdb"
+    replace: "https://opsdb.corp.yahoo.com/opsdb/"
+
+  - trigger: ":links"
+    label: "Ybiip"
+    replace: "http://ybiipui.corp.yahoo.com/"
 
   # DEBUG
   - trigger: ":hello"
