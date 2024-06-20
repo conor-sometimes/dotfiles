@@ -1,4 +1,4 @@
-{{- if eq .chezmoi.hostname .hosts.desktop.hostname -}}
+{{ if eq .chezmoi.hostname .hosts.desktop.hostname -}}
 {{- keepassxcAttribute .hosts.desktop.ssh.github.db_path "public" -}}
 {{- else if eq .chezmoi.hostname .hosts.server.hostname -}}
 {{- keepassxcAttribute .hosts.server.ssh.github.db_path "public" -}}
@@ -6,4 +6,4 @@
 {{- keepassxcAttribute .hosts.laptop.ssh.github.db_path "public" -}}
 {{- else if eq .chezmoi.hostname .hosts.handheld.hostname -}}
 {{- keepassxcAttribute .hosts.handheld.ssh.github.db_path "public" -}}
-{{- end -}}
+{{- end }}
