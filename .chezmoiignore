@@ -6,21 +6,13 @@ provision/
 
 # if we're not on nara (desktop), ignore the following files/dirs
 {{ if not (eq .chezmoi.hostname .hosts.desktop.hostname) }}
-.xinitrc
 .mozilla
-.config/alacritty
-.config/bspwm
-.config/dunst
 .config/gtk-2.0
 .config/gtk-3.0
 .config/mimeapps.list
 .config/mpv
 .config/ncmpcpp
-.config/polybar
-.config/redshift
 .config/restic
-.config/rofi
-.config/sxhkd
 .config/zathura
 {{ end }}
 

@@ -37,21 +37,6 @@
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 
   services = {
-    # Enable the X11 windowing system.
-    xserver = {
-      enable = true;
-      autorun = false;
-      displayManager.startx.enable = true;
-
-      # Configure keymap in X11
-      xkb = {
-        options = "eurosign:e,caps:escape";
-        layout = "gb";
-      };
-
-      videoDrivers = ["nvidia"];
-      };
-
       pcscd = {
         enable = true;
       };
@@ -79,15 +64,10 @@
 
   environment.systemPackages = with pkgs; [
     age
-    alacritty
-    arc-theme
     arp-scan
     bitwarden-cli
-    bspwm
-    dunst
     editorconfig-core-c
     feh
-    filezilla
     gh
     gnuplot
     go
@@ -95,31 +75,22 @@
     keepassxc
     keychain
     libfaketime
-    lxappearance
-    maim
     miller
     mpv
     nmap
-    nodejs
     ntfs3g
     pam_u2f
     pamixer
     pavucontrol
-    polybar
     ranger
-    redshift
     remind
     restic
-    rofi
     shellcheck
-    slop
     sqlite
     sqlitebrowser
-    sxhkd
     firefox
     thunderbird
     tree-sitter
-    xclip
     yt-dlp
     yubikey-agent
     yubikey-manager
@@ -132,7 +103,6 @@
     tectonic
     just
     poppler_utils
-    zathura
     racket
     gcc
     hyperfine
@@ -143,10 +113,14 @@
     rustup
     gnumake
     watchexec
-    gimp
     gitui
     ripgrep
     rclone
+    kitty
+    wdisplays
+    wofi
+    hyprpaper
+    kickoff
   ];
 
   fonts.packages = with pkgs; [
@@ -162,6 +136,10 @@
       enableSSHSupport = true;
     };
     dconf = {
+      enable = true;
+    };
+
+    hyprland = {
       enable = true;
     };
   };

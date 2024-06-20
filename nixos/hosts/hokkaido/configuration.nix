@@ -36,22 +36,12 @@
     ports = [ 3663 ];
 
     settings = {
-      permitRootLogin = "no";
+      PermitRootLogin = "no";
       PasswordAuthentication = false;
     };
   };
 
   system = {
-    autoUpgrade = {
-      enable = true;
-      allowReboot = true;
-      operation = "boot";
-      autoUpgrade.flags = [
-        "-I"
-        "/home/conor/nixos/hosts/hokkaido/configuration.nix"
-      ];
-    };
-
     stateVersion = "23.05";
   };
 }
