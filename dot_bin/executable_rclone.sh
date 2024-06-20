@@ -12,9 +12,9 @@ set -o pipefail
 
 case $1 in
   "pull")
-    rclone sync OneDrive: ~/OneDrive
+    rclone sync -v Onedrive: ~/Onedrive
     ;;
   "push")
-    rclone sync ~/OneDrive OneDrive:
+    rclone sync -v ~/Onedrive Onedrive:
     ;;
 esac
