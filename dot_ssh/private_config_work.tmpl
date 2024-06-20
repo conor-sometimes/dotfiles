@@ -1,0 +1,38 @@
+host site.ops.corp.yahoo.com
+	ForwardAgent yes
+	ServerAliveInterval 180
+
+host site1.ops.corp.ne1.yahoo.com
+	ForwardAgent yes
+	ServerAliveInterval 180
+
+host site2.ops.corp.ne1.yahoo.com
+	ForwardAgent yes
+	ServerAliveInterval 180
+
+host tool*.ops.*.yahoo.com
+	ForwardAgent yes
+
+host proxy*.ops.*.yahoo.com
+	ForwardAgent yes
+
+host mrtg*.ops.*.yahoo.com
+	ForwardAgent yes
+
+host tftp*.ops.*.yahoo.com
+	ForwardAgent yes
+
+host *.red.ygrid.yahoo.com
+	ForwardAgent yes
+
+host *
+	ForwardAgent no
+	ServerAliveInterval 180
+
+host ems
+	HostName 10.50.7.160
+	ForwardAgent yes
+
+Host git.ouryahoo.com
+	IdentityFile CREATE_ME
+	IdentitiesOnly yes

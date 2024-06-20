@@ -88,6 +88,7 @@ matches:
               values:
                 - SUBINVENTORY-TRANSFER
                 - PLACE-IN-SERVICE
+                - RECYCLE
 
   - trigger: ":oor"
     label: "Generic OOR request template"
@@ -184,6 +185,10 @@ matches:
   - trigger: ":dimm"
     label: "Get dimm speed, serials and location"
     replace: sudo hwscan -raw | jq '.memory[] | [.serial, .speed_mhz, .asset_tag]'
+
+  - trigger: ":dimm"
+    label: "confluence link for decoding edac-util"
+    replace: "https://ouryahoo.atlassian.net/wiki/spaces/SITEOPS/pages/243964685/EDAC+DIMM+Mapping"
   # }}}
 
   # ticket {{{
@@ -358,6 +363,8 @@ matches:
   - trigger: ":links"
     label: "Ybiip"
     replace: "http://ybiipui.corp.yahoo.com/"
+
+
 
   # DEBUG
   - trigger: ":hello"

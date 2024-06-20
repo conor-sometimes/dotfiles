@@ -43,7 +43,7 @@ for FOLDER in "$HOME"/repos/* ; do
   cd "$FOLDER" && git pull
 done
 
-if check_hostname "{{ .hosts.macbook.hostname }}"; then
+if check_hostname "{{ .hosts.laptop.hostname }}"; then
   brew update
   brew upgrade
 fi

@@ -5,13 +5,6 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "wheel" ];
-    openssh = {
-      authorizedKeys = {
-        keys = [
-          "sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb20AAAAIbmlzdHAyNTYAAABBBD1w2lkaFiv+Ze52xHGhpZjgxyK5yA7ZbqRGgHH2iZN9m0kedltPjTj8YDWheyDbuSEtl1sEe3ElbrHF3qkKoVcAAAAEc3NoOg== conor@nara"
-        ];
-      };
-    };
   };
 
   time = {
@@ -25,21 +18,20 @@
   environment = {
     systemPackages = with pkgs; [
       git
-        btop
-        htop
-        jq
-        bc
-        chezmoi
-        curl
-        ncdu
-        neovim
-        ranger
-        wget
-        lazygit
-        zsh
-        zsh-completions
-        pinentry-curses
-        ssh-audit
+      btop
+      htop
+      jq
+      bc
+      chezmoi
+      curl
+      ncdu
+      neovim
+      ranger
+      wget
+      zsh
+      zsh-completions
+      pinentry-curses
+      ssh-audit
     ];
 
     variables = {

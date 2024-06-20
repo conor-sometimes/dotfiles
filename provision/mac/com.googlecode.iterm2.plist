@@ -874,6 +874,8 @@
 				<dict>
 					<key>action</key>
 					<string>SendTextTrigger</string>
+					<key>disabled</key>
+					<true/>
 					<key>parameter</key>
 					<string>123456\n</string>
 					<key>partial</key>
@@ -883,13 +885,15 @@
 				</dict>
 				<dict>
 					<key>action</key>
-					<string>BounceTrigger</string>
+					<string>SendTextTrigger</string>
+					<key>disabled</key>
+					<true/>
 					<key>parameter</key>
-					<integer>0</integer>
+					<string>\n</string>
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
-					<string>april</string>
+					<string>Press Enter to start refresh of your Athenz Certificate</string>
 				</dict>
 			</array>
 			<key>Triggers Use Interpolated Strings</key>
@@ -955,41 +959,6 @@
 	<true/>
 	<key>ShowFullScreenTabBar</key>
 	<true/>
-	<key>Snippets</key>
-	<array>
-		<dict>
-			<key>guid</key>
-			<string>1EFC813C-3955-4132-8393-D69D62413088</string>
-			<key>title</key>
-			<string>belmont opsfind spreadsheet</string>
-			<key>value</key>
-			<string>opsFind -q -f "ytag sku_name serialno model" ytags
-
-</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>guid</key>
-			<string>E1C2D773-9143-4A24-A4BA-CAE1768EA78C</string>
-			<key>title</key>
-			<string>belmont opsfind_set</string>
-			<key>value</key>
-			<string>/home/rcarroll/scripts/opsfind_set YTAG_FILE status 'destroyed'</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>guid</key>
-			<string>6ECF6CFF-B309-4AF5-87C9-32EC3F3CE78A</string>
-			<key>title</key>
-			<string>belmont nuke_parent</string>
-			<key>value</key>
-			<string>/home/rcarroll/scripts/nuke_parent YTAG_FILE</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-	</array>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>ToolbeltTools</key>

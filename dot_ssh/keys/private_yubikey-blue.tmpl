@@ -1,0 +1,5 @@
+{{- if eq .chezmoi.hostname .hosts.desktop.hostname -}}
+{{- keepassxcAttribute .hosts.desktop.ssh.yubikey.blue.db_path "private" -}}
+{{- else if eq .chezmoi.hostname .hosts.laptop.hostname -}}
+{{- keepassxcAttribute .hosts.laptop.ssh.yubikey.blue.db_path "private" -}}
+{{- end -}}

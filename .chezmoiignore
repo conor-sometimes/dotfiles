@@ -1,3 +1,9 @@
+# Files we want to ignore globally
+README.md
+nixos/
+info.md
+provision/
+
 # if we're not on nara (desktop), ignore the following files/dirs
 {{ if not (eq .chezmoi.hostname .hosts.desktop.hostname) }}
 .xinitrc
@@ -31,35 +37,36 @@
 .config/espanso
 {{ end }}
 
-# If we're not on $HOSTNAME, then we don't create the following dirs
-#
-# Desktop (Linux)
+# If we're not on $HOSTNAME, then we don't create the following dirs/files
+
+# We only use the yubikeys on the desktop and laptop
+{{ if not (or (eq .chezmoi.hostname .hosts.desktop.hostname) (eq .chezmoi.hostname .hosts.laptop.hostname)) }}
+.ssh/hosts/keys/yubikey-blue
+.ssh/hosts/keys/yubikey-blue.pub
+.ssh/hosts/keys/yubikey-black
+.ssh/hosts/keys/yubikey-black.pub
+{{ end }}
+
+# desktop
 {{ if not (eq .chezmoi.hostname .hosts.desktop.hostname) }}
-.ssh/keys/private/nara
 .config/Yubico
+{{end}}
+
+# We need to be able to access the server and handheld remotely
+{{ if not (or (eq .chezmoi.hostname .hosts.server.hostname) (eq .chezmoi.hostname .hosts.handheld.hostname)) }}
+.ssh/authorized_keys
 {{ end }}
 
-# Server
+# server
 {{ if not (eq .chezmoi.hostname .hosts.server.hostname) }}
-.ssh/keys/private/server
 {{ end }}
 
-# Macbook
-{{ if not (eq .chezmoi.hostname .hosts.macbook.hostname) }}
-.ssh/keys/private/macbook
-.ssh/keys/private/macbook-work
+# laptop
+{{ if not (eq .chezmoi.hostname .hosts.laptop.hostname) }}
+.ssh/config/work
 {{ end }}
 
-# Migration to keepassxc
-# Probably add the following files too...
-# .ssh/config (has work related stuff that probably shouldn't be in a public repo)
-{{ if eq .file_encryption_method "old" }}
-.ssh/id_rsa
-.ssh/id_rsa.pub
+# handheld
+# We don't have any specific files yet...
+{{ if not (eq .chezmoi.hostname .hosts.handheld.hostname) }}
 {{ end }}
-
-README.md
-keys.txt
-provision/
-
-key.txt.age

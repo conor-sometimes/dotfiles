@@ -3,7 +3,7 @@
 [user]
 	name = {{ .name }}
 	email = {{ .email }}
-	signingkey = {{ .hosts.desktop.gpg_id }}
+	signingkey = {{ .gpg.id }}
 
 [core]
 	editor = nvim
@@ -40,9 +40,6 @@
 
 [interactive]
 	diffFilter = delta --color-only
-
-[includeIf "gitdir:~/work/"]
-	path = ~/.config/git/config-work
 
 [init]
 	defaultBranch = main

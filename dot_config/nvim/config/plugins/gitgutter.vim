@@ -1,15 +1,9 @@
-" folding.vim
+" gitgutter.vim
 "
 " Copyright (C) {{ .copyright_year }} Conor McShane <conor dot d dot mcshane at outlook dot com>
 "
 " Distributed under terms of the GPLv3 license.
 "
 
-set foldmethod=marker
-
-" (o)pen
-nnoremap <leader>f za
-
-"set foldmethod=expr
-"set foldexpr=nvim_treesitter#foldexpr()
-"set foldlevel=1
+set signcolumn=yes
+let g:gitgutter_map_keys = 0

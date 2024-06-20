@@ -6,9 +6,10 @@
 #
 # Distributed under terms of the GPLv3 license.
 
-export PATH="/opt/homebrew/bin"        # homebrew
+# This needs to be before homebrew's path because we use a script to hook homebrew
+export PATH="$HOME/.bin"               # dotfile scripts
+export PATH="$PATH:/opt/homebrew/bin"  # homebrew
 export PATH="$PATH:/opt/homebrew/sbin" # homebrew sbin
-export PATH="$PATH:$HOME/.bin"         # dotfile scripts
 export PATH="$PATH:$HOME/.cargo/bin"   # cargo
 export PATH="$PATH:$HOME/go/bin"       # go
 export PATH="$PATH:$HOME/.local/bin"   # pip
@@ -17,3 +18,8 @@ export PATH="$PATH:/usr/bin"           # usr bin
 export PATH="$PATH:/sbin"              # mac bin
 export PATH="$PATH:/usr/sbin"          # usr sbin
 export PATH="$PATH:/usr/local/bin"     # usr local bin
+
+# Add all /Applications/*/Contents/MacOS/ to the PATH
+for DIR in /Applications/*/Contents/MacOS/; do
+  export PATH="$PATH:$DIR"
+done

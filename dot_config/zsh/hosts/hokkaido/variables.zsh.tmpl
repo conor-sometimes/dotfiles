@@ -9,13 +9,13 @@
 export PROMPT_COLOR="red"
 
 # $HOME/wiki/programs/gpg.wiki
-export GPG_KEY={{ .hosts.desktop.gpg_id }}
+export GPG_KEY={{ .gpg.id }}
 
 # this stops gpg from yelling at me while in ssh
 export GPG_TTY="$(tty)"
 
 # $HOME/wiki/programs/ssh.wiki
-export SSH_KEY={{ .hosts.server.ssh.public }}
+export SSH_KEY={{ .hosts.generic.ssh.github.public}}
 
 # this also stops tmux from yelling at me when in ssh
 export TERM="screen-256color"

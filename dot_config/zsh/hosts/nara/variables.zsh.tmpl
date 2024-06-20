@@ -9,10 +9,10 @@
 export PROMPT_COLOR="green"
 
 # $HOME/wiki/programs/gpg.wiki
-export GPG_KEY={{ .hosts.desktop.gpg_id }}
+export GPG_KEY={{ .gpg.id }}
 
 # this stops gpg from yelling at me while in ssh
 export GPG_TTY="$(tty)"
 
 # $HOME/wiki/programs/ssh.wiki
-export SSH_KEY={{ .hosts.desktop.ssh.public }}
+export SSH_KEY={{ .hosts.generic.ssh.github.public}}

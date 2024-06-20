@@ -30,16 +30,3 @@ git add -A
 git commit -s -m "Witty and hilarious commit message"
 git push -u origin main
 ```
-
-## Provisioning
-### Windows
-```
-# installs winget, applications and wsl
-irm 'https://raw.githubusercontent.com/conor-sometimes/dotfiles/main/provision/install-packages-windows.ps1' | iex
-```
-
-### Linux
-```
-# installs chezmoi and other programs
-sh -c "$(curl -fsS "https://raw.githubusercontent.com/conor-sometimes/dotfiles/main/provision/install-packages-linux.sh")"
-```
