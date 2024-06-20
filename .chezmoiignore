@@ -41,15 +41,17 @@ provision/
 
 # We only use the yubikeys on the desktop and laptop
 {{ if not (or (eq .chezmoi.hostname .hosts.desktop.hostname) (eq .chezmoi.hostname .hosts.laptop.hostname)) }}
-.ssh/hosts/keys/yubikey-blue
-.ssh/hosts/keys/yubikey-blue.pub
-.ssh/hosts/keys/yubikey-black
-.ssh/hosts/keys/yubikey-black.pub
+.ssh/keys/yubikey-blue
+.ssh/keys/yubikey-blue.pub
+.ssh/keys/yubikey-black
+.ssh/keys/yubikey-black.pub
 {{ end }}
 
 # desktop
 {{ if not (eq .chezmoi.hostname .hosts.desktop.hostname) }}
 .config/Yubico
+.ssh/keys/yubikey-nano
+.ssh/keys/yubikey-nano.pub
 {{end}}
 
 # We need to be able to access the server and handheld remotely
