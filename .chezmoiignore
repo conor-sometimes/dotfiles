@@ -3,9 +3,10 @@ README.md
 nixos/
 info.md
 provision/
+info/
 
-# if we're not on nara (desktop), ignore the following files/dirs
-{{ if not (eq .chezmoi.hostname .hosts.desktop.hostname) }}
+# if we're not on desktop (linux), ignore the following files/dirs
+{{ if not (eq .chezmoi.hostname .hosts.desktop.linux.hostname) }}
 .mozilla
 .config/gtk-2.0
 .config/gtk-3.0
@@ -23,16 +24,21 @@ provision/
 
 # if we are not on mac or linux (generic) then we ignore the following dirs
 {{ if not (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) }}
-.bin
-.config/git
-.config/ranger
-.config/espanso
+.bin/
+.config/
+.local/
+.mozilla/
+.ssh/
+.gnupg/
+.editorconfig
+.rtorrent.rc
+.zshrc
 {{ end }}
 
 # If we're not on $HOSTNAME, then we don't create the following dirs/files
 
 # We only use the yubikeys on the desktop and laptop
-{{ if not (or (eq .chezmoi.hostname .hosts.desktop.hostname) (eq .chezmoi.hostname .hosts.laptop.hostname)) }}
+{{ if not (or (eq .chezmoi.hostname .hosts.desktop.linux.hostname) (eq .chezmoi.hostname .hosts.laptop.hostname)) }}
 .ssh/keys/yubikey-blue
 .ssh/keys/yubikey-blue.pub
 .ssh/keys/yubikey-black
@@ -40,7 +46,7 @@ provision/
 {{ end }}
 
 # desktop
-{{ if not (eq .chezmoi.hostname .hosts.desktop.hostname) }}
+{{ if not (eq .chezmoi.hostname .hosts.desktop.linux.hostname) }}
 .config/Yubico
 .ssh/keys/yubikey-nano
 .ssh/keys/yubikey-nano.pub
@@ -58,9 +64,14 @@ provision/
 # laptop
 {{ if not (eq .chezmoi.hostname .hosts.laptop.hostname) }}
 .ssh/config/work
+Library/Thunderbird
 {{ end }}
 
 # handheld
 # We don't have any specific files yet...
 {{ if not (eq .chezmoi.hostname .hosts.handheld.hostname) }}
+{{ end }}
+
+{{ if not (eq .chezmoi.os "windows") }}
+AppData/
 {{ end }}

@@ -1,9 +1,1 @@
-{{ if eq .chezmoi.hostname .hosts.desktop.hostname -}}
-{{- keepassxcAttribute .hosts.desktop.ssh.github.db_path "private" -}}
-{{- else if eq .chezmoi.hostname .hosts.server.hostname -}}
-{{- keepassxcAttribute .hosts.server.ssh.github.db_path "private" -}}
-{{- else if eq .chezmoi.hostname .hosts.laptop.hostname -}}
-{{- keepassxcAttribute .hosts.laptop.ssh.github.db_path "private" -}}
-{{- else if eq .chezmoi.hostname .hosts.handheld.hostname}}
-{{- keepassxcAttribute .hosts.handheld.ssh.github.db_path "private" -}}
-{{- end }}
+{{ keepassxcAttribute .hosts.generic.ssh.github.db_path "private" }}

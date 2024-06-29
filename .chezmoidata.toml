@@ -10,46 +10,44 @@ copyright_year = 2024
   [hosts.generic]
     [hosts.generic.ssh]
       [hosts.generic.ssh.github]
+        db_path = "keys/ssh/generic/github"
         public = "~/.ssh/keys/github.pub"
         private = "~/.ssh/keys/github"
 
   [hosts.desktop]
-    hostname = "nara"
+    [hosts.desktop.windows]
+      hostname = "TBD"
+      [hosts.desktop.windows.wsl]
+        hostname = "TBD"
+        [hosts.desktop.windows.wsl.ssh]
+          [hosts.desktop.windows.wsl.ssh.keyname]
 
-    monitor_240hz = "DP-0"
-    monitor_144hz = "DP-2"
 
-    [hosts.desktop.ssh]
-      [hosts.desktop.ssh.github]
-        db_path = "keys/ssh/desktop/github"
-      [hosts.desktop.ssh.yubikey]
-        [hosts.desktop.ssh.yubikey.blue]
-          db_path = "keys/ssh/desktop/yubikey-blue"
-          public = "~/.ssh/keys/yubikey-blue.pub"
-          private = "~/.ssh/keys/yubikey-blue"
-        [hosts.desktop.ssh.yubikey.black]
-          db_path = "keys/ssh/desktop/yubikey-black"
-          public = "~/.ssh/keys/yubikey-black.pub"
-          private = "~/.ssh/keys/yubikey-black"
-        [hosts.desktop.ssh.yubikey.nano]
-          db_path = "keys/ssh/desktop/yubikey-nano"
-          public = "~/.ssh/keys/yubikey-nano.pub"
-          private = "~/.ssh/keys/yubikey-nano"
+    [hosts.desktop.linux]
+      hostname = "nara"
 
-  [hosts.server]
-    hostname = "hokkaido"
-    ip = "192.168.0.123"
+      monitor_240hz = "DP-0"
+      monitor_144hz = "DP-2"
 
-    [hosts.server.ssh]
-      [hosts.server.ssh.github]
-        db_path = "keys/ssh/server/github"
+      [hosts.desktop.ssh]
+        [hosts.desktop.ssh.yubikey]
+          [hosts.desktop.ssh.yubikey.blue]
+            db_path = "keys/ssh/desktop/linux/yubikey-blue"
+            public = "~/.ssh/keys/yubikey-blue.pub"
+            private = "~/.ssh/keys/yubikey-blue"
+          [hosts.desktop.ssh.yubikey.black]
+            db_path = "keys/ssh/desktop/linux/yubikey-black"
+            public = "~/.ssh/keys/yubikey-black.pub"
+            private = "~/.ssh/keys/yubikey-black"
+          [hosts.desktop.ssh.yubikey.nano]
+            db_path = "keys/ssh/desktop/linux/yubikey-nano"
+            public = "~/.ssh/keys/yubikey-nano.pub"
+            private = "~/.ssh/keys/yubikey-nano"
 
   [hosts.laptop]
     hostname = "PY60HY3QW3"
 
     [hosts.laptop.ssh]
-      [hosts.laptop.ssh.github]
-        db_path = "keys/ssh/laptop/github"
       [hosts.laptop.ssh.yubikey]
         [hosts.laptop.ssh.yubikey.blue]
           db_path = "keys/ssh/laptop/yubikey-blue"
@@ -64,6 +62,6 @@ copyright_year = 2024
     hostname = "deck"
     ip = "192.168.0.23"
 
-    [hosts.handheld.ssh]
-      [hosts.handheld.ssh.github]
-        db_path = "keys/ssh/handheld/github"
+  [hosts.server]
+    hostname = "hokkaido"
+    ip = "192.168.0.123"

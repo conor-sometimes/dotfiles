@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+#
+# nixos.zsh
+#
+# Copyright (C) {{ .copyright_year }} Conor McShane <conor dot d dot mcshane at outlook dot com>
+#
+# Distributed under terms of the GPLv3 license.
+
+export PATH="$HOME/.bin"                       # my dotfile scripts
+export PATH="$PATH:$HOME/.cargo/bin"           # cargo
+export PATH="$PATH:$HOME/.local/bin"           # pip
+export PATH="$PATH:/usr/bin"                   # usr bin
+export PATH="$PATH:/run/wrappers/bin"          # nixos wrappers
+export PATH="$PATH:/run/current-system/sw/bin" # nixos bin

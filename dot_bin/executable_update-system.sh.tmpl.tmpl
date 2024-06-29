@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# vim: set ft=sh:
 #
 # update-system.sh
 #
@@ -51,7 +52,7 @@ fi
 #clean.sh
 
 # This only applies to main desktop
-if check_hostname "{{ .hosts.desktop.hostname }}"; then
+if check_hostname "{{ .hosts.desktop.linux.hostname }}"; then
   # unmounts mountpoints and closes all vaults
   backup-preparation.sh
 

@@ -1,5 +1,5 @@
-{{- if eq .chezmoi.hostname .hosts.desktop.hostname -}}
-{{- keepassxcAttribute .hosts.desktop.ssh.yubikey.black.db_path "public" -}}
+{{- if eq .chezmoi.hostname .hosts.desktop.linux.hostname -}}
+{{- keepassxcAttribute .hosts.desktop.linux.ssh.yubikey.black.db_path "public" -}}
 {{- else if eq .chezmoi.hostname .hosts.laptop.hostname -}}
 {{- keepassxcAttribute .hosts.laptop.ssh.yubikey.black.db_path "public" -}}
 {{- end -}}

@@ -1,3 +1,5 @@
+# vim: set ft=zsh:
+
 #zmodload zsh/zprof
 
 DEBUG=0
@@ -18,13 +20,21 @@ for CONFIG ($HOME/.config/zsh/*.zsh); do
   source "$CONFIG"
 done
 
-# application specific zsh files
-for APPLICATION ($HOME/.config/zsh/applications/*.zsh); do
-  if [ "$DEBUG" -gt 0 ]; then
-    echo "$APPLICATION"
-  fi
-  source "$APPLICATION"
-done
+# lastly we set our $PATH
+case "$HOST" in
+  "honshu" | "nara" )
+    source "$HOME/.config/zsh/paths/nixos.zsh"
+    if [ "$DEBUG" -gt 0 ]; then
+      echo "NixOS"
+    fi
+    ;;
+  "PY60HY3QW3" )
+    source "$HOME/.config/zsh/paths/osx.zsh"
+    if [ "$DEBUG" -gt 0 ]; then
+      echo "OSX"
+    fi
+    ;;
+esac
 
 if [ -n "$DISPLAY" ]; then # checks if we're not in a tty
   if [ "$HOST" = "honshu" ]; then
@@ -33,6 +43,7 @@ if [ -n "$DISPLAY" ]; then # checks if we're not in a tty
 
   source "$HOME/.keychain/$HOST-sh-gpg"
 fi
+
 
 # mounts drives
 #if [ "$HOST" = "honshu" ]; then

@@ -72,7 +72,6 @@
     gnuplot
     go
     hyperfine
-    keepassxc
     keychain
     libfaketime
     miller

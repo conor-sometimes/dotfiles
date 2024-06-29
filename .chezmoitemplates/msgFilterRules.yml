@@ -1,0 +1,192 @@
+version: 1.0
+main: "%5BOutlook%5D"
+header:
+  version: "9" # default
+  logging: "no" # default
+filters:
+  -
+    name: Steam (Activations)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Mark read
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Services/Steam/Activations"
+    condition:
+      operator: AND # default (OR|AND)
+      criteria:
+        - from,is,noreply@steampowered.com
+        - subject,is,Thank you for activating your product on Steam!
+
+  -
+    name: Steam (Community Market/Sold)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Mark read
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Services/Steam/Community Market/Sold"
+    condition:
+      operator: AND # default (OR|AND)
+      criteria:
+        - from,is,noreply@steampowered.com
+        - subject,is,You have sold an item on the Community Market
+
+  -
+    name: Steam (Community Market/Purchased)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Mark read
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Services/Steam/Community Market/Purchased"
+    condition:
+      operator: AND # default (OR|AND)
+      criteria:
+        - from,is,noreply@steampowered.com
+        - subject,is,Thank you for your Community Market purchase
+
+  -
+    name: Patches
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Services/Patch Related"
+    condition:
+      operator: OR # default (OR|AND)
+      criteria:
+        - from,is,info@badgerhoundsupply.com
+        - from,is,unlimitedpatchworks@gmail.com
+        - from,is,info@patch-shop.com
+        - from,is,lewdkingpatches@gmail.com
+        - from,is,info@tacticaloutfitters.net
+        - from,is,fareastern.corp@gmail.com
+        - from,is,FEI CORP
+
+
+  -
+    name: Development (Gitub/Dependabot)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Change priority
+        value: "High"
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Development/Github/Dependabot"
+    condition:
+      operator: OR # default (OR|AND)
+      criteria:
+        - from,is,dependabot[bot]
+
+  -
+    name: Development (Gitub/Security)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Change priority
+        value: "High"
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Development/Github/Security"
+    condition:
+      operator: OR # default (OR|AND)
+      criteria:
+        - subject,contains,A security advisory
+
+  -
+    name: Paypal (Receipts/Paypal)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Mark read
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Receipts/Paypal"
+    condition:
+      operator: AND
+      criteria:
+        - from,is,service@intl.paypal.com
+        - subject,begins with,Receipt for your payment
+
+  -
+    name: Etsy (Receipts/Etsy)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Mark read
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Receipts/Etsy"
+    condition:
+      operator: AND
+      criteria:
+        - from,is,transaction@etsy.com
+        - subject,begins with,Your Etsy Purchase from
+
+  -
+    name: Meta (Receipts/Meta)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Mark read
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Receipts/Meta"
+    condition:
+      operator: AND
+      criteria:
+        - from,is,do_not_reply@email.meta.com
+        - subject,is,Your Meta Quest Store receipt
+
+  -
+    name: Medical (Dental)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Change priority
+        value: "Highest"
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Medical/Dental"
+    condition:
+      operator: OR # default (OR|AND)
+      criteria:
+        - from,is,Tallaght@email.smiles.ie
+
+  -
+    name: Medical (Mental)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Change priority
+        value: "Highest"
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Medical/Mental"
+    condition:
+      operator: OR # default (OR|AND)
+      criteria:
+        - from,is,psychiatry@healthhero.ie
+
+  -
+    name: Japanese (Japanese/WaniKani)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Mark read
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Japanese/WaniKani"
+    condition:
+      operator: OR # default (OR|AND)
+      criteria:
+        - subject,is,Your Lessons and Reviews Update
+
+  -
+    name: Apple (Apple/Find My)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Change priority
+        value: "Highest"
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Apple/Find My"
+    condition:
+      operator: AND
+      criteria:
+        - from,is,noreply@email.apple.com
+        - subject,begins with,A sound was played

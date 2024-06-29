@@ -31,7 +31,7 @@ for key_name in "${key_names[@]}"; do
   echo "/keys/ssh/${key_name}/github"
   cat "${TEMP_DIR}/${key_name}.pub"
 
-  # Until you can edit attributes of an entry in keepassxc-cli, this is basically just guesswork
+  # Until we can edit attributes of an entry in keepassxc-cli, this is basically just guesswork
   # But it's a good mental model for what needs to be done
   # keepassxc-cli edit --attributes "/keys/ssh/desktop/github" --set-attribute "public" --value "$(cat "${TEMP_DIR}/${key_name}.pub")"
   # keepassxc-cli edit --attributes "/keys/ssh/desktop/github" --set-attribute "private" --value "$(cat "${TEMP_DIR}/${key_name}")"

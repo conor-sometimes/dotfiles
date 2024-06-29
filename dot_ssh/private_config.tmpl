@@ -8,27 +8,31 @@ Host github.com
 	HostName github.com
 	IdentityFile {{ .hosts.generic.ssh.github.private }}
 
-# Server can be accessed from both desktop and laptop
+# Accessible via:
+# desktop (linux)
+# laptop
 Host {{ .hosts.server.hostname }}
 	HostName {{ .hosts.server.ip }}
 	User conor
 	Port 3663
-{{- if eq .chezmoi.hostname .hosts.desktop.hostname }}
-	IdentityFile {{ .hosts.desktop.ssh.yubikey.black.private }}
-	IdentityFile {{ .hosts.desktop.ssh.yubikey.blue.private }}
+{{- if eq .chezmoi.hostname .hosts.desktop.linux.hostname }}
+	IdentityFile {{ .hosts.desktop.linux.ssh.yubikey.black.private }}
+	IdentityFile {{ .hosts.desktop.linux.ssh.yubikey.blue.private }}
 {{- else if eq .chezmoi.hostname .hosts.laptop.hostname }}
 	IdentityFile {{ .hosts.laptop.ssh.yubikey.black.private }}
 	IdentityFile {{ .hosts.laptop.ssh.yubikey.blue.private }}
 {{- end }}
 
-# Handheld can be accessed from both desktop and laptop
+# Accessible via:
+# desktop
+# laptop
 Host {{ .hosts.handheld.hostname }}
 	HostName {{ .hosts.handheld.ip }}
 	User deck
 	Port 22
-{{- if eq .chezmoi.hostname .hosts.desktop.hostname }}
-	IdentityFile {{ .hosts.desktop.ssh.yubikey.black.private }}
-	IdentityFile {{ .hosts.desktop.ssh.yubikey.blue.private }}
+{{- if eq .chezmoi.hostname .hosts.desktop.linux.hostname }}
+	IdentityFile {{ .hosts.desktop.linux.ssh.yubikey.black.private }}
+	IdentityFile {{ .hosts.desktop.linux.ssh.yubikey.blue.private }}
 {{- else if eq .chezmoi.hostname .hosts.laptop.hostname }}
 	IdentityFile {{ .hosts.laptop.ssh.yubikey.black.private }}
 	IdentityFile {{ .hosts.laptop.ssh.yubikey.blue.private }}

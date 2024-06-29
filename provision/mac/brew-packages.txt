@@ -30,6 +30,7 @@ hopenpgp-tools
 htop
 hugo
 hyperfine
+infisical/get-cli/infisical
 jq
 jsonnet
 lazygit
@@ -51,10 +52,12 @@ ripgrep
 screen
 shellcheck
 shellharden
+shopify/shopify/ejson
 sl
 syncthing
 task
 tectonic
+texlive
 tmux
 totp-cli
 tree

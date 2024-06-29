@@ -14,11 +14,11 @@ indent_size = 8
 indent_style = space
 indent_size = 4
 
-[*.{zshrc,zsh,sh,txt,yml,nix,conf,wiki}]
+[*.{zsh,sh,txt,yml,nix,conf,wiki}]
 indent_style = space
 indent_size = 2
 
-[*.rc]
+[*.rc,*rc]
 indent_style = space
 indent_size = 2
 

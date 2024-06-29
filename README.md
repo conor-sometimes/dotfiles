@@ -4,7 +4,8 @@
 
 ## Init repo
 ```
-sudo pacman -S chezmoi
+sudo pacman -S chezmoi keepassxc
+
 # Be aware, this will overwrite your own configs
 # Run with `-n` to do a dry run first
 chezmoi -v init https://github.com/conor-sometimes/dotfiles.git

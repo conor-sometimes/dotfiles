@@ -28,7 +28,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    age
+    zellij
   ];
 
   services.openssh = {

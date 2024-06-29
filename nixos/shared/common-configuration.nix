@@ -32,6 +32,9 @@
       zsh-completions
       pinentry-curses
       ssh-audit
+      lazygit
+      keepassxc
+      rclone
     ];
 
     variables = {
