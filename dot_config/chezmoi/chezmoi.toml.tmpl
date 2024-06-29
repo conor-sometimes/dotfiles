@@ -1,0 +1,13 @@
+# ; vim: set ft=toml:
+
+[keepassxc]
+{{- if eq .chezmoi.os "linux" }}
+  {{- if contains (.chezmoi.kernel.osrelease | lower) "microsoft" }}
+    database = "/mnt/c/Users/conor/OneDrive/secrets.kdbx"
+  {{- else }}
+    database = "~/Onedrive/secrets.kdbx"
+  {{- end }}
+{{- else if eq .chezmoi.os "windows" }}
+    database = "C:\Users\conor\OneDrive\secrets.kdbx"
+{{- end }}
+

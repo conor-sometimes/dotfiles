@@ -1,4 +1,0 @@
-# ; vim: set ft=toml:
-
-[keepassxc]
-	database = "~/Onedrive/secrets.kdbx"
