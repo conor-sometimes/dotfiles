@@ -7,11 +7,6 @@ copyright_year = 2024
   id = "E42BCE32C98E0135B8B4CC436FDB78D4953A7D89"
 
 [hosts]
-      [hosts.generic.ssh.github]
-        db_path = "keys/ssh/generic/github"
-        public = "~/.ssh/keys/github.pub"
-        private = "~/.ssh/keys/github"
-
   [hosts.desktop]
     [hosts.desktop.windows]
       hostname = "sendai"
