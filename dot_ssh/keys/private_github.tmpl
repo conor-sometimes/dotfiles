@@ -1,7 +1,7 @@
 {{- if eq .chezmoi.hostname .hosts.desktop.linux.hostname }}
 {{- keepassxcAttribute .hosts.desktop.linux.ssh.github.db_path "private" -}}
 {{- else if (and (eq .chezmoi.os "linux") (eq .chezmoi.hostname .hosts.desktop.windows.wsl.hostname)) }}
-{{ keepassxcAttribute .hosts.desktop.windows.wsl.ssh.github.db_path "private" -}}
+{{- keepassxcAttribute .hosts.desktop.windows.wsl.ssh.github.db_path "private" -}}
 {{- else if eq .chezmoi.hostname .hosts.desktop.windows.hostname }}
 {{- keepassxcAttribute .hosts.desktop.windows.ssh.github.db_path "private" -}}
 {{- else if eq .chezmoi.hostname .hosts.handheld.hostname }}
