@@ -190,3 +190,18 @@ filters:
       criteria:
         - from,is,noreply@email.apple.com
         - subject,begins with,A sound was played
+
+  -
+    name: LinkedIn (Sites/LinkedIn/Invitations)
+    enabled: "yes" # default
+    type: "17"
+    actions:
+      - action: Change priority
+        value: "High"
+      - action: Move to folder
+        value: "imap://conor.d.mcshane%40outlook.com@outlook.office365.com/Sites/LinkedIn/Invitations"
+    condition:
+      operator: AND
+      criteria:
+        - from,is,invitations@linkedin.com
+        - subject,is,I just sent an invitation

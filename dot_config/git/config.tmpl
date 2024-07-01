@@ -1,9 +1,25 @@
 ; vim: set ft=gitconfig:
 
 [user]
-	name = {{ .name }}
+{{- if eq .chezmoi.hostname .hosts.desktop.linux.hostname }}
+	name = {{ .name }} ({{ .hosts.desktop.linux.hostname }})
+{{- else if (and (eq .chezmoi.os "linux") (eq .chezmoi.hostname .hosts.desktop.windows.wsl.hostname)) }}
+	name = {{ .name }} ({{ .hosts.desktop.windows.hostname }}-wsl)
+{{- else if eq .chezmoi.hostname .hosts.desktop.windows.hostname }}
+	name = {{ .name }} ({{ .hosts.desktop.windows.hostname }})
+{{- else if eq .chezmoi.hostname .hosts.laptop.hostname }}
+	name = {{ .name }} ({{ .hosts.laptop.hostname }})
+{{- else if eq .chezmoi.hostname .hosts.server.hostname }}
+	name = {{ .name }} ({{ .hosts.server.hostname }})
+{{- end }}
 	email = {{ .email }}
+{{- if or
+	(eq .chezmoi.hostname .hosts.desktop.linux.hostname)
+	(eq .chezmoi.hostname .hosts.laptop.hostname)
+	(eq .chezmoi.hostname .hosts.server.hostname)
+}}
 	signingkey = {{ .gpg.id }}
+{{- end }}
 
 [core]
 	editor = nvim
@@ -12,7 +28,15 @@
 [commit]
 	template = ~/.config/git/commit-template
 	verbose = true
+{{- if or
+	(eq .chezmoi.hostname .hosts.desktop.linux.hostname)
+	(eq .chezmoi.hostname .hosts.laptop.hostname)
+	(eq .chezmoi.hostname .hosts.server.hostname)
+}}
+	gpgsign = true
+{{- else }}
 	gpgsign = false
+{{- end }}
 
 [color]
 	ui = true

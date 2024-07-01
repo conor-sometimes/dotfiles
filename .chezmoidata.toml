@@ -7,8 +7,6 @@ copyright_year = 2024
   id = "E42BCE32C98E0135B8B4CC436FDB78D4953A7D89"
 
 [hosts]
-  [hosts.generic]
-    [hosts.generic.ssh]
       [hosts.generic.ssh.github]
         db_path = "keys/ssh/generic/github"
         public = "~/.ssh/keys/github.pub"
@@ -17,11 +15,19 @@ copyright_year = 2024
   [hosts.desktop]
     [hosts.desktop.windows]
       hostname = "sendai"
+
+      [hosts.desktop.windows.ssh]
+        db_path = "keys/ssh/desktop/windows/github"
+        public = "~/.ssh/keys/github.pub"
+        private = "~/.ssh/keys/github"
+
       [hosts.desktop.windows.wsl]
         hostname = "sendai"
-        [hosts.desktop.windows.wsl.ssh]
-          [hosts.desktop.windows.wsl.ssh.keyname]
 
+        [hosts.desktop.windows.wsl.ssh]
+          db_path = "keys/ssh/desktop/windows/wsl/github"
+          public = "~/.ssh/keys/github.pub"
+          private = "~/.ssh/keys/github"
 
     [hosts.desktop.linux]
       hostname = "nara"
@@ -29,17 +35,21 @@ copyright_year = 2024
       monitor_240hz = "DP-0"
       monitor_144hz = "DP-2"
 
-      [hosts.desktop.ssh]
-        [hosts.desktop.ssh.yubikey]
-          [hosts.desktop.ssh.yubikey.blue]
+      [hosts.desktop.linux.ssh]
+        [hosts.desktop.linux.ssh.github]
+          db_path = "keys/ssh/desktop/linux/github"
+          public = "~/.ssh/keys/github.pub"
+          private = "~/.ssh/keys/github"
+        [hosts.desktop.linux.ssh.yubikey]
+          [hosts.desktop.linux.ssh.yubikey.blue]
             db_path = "keys/ssh/desktop/linux/yubikey-blue"
             public = "~/.ssh/keys/yubikey-blue.pub"
             private = "~/.ssh/keys/yubikey-blue"
-          [hosts.desktop.ssh.yubikey.black]
+          [hosts.desktop.linux.ssh.yubikey.black]
             db_path = "keys/ssh/desktop/linux/yubikey-black"
             public = "~/.ssh/keys/yubikey-black.pub"
             private = "~/.ssh/keys/yubikey-black"
-          [hosts.desktop.ssh.yubikey.nano]
+          [hosts.desktop.linux.ssh.yubikey.nano]
             db_path = "keys/ssh/desktop/linux/yubikey-nano"
             public = "~/.ssh/keys/yubikey-nano.pub"
             private = "~/.ssh/keys/yubikey-nano"
@@ -48,6 +58,10 @@ copyright_year = 2024
     hostname = "PY60HY3QW3"
 
     [hosts.laptop.ssh]
+      [hosts.laptop.ssh.github]
+        db_path = "keys/ssh/laptop/github"
+        public = "~/.ssh/keys/github.pub"
+        private = "~/.ssh/keys/github"
       [hosts.laptop.ssh.yubikey]
         [hosts.laptop.ssh.yubikey.blue]
           db_path = "keys/ssh/laptop/yubikey-blue"
@@ -62,6 +76,18 @@ copyright_year = 2024
     hostname = "deck"
     ip = "192.168.0.23"
 
+    [hosts.handheld.ssh]
+      [hosts.handheld.ssh.github]
+        db_path = "keys/ssh/handheld/github"
+        public = "~/.ssh/keys/github.pub"
+        private = "~/.ssh/keys/github"
+
   [hosts.server]
     hostname = "hokkaido"
     ip = "192.168.0.123"
+
+    [hosts.server.ssh]
+      [hosts.server.ssh.github]
+        db_path = "keys/ssh/server/github"
+        public = "~/.ssh/keys/github.pub"
+        private = "~/.ssh/keys/github"
